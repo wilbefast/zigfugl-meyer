@@ -1,0 +1,27 @@
+# Project files
+*.csproj
+
+*.pidb
+
+*.unityproj
+
+*.sln
+
+*.userprefs
+
+
+# Non-code assets
+Assets/Editor/**
+
+Assets/Scenes/**
+
+Library/**
+
+Temp/**
+
+ProjectSettings/**
+
+Assets/Standard\ Assets/**
+
+Assets/Zigfu/Prefabs/**
+Assets/Zigfu/SampleScene/**
