@@ -1,28 +1,17 @@
 # Project files
 *.csproj
-
 *.pidb
-
 *.unityproj
-
 *.sln
-
 *.userprefs
 
-
 Library/**
-
 Temp/**
-
 ProjectSettings/**
 
 # Non-code assets
 Assets/Editor/**
 
-Assets/Scenes/**
-
 # Samples
-
 Assets/Standard\ Assets/**
-
 Assets/Zigfu/**
