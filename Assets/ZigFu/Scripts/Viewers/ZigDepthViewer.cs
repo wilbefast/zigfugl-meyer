@@ -87,10 +87,12 @@ public class ZigDepthViewer : MonoBehaviour
 		texture.wrapMode = TextureWrapMode.Clamp;
 	
 		// setup render target
-		if(target == null)
+		if(target == null && renderer != null)
+		{
 			target = renderer;
-		target.material.mainTexture = texture;
-		
+			target.material.mainTexture = texture;
+		}
+	
 		// set up colours
 		depthHistogramMap = new float[MaxDepth];
 		depthToColor = new Color32[MaxDepth];
