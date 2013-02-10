@@ -10,18 +10,19 @@
 *.userprefs
 
 
-# Non-code assets
-Assets/Editor/**
-
-Assets/Scenes/**
-
 Library/**
 
 Temp/**
 
 ProjectSettings/**
 
+# Non-code assets
+Assets/Editor/**
+
+Assets/Scenes/**
+
+# Samples
+
 Assets/Standard\ Assets/**
 
-Assets/Zigfu/Prefabs/**
-Assets/Zigfu/SampleScene/**
+Assets/Zigfu/**
