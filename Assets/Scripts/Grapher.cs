@@ -4,15 +4,20 @@ using System.Collections;
 
 public class Grapher : MonoBehaviour
 {
+	//! --------------------------------------------------------------------------
+	//! ATTRIBUTES
+	//! --------------------------------------------------------------------------
 	// parameter
 	public int history_length;
-	public Transform measured_object;
 	public UnityEngine.Color colour;
 	
 	// local variables
 	private float[] history;
   private LineRenderer line;
 	
+	//! --------------------------------------------------------------------------
+	//! CALLBACKS
+	//! --------------------------------------------------------------------------
 	void Start ()
 	{
 		// create history buffer
@@ -22,12 +27,15 @@ public class Grapher : MonoBehaviour
 		line = (LineRenderer)gameObject.GetComponent("LineRenderer");
 		line.SetVertexCount(history_length);
 	
-		// setup material
+		// setup material / colour
 		line.material = new Material(Shader.Find("Particles/Additive"));
 		line.SetColors(colour, colour);
 	}
- 
-	void Update ()
+	
+	//! --------------------------------------------------------------------------
+	//! METHODS
+	//! --------------------------------------------------------------------------
+	public void newDataPoint(float new_point)
 	{
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
@@ -37,9 +45,8 @@ public class Grapher : MonoBehaviour
 			line.SetPosition(i, new Vector3(x, history[i], -1)); 
 													//! FIXME -- new in Update loop
 		}
-		
+
 		// get a new data point
-		float new_point = measured_object.localRotation.z;
 		history[history_length - 1] = new_point;
 		line.SetPosition(history_length - 1, new Vector3(1, new_point, -1)); 
 																					//! FIXME -- new in Update loop
