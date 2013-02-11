@@ -4,7 +4,8 @@ using System.Collections;
 public class Grapher : MonoBehaviour
 {
 	// parameter
-	public int resolution;
+	public int history_length;
+	public Transform measured_object;
 	
 	// local variables
 	private float[] history;
@@ -12,25 +13,29 @@ public class Grapher : MonoBehaviour
 	
 	void Start ()
 	{
-		// create data
-		history = new float[resolution];
+		// create history buffer
+		history = new float[history_length];
 		
 		// create line segments
 		line = (LineRenderer)gameObject.GetComponent("LineRenderer");
-		line.SetVertexCount(resolution);
-		
-		// place line vertices
-		for(int i = 0; i < resolution; i++)
-		{
-			float interval = i / (float)resolution;
-			
-			history[i] = interval;
-			line.SetPosition(i, new Vector3(interval, history[i], 0));
-		}
+		line.SetVertexCount(history_length);
 	}
  
 	void Update ()
 	{
+		// shift history to the left
+		for(int i = 0; i < history_length - 1; i++)
+		{
+			float x = (float)i / history_length;
+			history[i] = history[i+1];
+			line.SetPosition(i, new Vector3(x, history[i], -1)); 
+													//! FIXME -- new in Update loop
+		}
 		
+		// get a new data point
+		float new_point = measured_object.localRotation.z;
+		history[history_length - 1] = new_point;
+		line.SetPosition(history_length - 1, new Vector3(1, new_point, -1)); 
+																					//! FIXME -- new in Update loop
 	}
 }
