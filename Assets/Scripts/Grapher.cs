@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class Grapher : MonoBehaviour
 {
 	// parameter
 	public int history_length;
 	public Transform measured_object;
+	public UnityEngine.Color colour;
 	
 	// local variables
 	private float[] history;
@@ -15,10 +17,14 @@ public class Grapher : MonoBehaviour
 	{
 		// create history buffer
 		history = new float[history_length];
-		
+	
 		// create line segments
 		line = (LineRenderer)gameObject.GetComponent("LineRenderer");
 		line.SetVertexCount(history_length);
+	
+		// setup material
+		line.material = new Material(Shader.Find("Particles/Additive"));
+		line.SetColors(colour, colour);
 	}
  
 	void Update ()
