@@ -25,9 +25,17 @@ public class TextUpdate : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () 
-	{
-		// gui.text = skeleton.RightWrist.rotation.ToString ();
-		gui.text = skeleton.RightShoulder.rotation.eulerAngles.ToString ();
+	{	
+		// Drilling-like rotation around the arm axis
+		gui.text = skeleton.RightShoulder.localRotation.eulerAngles.x.ToString();
+		
+		// Rotation around the vertical axis
+		//gui.text = skeleton.RightShoulder.localRotation.eulerAngles.y.ToString();
+		
+		// Rotation around the shoulder-span axis
+		
+		// Rotation around the body's frontal axis 
+		//gui.text = skeleton.RightShoulder.localRotation.eulerAngles.z.ToString ();
 	}
 	
 	//! --------------------------------------------------------------------------
