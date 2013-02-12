@@ -8,7 +8,7 @@ public class Grapher : MonoBehaviour
 	//! ATTRIBUTES
 	//! --------------------------------------------------------------------------
 	// parameter
-	public int history_length;
+	public int history_length, min_x, max_x;
 	public UnityEngine.Color colour;
 	
 	// local variables
@@ -40,7 +40,7 @@ public class Grapher : MonoBehaviour
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
 		{
-			float x = (float)i / history_length;
+			float x = min_x + (float)i / history_length * (max_x - min_x);
 			history[i] = history[i+1];
 			line.SetPosition(i, new Vector3(x, history[i], -1)); 
 													//! FIXME -- new in Update loop
@@ -48,7 +48,7 @@ public class Grapher : MonoBehaviour
 
 		// get a new data point
 		history[history_length - 1] = new_point;
-		line.SetPosition(history_length - 1, new Vector3(1, new_point, -1)); 
+		line.SetPosition(history_length - 1, new Vector3(max_x, new_point, -1)); 
 																					//! FIXME -- new in Update loop
 	}
 }

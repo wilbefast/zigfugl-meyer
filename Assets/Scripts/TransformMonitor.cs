@@ -27,6 +27,11 @@ public class TransformMonitor : MonoBehaviour
 	{
 		Vector3 gimble = watched_transform.localRotation.eulerAngles;
 		
+		//! FIXME
+		gimble.x = Random.Range(0, 10)/10.0f;
+		gimble.y = Random.Range(0, 10)/10.0f;
+		gimble.z = Random.Range(0, 10)/10.0f;
+		
 		// plot the rotations
 		if(graphRotX != null)
 			graphRotX.newDataPoint(gimble.x);
