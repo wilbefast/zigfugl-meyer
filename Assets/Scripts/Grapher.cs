@@ -9,32 +9,39 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	// parameter
 	public int history_length;
-	public float min_x, max_x;
+	public float min_x, max_x, width;
 	public UnityEngine.Color colour;
 	
 	// local variables
 	private float[] history;
   private LineRenderer line;
 	private float span_x;
+	private Vector3 point; 
+	
+	// sub-objects
+	private GameObject plot, border;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
+		// create the plot object for plotting data
+		plot = new GameObject("plot");
+		line = (LineRenderer)plot.AddComponent("LineRenderer");	
+		
+		// set up the line 
+		line.SetVertexCount(history_length);
+		line.material = new Material(Shader.Find("Particles/Additive"));
+		line.SetWidth(width, width);
+		line.SetColors(colour, colour);
+		
 		// calculate width of graph
 		span_x = max_x - min_x;
 		
 		// create history buffer
 		history = new float[history_length];
-	
-		// create line segments
-		line = (LineRenderer)gameObject.GetComponent("LineRenderer");
-		line.SetVertexCount(history_length);
-	
-		// setup material / colour
-		line.material = new Material(Shader.Find("Particles/Additive"));
-		line.SetColors(colour, colour);
+
 	}
 	
 	//! --------------------------------------------------------------------------
@@ -53,13 +60,13 @@ public class Grapher : MonoBehaviour
 		{
 			float x = min_x + (float)i / history_length * span_x;
 			history[i] = history[i+1];
-			line.SetPosition(i, new Vector3(x, history[i], 0)); 
-													//! FIXME -- new in Update loop
+			point.Set(x, history[i], 0);
+			line.SetPosition(i, point);
 		}
 
 		// get a new data point
 		history[history_length - 1] = new_point;
-		line.SetPosition(history_length - 1, new Vector3(max_x, new_point, 0)); 
-																					//! FIXME -- new in Update loop
+		point.Set(max_x, new_point, 0);
+		line.SetPosition(history_length - 1, point);
 	}
 }
