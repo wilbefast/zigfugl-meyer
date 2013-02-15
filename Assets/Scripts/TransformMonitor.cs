@@ -34,7 +34,5 @@ public class TransformMonitor : MonoBehaviour
 			graphRotY.newDataPoint(gimble.y / 360);
 		if(graphRotZ != null)
 			graphRotZ.newDataPoint(gimble.z / 360);
-		
-		guiText.text = "Hello world";
 	}
 }
