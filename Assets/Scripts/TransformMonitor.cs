@@ -26,18 +26,15 @@ public class TransformMonitor : MonoBehaviour
 	void Update ()
 	{
 		Vector3 gimble = watched_transform.localRotation.eulerAngles;
-		
-		//! FIXME -- fake test
-		//gimble.x = Random.Range(0, 10)/10.0f;
-		//gimble.y = Random.Range(0, 10)/10.0f;
-		//gimble.z = Random.Range(0, 10)/10.0f;
-		
+
 		// plot the rotations
 		if(graphRotX != null)
-			graphRotX.newDataPoint(gimble.x);
+			graphRotX.newDataPoint(gimble.x / 360);
 		if(graphRotY != null)
-			graphRotY.newDataPoint(gimble.y);
+			graphRotY.newDataPoint(gimble.y / 360);
 		if(graphRotZ != null)
-			graphRotZ.newDataPoint(gimble.z);
+			graphRotZ.newDataPoint(gimble.z / 360);
+		
+		guiText.text = "Hello world";
 	}
 }

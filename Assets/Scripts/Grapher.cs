@@ -42,6 +42,12 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	public void newDataPoint(float new_point)
 	{
+		// clamp value between 0 and 1
+		if(new_point > 1)
+			new_point = 1;
+		else if(new_point < 0)
+			new_point = 0;
+		
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
 		{
