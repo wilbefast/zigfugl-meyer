@@ -14,7 +14,7 @@ public class Grapher : MonoBehaviour
 	
 	// local variables
 	private float[] history;
-  private LineRenderer line;
+  private LineRenderer line, borderLine;
 	private float span_x;
 	private Vector3 point; 
 	
@@ -26,11 +26,26 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
+		// create a border around the plot (X and Y axes)
+		border = new GameObject("border");
+		borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
+		
+		// set up the border line
+		borderLine.SetVertexCount(3); // (0,1), (0,0) and (1,0)
+		borderLine.material = new Material(Shader.Find("Particles/Additive"));
+		borderLine.SetWidth(width, width);
+		borderLine.SetColors(UnityEngine.Color.white, UnityEngine.Color.white);
+		
+		// create borders once and for all
+		point.Set(min_x, 1, 0); borderLine.SetPosition(0, point);
+		point.Set(min_x, 0, 0); borderLine.SetPosition(1, point);
+		point.Set(max_x, 0, 0); borderLine.SetPosition(2, point);
+		
 		// create the plot object for plotting data
 		plot = new GameObject("plot");
 		line = (LineRenderer)plot.AddComponent("LineRenderer");	
 		
-		// set up the line 
+		// set up the plot line 
 		line.SetVertexCount(history_length);
 		line.material = new Material(Shader.Find("Particles/Additive"));
 		line.SetWidth(width, width);
