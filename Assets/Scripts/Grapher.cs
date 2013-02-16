@@ -9,14 +9,14 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	// parameter
 	public int history_length;
-	public float min_x, max_x, width;
+	public float min_value, max_value, min_x, max_x, width;
 	public UnityEngine.Color colour;
 	public string caption_text;
 	
 	// local variables
 	private float[] history;
   private LineRenderer line;
-	private float span_x;
+	private float span_value, span_x;
 	private Vector3 point; 
 	
 	// sub-objects
@@ -37,7 +37,8 @@ public class Grapher : MonoBehaviour
 		// create graph plot line
 		create_curve();
 		
-		// calculate width of graph
+		// calculate height and width of graph
+		span_value = max_value - min_value;
 		span_x = max_x - min_x;
 		
 		// create history buffer
@@ -110,15 +111,15 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	//! PUBLIC METHODS
 	//! --------------------------------------------------------------------------
-	public void newDataPoint(float new_point)
+	public void newDataPoint(float new_value)
 	{
 		//! ------ FIRST OFF ALL ------
-		// clamp value between 0 and 1
-		if(new_point > 1)
-			new_point = 1;
-		else if(new_point < 0)
-			new_point = 0;
-		
+		// clamp value between min and max
+		if(new_value > max_value)
+			new_value = max_value;
+		else if(new_value < min_value)
+			new_value = min_value;
+		float new_point = (new_value - min_value) / span_value;
 		
 		// move GUI to a position relative to camera so it is always in view --
 		// -- caption
@@ -127,7 +128,7 @@ public class Grapher : MonoBehaviour
 		// -- current level
 		amount_indicator.guiText.transform.position =
 			screenPoint(max_x + width, new_point, 0.0f);
-		amount_indicator.guiText.text = new_point.ToString();
+		amount_indicator.guiText.text = new_value.ToString();
 		
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)

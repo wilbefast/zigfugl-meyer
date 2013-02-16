@@ -38,11 +38,11 @@ public class SkeletonMonitor : MonoBehaviour
 		float straightness = Vector3.Dot(upperarm.normalized, forearm.normalized);
 		
 		// What is the angle between shoulder and wrist ?
-		float angle = 1 - Vector3.Angle(Vector3.up, arm) / 180;
+		float angle = 180 - Vector3.Angle(Vector3.up, arm);
 		
 		// Patient should not be allowed to "cheat" by bending their arm
-		if(angle > straightness)
-			angle = straightness;
+		//if(angle > straightness)
+			//angle = straightness;
 
 		// plot the data
 		if(straightnessGraph != null)
