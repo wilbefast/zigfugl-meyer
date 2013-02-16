@@ -9,9 +9,6 @@ Library/**
 Temp/**
 ProjectSettings/**
 
-# Non-code assets
-Assets/Editor/**
-
-# Samples
+# Asset packages
 Assets/Standard\ Assets/**
 Assets/Zigfu/**
