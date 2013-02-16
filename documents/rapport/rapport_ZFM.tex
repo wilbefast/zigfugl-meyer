@@ -1,0 +1,97 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{ifpdf}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{pdfpages}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\geometry{hmargin=50pt, vmargin=50pt}
+
+\title{Rapport de projet : ZigFugl-Meyer}
+\author{DYCE William \and MÉLIA Geoffrey}
+\date{\today}
+\ifpdf
+	\pdfinfo 
+	{
+		/Author (wdyce, gmelia)
+		/Title (Title (Rapport de projet))
+		/Subject (Subject)
+		/Keywords ()
+		/CreationDate (\today)
+	}
+\fi
+
+\begin{document}
+	% Page de titre
+	%\maketitle
+	\thispagestyle{empty}
+\begin{picture}(40,40)
+\put(50,-600){\rule{.2mm}{21cm}}
+\put(-50,-70){\rule{20cm}{.2mm}}
+
+\put(70,-50){\textsc{\Huge{TER : ZigFugl-Meyer}}}
+\put(360,-100){\textsc{\Large{Rapport de projet}}}
+
+\put(100,-220){\textbf{\textsc{\large{Étudiants :}}}}
+\put(100,-240){\textsc{\large{DYCE William, MÉLIA Geoffrey}}}
+
+\put(100,-400){\textbf{\textsc{\large{Encadrant :}}}}
+\put(170,-400){\textsc{\large{SEILLES Antoine}}}
+
+\put(230,-530){\textsc{\large{Master informatique}}}
+\put(205,-550){\textsc{\large{Année universitaire 2012-2013}}}
+\end{picture}
+	
+	\thispagestyle{empty}
+	\newpage
+	
+	% Sommaire
+	\tableofcontents
+
+	%Table des figures
+	\listoffigures
+	
+	\newpage
+	%TODO : grossir, centrer sur la page
+	\section*{Remerciements}
+	\addcontentsline{toc}{section}{Remerciements}
+	\paragraph{}
+	
+\begin{itemize}
+\item Antoine Seilles pour...
+\item Ines Di Loreto
+\item Julien Métrot et Karima Bakhti (et la jeune patiente) pour ...
+\item Isabelle Laffont
+\item Benoît Langes
+\end{itemize}
+	\part{Rapport de projet}
+	\newpage
+	\chapter{Introduction}
+		\section{Problématique}
+blabla
+	\newpage
+		\section{Présentation du projet}
+blabla bis
+
+	\chapter{Background}
+		\section{Kinect}
+		\section{Fugl Meyer}
+		
+	\chapter{État de l'art}
+		\section{Biblio Kinect}
+		\section{Implé Fugl Meyer}
+
+	\chapter{Propositions}
+		\section{Solutions}
+		\section{Mise en oeuvre}
+			\subsection{Outils et technologies}
+		\section{Limites et propositions}
+\part{Annexes}
+
+\end{document}
