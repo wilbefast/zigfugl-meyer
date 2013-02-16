@@ -46,7 +46,7 @@ public class Grapher : MonoBehaviour
 	}
 	
 	//! --------------------------------------------------------------------------
-	//! PRIVATE SUBROUTINES
+	//! START SUBROUTINES
 	//! --------------------------------------------------------------------------
 	
 	private void create_caption()
@@ -97,17 +97,6 @@ public class Grapher : MonoBehaviour
 		line.SetColors(colour, colour);
 	}
 	
-	private Vector3 screenPoint(float x, float y, float z)
-	{
-		point.Set(x, y, z);
-		point = Camera.main.WorldToScreenPoint(point);
-		point.x /= Screen.width;
-		point.y /= Screen.height;
-		
-		return point;
-	}
-	
-	
 	//! --------------------------------------------------------------------------
 	//! PUBLIC METHODS
 	//! --------------------------------------------------------------------------
@@ -119,7 +108,7 @@ public class Grapher : MonoBehaviour
 			new_value = max_value;
 		else if(new_value < min_value)
 			new_value = min_value;
-		float new_point = (new_value - min_value) / span_value;
+		float new_point = valueToPoint(new_value);
 		
 		// move GUI to a position relative to camera so it is always in view --
 		// -- caption
@@ -128,20 +117,39 @@ public class Grapher : MonoBehaviour
 		// -- current level
 		amount_indicator.guiText.transform.position =
 			screenPoint(max_x + width, new_point, 0.0f);
-		amount_indicator.guiText.text = new_value.ToString();
+		amount_indicator.guiText.text = Mathf.Round(new_value).ToString();
 		
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
 		{
 			float x = min_x + (float)i / history_length * span_x;
 			history[i] = history[i+1];
-			point.Set(x, history[i], 0);
+			point.Set(x, valueToPoint(history[i]), 0);
 			line.SetPosition(i, point);
 		}
 
 		// get a new data point
-		history[history_length - 1] = new_point;
+		history[history_length - 1] = new_value;
 		point.Set(max_x, new_point, 0);
 		line.SetPosition(history_length - 1, point);
+	}
+	
+	//! --------------------------------------------------------------------------
+	//! GUI SUBROUTINES
+	//! --------------------------------------------------------------------------
+	
+	private Vector3 screenPoint(float x, float y, float z)
+	{
+		point.Set(x, y, z);
+		point = Camera.main.WorldToScreenPoint(point);
+		point.x /= Screen.width;
+		point.y /= Screen.height;
+		
+		return point;
+	}
+	
+	private float valueToPoint(float data)
+	{
+		return ((data - min_value) / span_value);
 	}
 }

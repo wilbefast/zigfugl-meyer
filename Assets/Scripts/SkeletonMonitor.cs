@@ -12,7 +12,7 @@ public class SkeletonMonitor : MonoBehaviour
 	public ZigSkeleton skeleton;
 	
 	// Local variables
-	private Vector3 shoulder, elbow, wrist, upperarm, forearm, arm;
+	private Vector3 shoulder, elbow, wrist, upperarm, forearm, arm, spine_up;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
@@ -38,7 +38,7 @@ public class SkeletonMonitor : MonoBehaviour
 		float straightness = Vector3.Dot(upperarm.normalized, forearm.normalized);
 		
 		// What is the angle between shoulder and wrist ?
-		float angle = 180 - Vector3.Angle(Vector3.up, arm);
+		float angle = 180 - Vector3.Angle(skeleton.Torso.up, arm);
 		
 		// Patient should not be allowed to "cheat" by bending their arm
 		//if(angle > straightness)
