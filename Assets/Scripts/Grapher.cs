@@ -11,21 +11,25 @@ public class Grapher : MonoBehaviour
 	public int history_length;
 	public float min_x, max_x, width;
 	public UnityEngine.Color colour;
+	public string caption_text;
 	
 	// local variables
 	private float[] history;
-  private LineRenderer line, borderLine;
+  private LineRenderer line;
 	private float span_x;
 	private Vector3 point; 
 	
 	// sub-objects
-	private GameObject plot, border, legend;
+	private GameObject plot, border, caption;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
+		// create the caption
+		create_caption();
+		
 		// create graph borders
 		create_border();
 		
@@ -43,11 +47,18 @@ public class Grapher : MonoBehaviour
 	//! PRIVATE SUBROUTINES
 	//! --------------------------------------------------------------------------
 	
+	private void create_caption()
+	{
+		caption = new GameObject("caption");
+		GUIText caption_gui = (GUIText)caption.AddComponent("GUIText");
+		caption_gui.text = caption_text;
+	}
+	
 	private void create_border()
 	{
 		// create a border around the plot (X and Y axes)
 		border = new GameObject("border");
-		borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
+		LineRenderer borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
 		
 		// set up the border line
 		borderLine.SetVertexCount(5); // (0,1), (0,0), (1,0), (1,1), (0,1)
