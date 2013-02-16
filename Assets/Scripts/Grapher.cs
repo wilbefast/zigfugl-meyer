@@ -47,7 +47,26 @@ public class Grapher : MonoBehaviour
 	
 	void OnGUI()
 	{
-		borders_follow_camera();
+		// borders follow camera 
+		borderLine.SetPosition(0, graphPos(0,0));
+		borderLine.SetPosition(1, graphPos(1,0));
+		borderLine.SetPosition(2, graphPos(1,1));
+		borderLine.SetPosition(3, graphPos(0,1));
+		borderLine.SetPosition(4, graphPos(0,0));
+		
+		// caption follows camera
+		point.Set(gui_area.center.x, gui_area.yMin, 0.0f);
+		caption.guiText.transform.position = point;
+		
+		// amount indicator follows camera
+		float h = valueToPoint(history[history_length - 1]);
+		point.Set(gui_area.xMax + 0.01f, gui_area.yMin + h*gui_area.height, 0.0f);
+		amount_indicator.guiText.transform.position = point;
+		
+		// curve follows camera
+		for(int i = 0; i < history_length; i++)
+			line.SetPosition(i, graphPos((float)i / history_length, 
+																		valueToPoint(history[i])));
 	}
 	
 	//! --------------------------------------------------------------------------
@@ -106,41 +125,14 @@ public class Grapher : MonoBehaviour
 			new_value = max_value;
 		else if(new_value < min_value)
 			new_value = min_value;
-		float new_point = valueToPoint(new_value);
-		
-		// move GUI to a position relative to camera so it is always in view --
-		// -- caption
-		/*caption.guiText.transform.position = 
-			worldToScreen(gui_area.center.x, gui_area.y, 0.0f);
-		// -- current level
-		amount_indicator.guiText.transform.position =
-			worldToScreen(max_x + line_width, new_point, 0.0f);
-		amount_indicator.guiText.text = Mathf.Round(new_value).ToString();*/
 		
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
-		{
-			float x = (float)i / history_length;
 			history[i] = history[i+1];
-			line.SetPosition(i, graphPos(x, valueToPoint(history[i])));
-		}
-
-		// get a new data point
+		
+		// add the new data point
 		history[history_length - 1] = new_value;
-		line.SetPosition(history_length - 1, graphPos(1, new_point));
-	}
-	
-	//! --------------------------------------------------------------------------
-	//! GUI RECALCULATION SUBROUTINES
-	//! --------------------------------------------------------------------------
-	
-	private void borders_follow_camera()
-	{
-		borderLine.SetPosition(0, graphPos(0,0));
-		borderLine.SetPosition(1, graphPos(1,0));
-		borderLine.SetPosition(2, graphPos(1,1));
-		borderLine.SetPosition(3, graphPos(0,1));
-		borderLine.SetPosition(4, graphPos(0,0));
+		amount_indicator.guiText.text = Mathf.Round(new_value).ToString();
 	}
 	
 	//! --------------------------------------------------------------------------
@@ -149,8 +141,6 @@ public class Grapher : MonoBehaviour
 	
 	private Vector3 graphPos(float x, float y)
 	{
-		if(x < 0) x = 0; else if (x > 1) x = 1;
-		if(y < 0) y = 0; else if (y > 1) y = 1;
 		return screenToWorld(gui_area.xMin + x*gui_area.width, 
 													gui_area.yMin + y*gui_area.height);
 	}
