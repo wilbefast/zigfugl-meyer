@@ -9,7 +9,7 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	// parameter
 	public int history_length;
-	public float min_value, max_value, min_x, max_x, line_width;
+	public float min_value, max_value, line_width;
 	public Rect gui_area;
 	public UnityEngine.Color colour;
 	public string caption_text;
@@ -17,7 +17,7 @@ public class Grapher : MonoBehaviour
 	// local variables
 	private float[] history;
   private LineRenderer line, borderLine;
-	private float span_value, span_x;
+	private float value_span;
 	private Vector3 point; 
 	
 	// sub-objects
@@ -38,15 +38,14 @@ public class Grapher : MonoBehaviour
 		// create graph plot line
 		create_curve();
 		
-		// calculate height and width of graph
-		span_value = max_value - min_value;
-		span_x = max_x - min_x;
+		// calculate height of graph
+		value_span = max_value - min_value;
 		
 		// create history buffer
 		history = new float[history_length];
 	}
 	
-	void LateUpdate()
+	void OnGUI()
 	{
 		borders_follow_camera();
 	}
@@ -111,26 +110,24 @@ public class Grapher : MonoBehaviour
 		
 		// move GUI to a position relative to camera so it is always in view --
 		// -- caption
-		caption.guiText.transform.position = 
-			worldToScreen(min_x + span_x/2, -line_width, 0.0f);
+		/*caption.guiText.transform.position = 
+			worldToScreen(gui_area.center.x, gui_area.y, 0.0f);
 		// -- current level
 		amount_indicator.guiText.transform.position =
 			worldToScreen(max_x + line_width, new_point, 0.0f);
-		amount_indicator.guiText.text = Mathf.Round(new_value).ToString();
+		amount_indicator.guiText.text = Mathf.Round(new_value).ToString();*/
 		
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
 		{
-			float x = min_x + (float)i / history_length * span_x;
+			float x = (float)i / history_length;
 			history[i] = history[i+1];
-			point.Set(x, valueToPoint(history[i]), 0);
-			line.SetPosition(i, point);
+			line.SetPosition(i, graphPos(x, valueToPoint(history[i])));
 		}
 
 		// get a new data point
 		history[history_length - 1] = new_value;
-		point.Set(max_x, new_point, 0);
-		line.SetPosition(history_length - 1, point);
+		line.SetPosition(history_length - 1, graphPos(1, new_point));
 	}
 	
 	//! --------------------------------------------------------------------------
@@ -139,23 +136,30 @@ public class Grapher : MonoBehaviour
 	
 	private void borders_follow_camera()
 	{
-		borderLine.SetPosition(0, screenToWorld(0, 0.5f));
-		borderLine.SetPosition(1, screenToWorld(0, 0));
-		borderLine.SetPosition(2, screenToWorld(0.5f, 0));
-		borderLine.SetPosition(3, screenToWorld(0.5f, 0.5f));
-		borderLine.SetPosition(4, screenToWorld(0, 0.5f));
+		borderLine.SetPosition(0, graphPos(0,0));
+		borderLine.SetPosition(1, graphPos(1,0));
+		borderLine.SetPosition(2, graphPos(1,1));
+		borderLine.SetPosition(3, graphPos(0,1));
+		borderLine.SetPosition(4, graphPos(0,0));
 	}
 	
 	//! --------------------------------------------------------------------------
 	//! GUI UTILITY SUBROUTINES
 	//! --------------------------------------------------------------------------
 	
+	private Vector3 graphPos(float x, float y)
+	{
+		if(x < 0) x = 0; else if (x > 1) x = 1;
+		if(y < 0) y = 0; else if (y > 1) y = 1;
+		return screenToWorld(gui_area.xMin + x*gui_area.width, 
+													gui_area.yMin + y*gui_area.height);
+	}
+	
 	private Vector3 screenToWorld(float x, float y)
 	{
 		point.Set(x, y, 1.0f);
 		point = 
 			Camera.main.ScreenToWorldPoint(Camera.main.ViewportToScreenPoint(point)); 
-		Debug.Log(point.ToString());
 		return point;
 	}
 	
@@ -168,6 +172,6 @@ public class Grapher : MonoBehaviour
 	
 	private float valueToPoint(float data)
 	{
-		return ((data - min_value) / span_value);
+		return ((data - min_value) / value_span);
 	}
 }
