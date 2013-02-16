@@ -7,12 +7,11 @@ public class SkeletonMonitor : MonoBehaviour
 	//! ATTRIBUTES
 	//! --------------------------------------------------------------------------
 	// Parameters
-	public Grapher straightnessGraph;
-	public Grapher angleGraph;
+	public Grapher bendGraph, angleGraph;
 	public ZigSkeleton skeleton;
 	
 	// Local variables
-	private Vector3 shoulder, elbow, wrist, upperarm, forearm, arm, spine_up;
+	private Vector3 shoulder, elbow, wrist, upperarm, forearm, spine_up;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
@@ -32,22 +31,17 @@ public class SkeletonMonitor : MonoBehaviour
 		wrist = skeleton.RightWrist.position;
 		upperarm = elbow - shoulder;
 		forearm = wrist - elbow;
-		arm = wrist - shoulder;
 		
 		// How straight is the arm ?
-		float straightness = Vector3.Dot(upperarm.normalized, forearm.normalized);
+		float bend = Vector3.Angle(upperarm, forearm);
 		
-		// What is the angle between shoulder and wrist ?
-		float angle = 180 - Vector3.Angle(skeleton.Torso.up, arm);
+		// How high has the arm been raised
+		float elevation = 180 - Vector3.Angle(skeleton.Torso.up, upperarm);
 		
-		// Patient should not be allowed to "cheat" by bending their arm
-		//if(angle > straightness)
-			//angle = straightness;
-
 		// plot the data
-		if(straightnessGraph != null)
-			straightnessGraph.newDataPoint(straightness);
+		if(bendGraph != null)
+			bendGraph.newDataPoint(bend);
 		if(angleGraph != null)
-			angleGraph.newDataPoint(angle);
+			angleGraph.newDataPoint(elevation);
 	}
 }
