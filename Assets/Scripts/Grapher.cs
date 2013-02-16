@@ -20,21 +20,22 @@ public class Grapher : MonoBehaviour
 	private Vector3 point; 
 	
 	// sub-objects
-	private GameObject plot, border, caption;
+	private GameObject curve, border, caption, amount_indicator;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
-		// create the caption
+		// create the legend
 		create_caption();
+		create_amount_indicator();
 		
 		// create graph borders
 		create_border();
 		
 		// create graph plot line
-		create_plot();
+		create_curve();
 		
 		// calculate width of graph
 		span_x = max_x - min_x;
@@ -53,6 +54,13 @@ public class Grapher : MonoBehaviour
 		GUIText caption_gui = (GUIText)caption.AddComponent("GUIText");
 		caption_gui.text = caption_text;
 		caption_gui.anchor = TextAnchor.UpperCenter;
+	}
+	
+	private void create_amount_indicator()
+	{
+		amount_indicator = new GameObject("amount_indicator");
+		GUIText amount_gui = (GUIText)amount_indicator.AddComponent("GUIText");
+		amount_gui.anchor = TextAnchor.MiddleLeft;
 	}
 	
 	private void create_border()
@@ -75,11 +83,11 @@ public class Grapher : MonoBehaviour
 		point.Set(min_x, 1, 0); borderLine.SetPosition(4, point);
 	}
 	
-	private void create_plot()
+	private void create_curve()
 	{
 		// create the plot object for plotting data
-		plot = new GameObject("plot");
-		line = (LineRenderer)plot.AddComponent("LineRenderer");	
+		curve = new GameObject("plot");
+		line = (LineRenderer)curve.AddComponent("LineRenderer");	
 		
 		// set up the plot line 
 		line.SetVertexCount(history_length);
@@ -88,21 +96,38 @@ public class Grapher : MonoBehaviour
 		line.SetColors(colour, colour);
 	}
 	
+	private Vector3 screenPoint(float x, float y, float z)
+	{
+		point.Set(x, y, z);
+		point = Camera.main.WorldToScreenPoint(point);
+		point.x /= Screen.width;
+		point.y /= Screen.height;
+		
+		return point;
+	}
+	
 	
 	//! --------------------------------------------------------------------------
 	//! PUBLIC METHODS
 	//! --------------------------------------------------------------------------
 	public void newDataPoint(float new_point)
 	{
-		// move GUI to a position relative to camera so it is always in view
-		caption.guiText.transform.position = 
-			screenPoint(min_x + span_x/2, -span_x/4, 0.0f);
-		
+		//! ------ FIRST OFF ALL ------
 		// clamp value between 0 and 1
 		if(new_point > 1)
 			new_point = 1;
 		else if(new_point < 0)
 			new_point = 0;
+		
+		
+		// move GUI to a position relative to camera so it is always in view --
+		// -- caption
+		caption.guiText.transform.position = 
+			screenPoint(min_x + span_x/2, -width, 0.0f);
+		// -- current level
+		amount_indicator.guiText.transform.position =
+			screenPoint(max_x + width, new_point, 0.0f);
+		amount_indicator.guiText.text = new_point.ToString();
 		
 		// shift history to the left
 		for(int i = 0; i < history_length - 1; i++)
@@ -117,19 +142,5 @@ public class Grapher : MonoBehaviour
 		history[history_length - 1] = new_point;
 		point.Set(max_x, new_point, 0);
 		line.SetPosition(history_length - 1, point);
-	}
-	
-	//! --------------------------------------------------------------------------
-	//! SUBROUTINES
-	//! --------------------------------------------------------------------------
-	
-	private Vector3 screenPoint(float x, float y, float z)
-	{
-		point.Set(x, y, z);
-		point = Camera.main.WorldToScreenPoint(point);
-		point.x /= Screen.width;
-		point.y /= Screen.height;
-		
-		return point;
 	}
 }
