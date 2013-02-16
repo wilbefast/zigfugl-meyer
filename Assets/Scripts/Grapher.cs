@@ -19,19 +19,38 @@ public class Grapher : MonoBehaviour
 	private Vector3 point; 
 	
 	// sub-objects
-	private GameObject plot, border;
+	private GameObject plot, border, legend;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
+		// create graph borders
+		create_border();
+		
+		// create graph plot line
+		create_plot();
+		
+		// calculate width of graph
+		span_x = max_x - min_x;
+		
+		// create history buffer
+		history = new float[history_length];
+	}
+	
+	//! --------------------------------------------------------------------------
+	//! PRIVATE SUBROUTINES
+	//! --------------------------------------------------------------------------
+	
+	private void create_border()
+	{
 		// create a border around the plot (X and Y axes)
 		border = new GameObject("border");
 		borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
 		
 		// set up the border line
-		borderLine.SetVertexCount(3); // (0,1), (0,0) and (1,0)
+		borderLine.SetVertexCount(5); // (0,1), (0,0), (1,0), (1,1), (0,1)
 		borderLine.material = new Material(Shader.Find("Particles/Additive"));
 		borderLine.SetWidth(width, width);
 		borderLine.SetColors(UnityEngine.Color.white, UnityEngine.Color.white);
@@ -40,7 +59,12 @@ public class Grapher : MonoBehaviour
 		point.Set(min_x, 1, 0); borderLine.SetPosition(0, point);
 		point.Set(min_x, 0, 0); borderLine.SetPosition(1, point);
 		point.Set(max_x, 0, 0); borderLine.SetPosition(2, point);
-		
+		point.Set(max_x, 1, 0); borderLine.SetPosition(3, point);
+		point.Set(min_x, 1, 0); borderLine.SetPosition(4, point);
+	}
+	
+	private void create_plot()
+	{
 		// create the plot object for plotting data
 		plot = new GameObject("plot");
 		line = (LineRenderer)plot.AddComponent("LineRenderer");	
@@ -50,17 +74,11 @@ public class Grapher : MonoBehaviour
 		line.material = new Material(Shader.Find("Particles/Additive"));
 		line.SetWidth(width, width);
 		line.SetColors(colour, colour);
-		
-		// calculate width of graph
-		span_x = max_x - min_x;
-		
-		// create history buffer
-		history = new float[history_length];
-
 	}
 	
+	
 	//! --------------------------------------------------------------------------
-	//! METHODS
+	//! PUBLIC METHODS
 	//! --------------------------------------------------------------------------
 	public void newDataPoint(float new_point)
 	{
