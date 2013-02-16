@@ -141,11 +141,11 @@ public class Grapher : MonoBehaviour
 	
 	private Vector3 graphPos(float x, float y)
 	{
-		return screenToWorld(gui_area.xMin + x*gui_area.width, 
+		return viewToWorld(gui_area.xMin + x*gui_area.width, 
 													gui_area.yMin + y*gui_area.height);
 	}
 	
-	private Vector3 screenToWorld(float x, float y)
+	private Vector3 viewToWorld(float x, float y)
 	{
 		point.Set(x, y, 1.0f);
 		point = 
@@ -153,7 +153,7 @@ public class Grapher : MonoBehaviour
 		return point;
 	}
 	
-	private Vector3 worldToScreen(float x, float y, float z)
+	private Vector3 worldToView(float x, float y, float z)
 	{
 		point.Set(x, y, z);
 		point = Camera.main.WorldToViewportPoint(point);
