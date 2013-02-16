@@ -9,13 +9,14 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	// parameter
 	public int history_length;
-	public float min_value, max_value, min_x, max_x, width;
+	public float min_value, max_value, min_x, max_x, line_width;
+	public Rect gui_area;
 	public UnityEngine.Color colour;
 	public string caption_text;
 	
 	// local variables
 	private float[] history;
-  private LineRenderer line;
+  private LineRenderer line, borderLine;
 	private float span_value, span_x;
 	private Vector3 point; 
 	
@@ -45,6 +46,11 @@ public class Grapher : MonoBehaviour
 		history = new float[history_length];
 	}
 	
+	void LateUpdate()
+	{
+		borders_follow_camera();
+	}
+	
 	//! --------------------------------------------------------------------------
 	//! START SUBROUTINES
 	//! --------------------------------------------------------------------------
@@ -68,20 +74,13 @@ public class Grapher : MonoBehaviour
 	{
 		// create a border around the plot (X and Y axes)
 		border = new GameObject("border");
-		LineRenderer borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
+		borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
 		
 		// set up the border line
 		borderLine.SetVertexCount(5); // (0,1), (0,0), (1,0), (1,1), (0,1)
 		borderLine.material = new Material(Shader.Find("Particles/Additive"));
-		borderLine.SetWidth(width, width);
+		borderLine.SetWidth(line_width, line_width);
 		borderLine.SetColors(UnityEngine.Color.white, UnityEngine.Color.white);
-		
-		// create borders once and for all
-		point.Set(min_x, 1, 0); borderLine.SetPosition(0, point);
-		point.Set(min_x, 0, 0); borderLine.SetPosition(1, point);
-		point.Set(max_x, 0, 0); borderLine.SetPosition(2, point);
-		point.Set(max_x, 1, 0); borderLine.SetPosition(3, point);
-		point.Set(min_x, 1, 0); borderLine.SetPosition(4, point);
 	}
 	
 	private void create_curve()
@@ -93,7 +92,7 @@ public class Grapher : MonoBehaviour
 		// set up the plot line 
 		line.SetVertexCount(history_length);
 		line.material = new Material(Shader.Find("Particles/Additive"));
-		line.SetWidth(width, width);
+		line.SetWidth(line_width, line_width);
 		line.SetColors(colour, colour);
 	}
 	
@@ -113,10 +112,10 @@ public class Grapher : MonoBehaviour
 		// move GUI to a position relative to camera so it is always in view --
 		// -- caption
 		caption.guiText.transform.position = 
-			screenPoint(min_x + span_x/2, -width, 0.0f);
+			worldToScreen(min_x + span_x/2, -line_width, 0.0f);
 		// -- current level
 		amount_indicator.guiText.transform.position =
-			screenPoint(max_x + width, new_point, 0.0f);
+			worldToScreen(max_x + line_width, new_point, 0.0f);
 		amount_indicator.guiText.text = Mathf.Round(new_value).ToString();
 		
 		// shift history to the left
@@ -135,16 +134,35 @@ public class Grapher : MonoBehaviour
 	}
 	
 	//! --------------------------------------------------------------------------
-	//! GUI SUBROUTINES
+	//! GUI RECALCULATION SUBROUTINES
 	//! --------------------------------------------------------------------------
 	
-	private Vector3 screenPoint(float x, float y, float z)
+	private void borders_follow_camera()
+	{
+		borderLine.SetPosition(0, screenToWorld(0, 0.5f));
+		borderLine.SetPosition(1, screenToWorld(0, 0));
+		borderLine.SetPosition(2, screenToWorld(0.5f, 0));
+		borderLine.SetPosition(3, screenToWorld(0.5f, 0.5f));
+		borderLine.SetPosition(4, screenToWorld(0, 0.5f));
+	}
+	
+	//! --------------------------------------------------------------------------
+	//! GUI UTILITY SUBROUTINES
+	//! --------------------------------------------------------------------------
+	
+	private Vector3 screenToWorld(float x, float y)
+	{
+		point.Set(x, y, 1.0f);
+		point = 
+			Camera.main.ScreenToWorldPoint(Camera.main.ViewportToScreenPoint(point)); 
+		Debug.Log(point.ToString());
+		return point;
+	}
+	
+	private Vector3 worldToScreen(float x, float y, float z)
 	{
 		point.Set(x, y, z);
-		point = Camera.main.WorldToScreenPoint(point);
-		point.x /= Screen.width;
-		point.y /= Screen.height;
-		
+		point = Camera.main.WorldToViewportPoint(point);
 		return point;
 	}
 	
