@@ -52,6 +52,7 @@ public class Grapher : MonoBehaviour
 		caption = new GameObject("caption");
 		GUIText caption_gui = (GUIText)caption.AddComponent("GUIText");
 		caption_gui.text = caption_text;
+		caption_gui.anchor = TextAnchor.UpperCenter;
 	}
 	
 	private void create_border()
@@ -93,6 +94,10 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	public void newDataPoint(float new_point)
 	{
+		// move GUI to a position relative to camera so it is always in view
+		caption.guiText.transform.position = 
+			screenPoint(min_x + span_x/2, -span_x/4, 0.0f);
+		
 		// clamp value between 0 and 1
 		if(new_point > 1)
 			new_point = 1;
@@ -112,5 +117,19 @@ public class Grapher : MonoBehaviour
 		history[history_length - 1] = new_point;
 		point.Set(max_x, new_point, 0);
 		line.SetPosition(history_length - 1, point);
+	}
+	
+	//! --------------------------------------------------------------------------
+	//! SUBROUTINES
+	//! --------------------------------------------------------------------------
+	
+	private Vector3 screenPoint(float x, float y, float z)
+	{
+		point.Set(x, y, z);
+		point = Camera.main.WorldToScreenPoint(point);
+		point.x /= Screen.width;
+		point.y /= Screen.height;
+		
+		return point;
 	}
 }
