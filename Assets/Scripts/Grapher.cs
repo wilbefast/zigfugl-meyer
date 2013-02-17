@@ -13,6 +13,7 @@ public class Grapher : MonoBehaviour
 	public Rect gui_area;
 	public UnityEngine.Color colour;
 	public string caption_text;
+	public Camera camContext;
 	
 	// local variables
 	private float[] history;
@@ -148,15 +149,17 @@ public class Grapher : MonoBehaviour
 	private Vector3 viewToWorld(float x, float y)
 	{
 		point.Set(x, y, 1.0f);
-		point = 
-			Camera.main.ScreenToWorldPoint(Camera.main.ViewportToScreenPoint(point)); 
+		//point = 
+		//	Camera.main.ScreenToWorldPoint(Camera.main.ViewportToScreenPoint(point)); 
+		point = camContext.ScreenToWorldPoint(camContext.ViewportToScreenPoint(point)); 
 		return point;
 	}
 	
 	private Vector3 worldToView(float x, float y, float z)
 	{
 		point.Set(x, y, z);
-		point = Camera.main.WorldToViewportPoint(point);
+		//point = Camera.main.WorldToViewportPoint(point);
+		point = camContext.WorldToViewportPoint(point);
 		return point;
 	}
 	
