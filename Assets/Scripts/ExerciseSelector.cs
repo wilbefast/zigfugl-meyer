@@ -50,14 +50,14 @@ public class ExerciseSelector : MonoBehaviour
 
 		// TOP LEFT BUTTON
 		if(GUI.Button(top_left, abduction_button))
-			;
+			Application.LoadLevel("test_abduction");
 		
 		// TOP RIGHT BUTTON
 		if(GUI.Button(top_right, flexion_button))
-			;
+			Application.LoadLevel("test_flexion");
 		
 		// BOTTOM LEFT BUTTON
 		if(GUI.Button(bottom_left, dorsiflexion_button))
-			;
+			Application.LoadLevel("test_dorsiflexion");
 	}
 }
