@@ -29,6 +29,10 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
+		// if no camera is specified use the main camera instead
+		if(camContext == null)
+			camContext = Camera.main;
+		
 		// create the legend
 		create_caption();
 		create_amount_indicator();
@@ -149,8 +153,6 @@ public class Grapher : MonoBehaviour
 	private Vector3 viewToWorld(float x, float y)
 	{
 		point.Set(x, y, 1.0f);
-		//point = 
-		//	Camera.main.ScreenToWorldPoint(Camera.main.ViewportToScreenPoint(point)); 
 		point = camContext.ScreenToWorldPoint(camContext.ViewportToScreenPoint(point)); 
 		return point;
 	}
@@ -158,7 +160,6 @@ public class Grapher : MonoBehaviour
 	private Vector3 worldToView(float x, float y, float z)
 	{
 		point.Set(x, y, z);
-		//point = Camera.main.WorldToViewportPoint(point);
 		point = camContext.WorldToViewportPoint(point);
 		return point;
 	}
