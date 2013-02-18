@@ -12,5 +12,3 @@ ProjectSettings/**
 # Asset packages
 Assets/Standard\ Assets/**
 Assets/Zigfu/**
-
-Assets/Scripts/*.meta
