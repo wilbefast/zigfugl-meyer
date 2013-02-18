@@ -7,7 +7,7 @@
 
 Library/**
 Temp/**
-ProjectSettings/**
+#ProjectSettings/**
 
 # Asset packages
 Assets/Standard\ Assets/**
