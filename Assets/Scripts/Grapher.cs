@@ -7,13 +7,15 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	//! ATTRIBUTES
 	//! --------------------------------------------------------------------------
-	// parameter
+	
+	// parameters
 	public int history_length;
 	public float min_value, max_value, line_width;
 	public Rect gui_area;
 	public UnityEngine.Color colour;
 	public string caption_text;
 	public Camera camContext;
+	public Texture illegal_tex; //! FIXME -- script should find this by itself
 	
 	// local variables
 	private float[] history;
@@ -23,7 +25,8 @@ public class Grapher : MonoBehaviour
 	
 	// sub-objects
 	private GameObject curve, border, caption, 
-											amount_indicator, min_indicator, max_indicator;
+											amount_indicator, min_indicator, max_indicator,
+											illegal_indicator;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
@@ -96,25 +99,27 @@ public class Grapher : MonoBehaviour
 	
 	private void create_indicators()
 	{
-		GUIText gui;
-		
 		// current amount (right-hand side)
 		amount_indicator = new GameObject("amount_indicator");
-		gui = (GUIText)amount_indicator.AddComponent("GUIText");
-		gui.anchor = TextAnchor.MiddleLeft;
+		GUIText gtext = (GUIText)amount_indicator.AddComponent("GUIText");
+		gtext.anchor = TextAnchor.MiddleLeft;
 		
 		// min amount (left-hand side)
 		min_indicator = new GameObject("min_indicator");
-		gui = (GUIText)min_indicator.AddComponent("GUIText");
-		gui.anchor = TextAnchor.MiddleRight;
-		gui.text = min_value.ToString();
+		gtext = (GUIText)min_indicator.AddComponent("GUIText");
+		gtext.anchor = TextAnchor.MiddleRight;
+		gtext.text = min_value.ToString();
 		
 		// max amount (right-hand side)
 		max_indicator = new GameObject("max_indicator");
-		gui = (GUIText)max_indicator.AddComponent("GUIText");
-		gui.anchor = TextAnchor.MiddleRight;
-		gui.text = max_value.ToString();
+		gtext = (GUIText)max_indicator.AddComponent("GUIText");
+		gtext.anchor = TextAnchor.MiddleRight;
+		gtext.text = max_value.ToString();
 		
+		// illegal move (only when needed)
+		illegal_indicator = new GameObject("illegal_move");
+		GUITexture gimg = (GUITexture)illegal_indicator.AddComponent("GUITexture");
+		gimg.pixelInset = gui_area;
 	}
 	
 	private void create_border()
@@ -192,4 +197,15 @@ public class Grapher : MonoBehaviour
 	{
 		return ((data - min_value) / value_span);
 	}
+	
+	//! --------------------------------------------------------------------------
+	//! ACCESSORS
+	//! --------------------------------------------------------------------------
+	
+	public void setIllegalMove(bool b)
+	{
+		
+		//illegal_indicator.renderer.enabled = true;//b;
+	}
+	
 }

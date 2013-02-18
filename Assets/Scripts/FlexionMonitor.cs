@@ -33,20 +33,23 @@ public class FlexionMonitor : MonoBehaviour
 		upperarm = elbow - shoulder;
 		forearm = wrist - elbow;
 		
-		// How straight is the arm ?
-		float elbow_bend = Vector3.Angle(upperarm, forearm);
-		
-		// How high has the arm been raised ?
+		//! Progress --
+		// -- How high has the arm been raised ?
 		float elevation = 180 - Vector3.Angle(skeleton.Torso.up, upperarm);
 		
-		// How much is the arm been turn towards the front ?
-		float forwards = Vector3.Angle(skeleton.Torso.forward, upperarm);
+		//! Contraints --
+		// -- How straight is the arm ?
+		float elbow_bend = Vector3.Angle(upperarm, forearm);
+		graph_elbow.setIllegalMove(elbow_bend > max_elbow_bend);
+		// -- How much is the arm been turn towards the front ?
+		float forwards = 90 - Vector3.Angle(skeleton.Torso.forward, upperarm);
+		graph_forwards.setIllegalMove(forwards > max_forward_turn);
 		
 		// plot the data
-		if(graph_elbow != null)
-			graph_elbow.newDataPoint(elbow_bend);
 		if(graph_elevation != null)
 			graph_elevation.newDataPoint(elevation);
+		if(graph_elbow != null)
+			graph_elbow.newDataPoint(elbow_bend);
 		if(graph_forwards != null)
 			graph_forwards.newDataPoint(forwards);
 	}
