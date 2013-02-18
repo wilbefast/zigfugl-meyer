@@ -20,38 +20,18 @@ public class Grapher : MonoBehaviour
 	private float[] history;
   private LineRenderer line, borderLine;
 	private float value_span;
-	private Vector3 point; 
+	protected Vector3 point; 
 	
 	// sub-objects
 	private GameObject curve, border, caption, 
-											amount_indicator, min_indicator, max_indicator,
-											illegal_indicator;
+											amount_indicator, min_indicator, max_indicator;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
 	//! --------------------------------------------------------------------------
-	void Start ()
+	void Start()
 	{
-		
-		// if no camera is specified use the main camera instead
-		if(camContext == null)
-			camContext = Camera.main;
-		
-		// create the legend
-		create_caption();
-		create_indicators();
-		
-		// create graph borders
-		create_border();
-		
-		// create graph plot line
-		create_curve();
-		
-		// calculate height of graph
-		value_span = max_value - min_value;
-		
-		// create history buffer
-		history = new float[history_length];
+		init ();
 	}
 	
 	void OnGUI()
@@ -89,6 +69,30 @@ public class Grapher : MonoBehaviour
 	//! START SUBROUTINES
 	//! --------------------------------------------------------------------------
 	
+	//! FIXME -- I don't understand C#... it won't let me override Start :-/
+	protected void init()
+	{
+		// if no camera is specified use the main camera instead
+		if(camContext == null)
+			camContext = Camera.main;
+		
+		// create the legend
+		create_caption();
+		create_indicators();
+		
+		// create graph borders
+		create_border();
+		
+		// create graph plot line
+		create_curve();
+		
+		// calculate height of graph
+		value_span = max_value - min_value;
+		
+		// create history buffer
+		history = new float[history_length];
+	}
+	
 	private void create_caption()
 	{
 		caption = new GameObject("caption");
@@ -115,15 +119,6 @@ public class Grapher : MonoBehaviour
 		gtext = (GUIText)max_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
 		gtext.text = max_value.ToString();
-		
-		// illegal move (only when needed)
-		illegal_indicator = new GameObject("illegal_move");
-		point.Set(gui_area.center.x, gui_area.center.y, 0.0f);
-		illegal_indicator.transform.position = point;
-		illegal_indicator.transform.localScale = new Vector3(0.2f, 0.2f, 1.0f); 
-		illegal_indicator.SetActive(false);
-		GUITexture gimg = (GUITexture)illegal_indicator.AddComponent("GUITexture");
-		gimg.texture = (Texture)Resources.Load("cross");
 	}
 	
 	private void create_border()
@@ -201,14 +196,4 @@ public class Grapher : MonoBehaviour
 	{
 		return ((data - min_value) / value_span);
 	}
-	
-	//! --------------------------------------------------------------------------
-	//! ACCESSORS
-	//! --------------------------------------------------------------------------
-	
-	public void setIllegalMove(bool b)
-	{
-		illegal_indicator.SetActive(b);
-	}
-	
 }
