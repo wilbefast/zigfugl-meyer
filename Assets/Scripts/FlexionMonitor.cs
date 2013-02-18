@@ -9,6 +9,7 @@ public class FlexionMonitor : MonoBehaviour
 	// Parameters
 	public Grapher bendGraph, angleGraph;
 	public ZigSkeleton skeleton;
+	public float max_forward_turn, max_elbow_bend;
 	
 	// Local variables
 	private Vector3 shoulder, elbow, wrist, upperarm, forearm, spine_up;
