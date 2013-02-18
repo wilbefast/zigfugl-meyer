@@ -22,7 +22,8 @@ public class Grapher : MonoBehaviour
 	private Vector3 point; 
 	
 	// sub-objects
-	private GameObject curve, border, caption, amount_indicator;
+	private GameObject curve, border, caption, 
+											amount_indicator, min_indicator, max_indicator;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
@@ -35,7 +36,7 @@ public class Grapher : MonoBehaviour
 		
 		// create the legend
 		create_caption();
-		create_amount_indicator();
+		create_indicators();
 		
 		// create graph borders
 		create_border();
@@ -63,10 +64,17 @@ public class Grapher : MonoBehaviour
 		point.Set(gui_area.center.x, gui_area.yMin, 0.0f);
 		caption.guiText.transform.position = point;
 		
-		// amount indicator follows camera
+		// indicators follows camera --
+		// -- current amount
 		float h = valueToPoint(history[history_length - 1]);
 		point.Set(gui_area.xMax + 0.01f, gui_area.yMin + h*gui_area.height, 0.0f);
 		amount_indicator.guiText.transform.position = point;
+		// -- min
+		point.Set(gui_area.xMin - 0.01f, gui_area.yMin, 0.0f);
+		min_indicator.guiText.transform.position = point;
+		// -- max
+		point.Set(gui_area.xMin - 0.01f, gui_area.yMax, 0.0f);
+		max_indicator.guiText.transform.position = point;
 		
 		// curve follows camera
 		for(int i = 0; i < history_length; i++)
@@ -86,11 +94,27 @@ public class Grapher : MonoBehaviour
 		caption_gui.anchor = TextAnchor.UpperCenter;
 	}
 	
-	private void create_amount_indicator()
+	private void create_indicators()
 	{
+		GUIText gui;
+		
+		// current amount (right-hand side)
 		amount_indicator = new GameObject("amount_indicator");
-		GUIText amount_gui = (GUIText)amount_indicator.AddComponent("GUIText");
-		amount_gui.anchor = TextAnchor.MiddleLeft;
+		gui = (GUIText)amount_indicator.AddComponent("GUIText");
+		gui.anchor = TextAnchor.MiddleLeft;
+		
+		// min amount (left-hand side)
+		min_indicator = new GameObject("min_indicator");
+		gui = (GUIText)min_indicator.AddComponent("GUIText");
+		gui.anchor = TextAnchor.MiddleRight;
+		gui.text = min_value.ToString();
+		
+		// max amount (right-hand side)
+		max_indicator = new GameObject("max_indicator");
+		gui = (GUIText)max_indicator.AddComponent("GUIText");
+		gui.anchor = TextAnchor.MiddleRight;
+		gui.text = max_value.ToString();
+		
 	}
 	
 	private void create_border()
