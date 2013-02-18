@@ -13,16 +13,18 @@ public class ExerciseSelector : MonoBehaviour
 	private static Rect centre = new Rect(200, 100, 600, 550),
 								top_left = new Rect(275, 150, 200, 200),
 								top_right = new Rect(525, 150, 200, 200),
-								bottom_left = new Rect(275, 400, 200, 200);
+								bottom_left = new Rect(275, 400, 200, 200),
+								bottom_right = new Rect(525, 400, 200, 200);
 	
-	private GUIContent abduction_button, dorsiflexion_button, flexion_button;
+	private GUIContent abduction_button, flexion_button, 
+											dorsiflexion1_button, dorsiflexion2_button;
 		
 	
 	//! --------------------------------------------------------------------------
 	//! PARAMETERS
 	//! --------------------------------------------------------------------------
 	
-	public Texture2D abduction, flexion, dorsiflexion;
+	public Texture2D abduction, flexion, dorsiflexion1, dorsiflexion2;
 	
 	//! --------------------------------------------------------------------------
 	//! CALLBACKS
@@ -30,11 +32,17 @@ public class ExerciseSelector : MonoBehaviour
 	
 	void Start()
 	{
-		abduction_button = new GUIContent ("Abduction", abduction, "This is the tooltip");
+		abduction_button = new GUIContent ("Abduction", abduction, 
+			"Lêver le bras de côté.");
 		
-		dorsiflexion_button = new GUIContent ("Dorsiflexion", dorsiflexion, "This is the tooltip");
+		flexion_button = new GUIContent ("Flexion", flexion, 
+			"Lêver le bras vers le devant.");
 		
-		flexion_button = new GUIContent ("Flexion", flexion, "This is the tooltip");
+		dorsiflexion1_button = new GUIContent ("Dorsiflexion I", dorsiflexion1, 
+			"Lêver le poignet, coude plié.");
+		
+		dorsiflexion2_button = new GUIContent ("Dorsiflexion II", dorsiflexion2, 
+			"Lêver le poignet, coude droit.");
 	}
 	
 	void OnGUI () 
@@ -57,7 +65,11 @@ public class ExerciseSelector : MonoBehaviour
 			Application.LoadLevel("test_flexion");
 		
 		// BOTTOM LEFT BUTTON
-		if(GUI.Button(bottom_left, dorsiflexion_button))
-			Application.LoadLevel("test_dorsiflexion");
+		if(GUI.Button(bottom_left, dorsiflexion1_button))
+			Application.LoadLevel("test_dorsiflexion"); /// FIXME
+		
+		// BOTTOM RIGHT BUTTON
+		if(GUI.Button(bottom_right, dorsiflexion2_button))
+			Application.LoadLevel("test_dorsiflexion"); /// FIXME
 	}
 }
