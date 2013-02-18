@@ -33,6 +33,7 @@ public class Grapher : MonoBehaviour
 	//! --------------------------------------------------------------------------
 	void Start ()
 	{
+		
 		// if no camera is specified use the main camera instead
 		if(camContext == null)
 			camContext = Camera.main;
@@ -119,7 +120,15 @@ public class Grapher : MonoBehaviour
 		// illegal move (only when needed)
 		illegal_indicator = new GameObject("illegal_move");
 		GUITexture gimg = (GUITexture)illegal_indicator.AddComponent("GUITexture");
-		gimg.pixelInset = gui_area;
+		point.Set(gui_area.center.x, gui_area.center.y, 0.0f);
+		illegal_indicator.transform.position = point;
+		gimg.pixelInset = new Rect(0, 0, 0.01f, 0.01f);
+		/*gimg.pixelInset = new Rect(gui_area.x * Screen.width / 2, 
+															gui_area.y * Screen.height / 2,
+															gui_area.width * Screen.width / 4 , 
+															gui_area.height * Screen.height / 4);*/
+		Debug.Log (gimg.pixelInset);
+		gimg.texture = illegal_tex;
 	}
 	
 	private void create_border()
