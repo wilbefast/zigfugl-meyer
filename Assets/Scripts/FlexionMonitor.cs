@@ -7,7 +7,7 @@ public class FlexionMonitor : MonoBehaviour
 	//! ATTRIBUTES
 	//! --------------------------------------------------------------------------
 	// Parameters
-	public Grapher bendGraph, angleGraph;
+	public Grapher graph_elbow, graph_elevation, graph_forwards;
 	public ZigSkeleton skeleton;
 	public float max_forward_turn, max_elbow_bend;
 	
@@ -34,15 +34,20 @@ public class FlexionMonitor : MonoBehaviour
 		forearm = wrist - elbow;
 		
 		// How straight is the arm ?
-		float bend = Vector3.Angle(upperarm, forearm);
+		float elbow_bend = Vector3.Angle(upperarm, forearm);
 		
-		// How high has the arm been raised
+		// How high has the arm been raised ?
 		float elevation = 180 - Vector3.Angle(skeleton.Torso.up, upperarm);
 		
+		// How much is the arm been turn towards the front ?
+		float forwards = Vector3.Angle(skeleton.Torso.forward, upperarm);
+		
 		// plot the data
-		if(bendGraph != null)
-			bendGraph.newDataPoint(bend);
-		if(angleGraph != null)
-			angleGraph.newDataPoint(elevation);
+		if(graph_elbow != null)
+			graph_elbow.newDataPoint(elbow_bend);
+		if(graph_elevation != null)
+			graph_elevation.newDataPoint(elevation);
+		if(graph_forwards != null)
+			graph_forwards.newDataPoint(forwards);
 	}
 }
