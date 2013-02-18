@@ -15,7 +15,6 @@ public class Grapher : MonoBehaviour
 	public UnityEngine.Color colour;
 	public string caption_text;
 	public Camera camContext;
-	public Texture illegal_tex; //! FIXME -- script should find this by itself
 	
 	// local variables
 	private float[] history;
@@ -119,23 +118,12 @@ public class Grapher : MonoBehaviour
 		
 		// illegal move (only when needed)
 		illegal_indicator = new GameObject("illegal_move");
-		GUITexture gimg = (GUITexture)illegal_indicator.AddComponent("GUITexture");
-		
 		point.Set(gui_area.center.x, gui_area.center.y, 0.0f);
 		illegal_indicator.transform.position = point;
-		illegal_indicator.transform.localScale = new Vector3(0.02f, 0.02f, 1.0f); //! <== HERE TO SCALE THE TEXTURE SIZE
-		/* illegal_indicator.transform.localScale = new Vector3(gui_area.y * Screen.height / 2,
-															gui_area.width * Screen.width / 4 , 
-															gui_area.height * Screen.height / 4);
-		 */
-		 //! I think Inset is useless, just use the position and localScale
-		//gimg.pixelInset = new Rect(0, 0, 0.01f, 0.01f); 
-		/*gimg.pixelInset = new Rect(gui_area.x * Screen.width / 2, 
-															gui_area.y * Screen.height / 2,
-															gui_area.width * Screen.width / 4 , 
-															gui_area.height * Screen.height / 4);*/
-		Debug.Log (gimg.pixelInset);
-		gimg.texture = illegal_tex;
+		illegal_indicator.transform.localScale = new Vector3(0.2f, 0.2f, 1.0f); 
+		illegal_indicator.SetActive(false);
+		GUITexture gimg = (GUITexture)illegal_indicator.AddComponent("GUITexture");
+		gimg.texture = (Texture)Resources.Load("cross");
 	}
 	
 	private void create_border()
@@ -220,8 +208,7 @@ public class Grapher : MonoBehaviour
 	
 	public void setIllegalMove(bool b)
 	{
-		
-		//illegal_indicator.renderer.enabled = true;//b;
+		illegal_indicator.SetActive(b);
 	}
 	
 }
