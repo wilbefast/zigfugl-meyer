@@ -1,14 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class FlexionMonitor : MonoBehaviour
+public class FlexionMonitor : ExerciseMonitor
 {
 	//! --------------------------------------------------------------------------
 	//! ATTRIBUTES
 	//! --------------------------------------------------------------------------
 	// Parameters
-	public FailGrapher graph_elbow, graph_elevation, graph_forwards;
-	public ZigSkeleton skeleton;
+	public FailGrapher graph_elbow, graph_forwards;
 	public float max_forward_turn, max_elbow_bend;
 	
 	// Local variables
@@ -40,14 +39,24 @@ public class FlexionMonitor : MonoBehaviour
 		//! Contraints --
 		// -- How straight is the arm ?
 		float elbow_bend = Vector3.Angle(upperarm, forearm);
-		graph_elbow.setFail(elbow_bend > max_elbow_bend);
+		if(elbow_bend > max_elbow_bend)
+		{
+			graph_elbow.setFail(true);
+			failedExercise();
+		}
 		// -- How much is the arm been turn towards the front ?
 		float forwards = 90 - Vector3.Angle(skeleton.Torso.forward, upperarm);
-		graph_forwards.setFail(forwards > max_forward_turn);
+		if(forwards > max_forward_turn)
+		{
+			graph_elbow.setFail(true);
+			failedExercise();
+		}
 		
-		// plot the data
-		if(graph_elevation != null)
-			graph_elevation.newDataPoint(elevation);
+		// plot progress data
+		if(primary_graph != null)
+			primary_graph.newDataPoint(elevation);
+		
+		// plot constraint data
 		if(graph_elbow != null)
 			graph_elbow.newDataPoint(elbow_bend);
 		if(graph_forwards != null)
