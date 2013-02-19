@@ -86,13 +86,13 @@ Il existe de nombreux tests et échelles pour évaluer les capacités sensorimot
 \end{itemize}
 		
 		\subsubsection{Le test de Fugl-Meyer}
-Cette imprécision des mesures devient dès lors gênante lorsque c'est un test non pas fonctionnel, mais de déficience qui est considéré comme le "Gold Standard" dans le domaine : le test de Fugl Meyer [\ref{fugl_meyer}]. En effet, celui-ci consiste à évaluer les mouvements du patient lors de la réalisation de gestes très précis, incluant des mouvements "éliminatoires", qu'il faut donc être capable de mesurer.	
+Cette imprécision des mesures devient dès lors gênante lorsque c'est un test non pas fonctionnel, mais de déficience qui est considéré comme le "Gold Standard" dans le domaine : le score de Fugl Meyer [\ref{fugl_meyer}]. En effet, celui-ci consiste à évaluer les mouvements du patient lors de la réalisation de gestes très précis, incluant des mouvements "éliminatoires", qu'il faut donc être capable de mesurer.	
 	
 	L'idée s'est alors posée d'utiliser un autre moyen de mesure, moins intrusif, pour la réalisation de tests de Fugl Meyer, largement utilisé dans le milieu de la réhabilitation, et de réfléchir aux possibilités d'enrichissement de celui-ci.
 \newpage
 		\section{Présentation du projet}
 		
-			\subsection{Étude de terrain}
+			\subsection{Étude de terrain} \label{etude_terrain}
 		Le projet est avant tout une étude de faisabilité. Nous essayerons de voir
 		à quel point nous pouvions procéder, avec un capteur de profondeur (en
 		l'occurrence la Microsoft Kinect) et des bibliothèques et outils couramment 
@@ -173,9 +173,10 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 
 
 		
-		\section{Fugl Meyer} \label{lapeyronie}		---GEOFFREY---
-		
-		PARLER DES DUDES QU'ON A RENCONTRE A PERLARONIE
+		\section{Fugl Meyer} \label{lapeyronie}		%---GEOFFREY---
+Ce projet, d'un choix assumé par les étudiants et l'entreprise NaturalPad qui en est l'inspiratrice, comporte une composante recherche forte. C'est dans cette optique et comme expliqué en \ref{etude_terrain} que nous avons commencé notre projet par un travail d'investigation et de recherche d'informations. Dans ce but, nous avons rencontré des praticiens de l'hôpital Lapeyronie à Montpellier : Julien Métrot, doctorant du Laboratoire Movement To Health et Karima Bakhti, kinésithérapeute au CHU de Montpellier. Lors de cette entrevue, ils ont partagé avec nous leur connaissances sur le test de Fugl Meyer et bien plus encore, et nous ont offert la possibilité d'assister à la réalisation d'un tel test sur une patiente atteinte d'hémiplégie.
+% je commente, car je ris à chaque fois que je lis cette ligne :
+%		PARLER DES DUDES QU'ON A RENCONTRE A PERLARONIE
 		du goniomètre qui est tout pourri
 		
 		
@@ -226,7 +227,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		
 		\section{Solutions}
 		
-		\subsection{Outils et technologies} 		---WILLIAM--
+		\subsection{Outils et technologies} 		%---WILLIAM--
 		- pourquoi la Kinect (?)
 		-- c'est pas cher (trouver des exemples de trucs)
 		-- c'est non intrusive (pas besoin de porter des trucs)
@@ -242,7 +243,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		--- <- include: délire sur pourquoi ce projet a été abandonnée (EVENTUELLMEENT)
 		
 		
-		\subsection{Cahier de charges / user stories} 		---GEOFFREY--
+		\subsection{Cahier de charges / user stories} 		%---GEOFFREY--
 		
 		MAINTENANT QU'ON A FINI NOTRE ETUDE DE TERRAIN ON PROPOSE L'APPLICATION PARFAITE 
 		
@@ -271,7 +272,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 			'meaningful play = integrated + discernable' (Rules of Play) les actions ont un 
 			impact et on sait lequel. 
 		
-		\section{Mise en oeuvre} 		---WILLIAM + GEOFFREY--
+		\section{Mise en oeuvre} 	%	---WILLIAM + GEOFFREY--
 
 		Grapher
 		- FailGrapher (montre la croix en plus de la progression)
@@ -283,7 +284,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		
 		Machine à états (on aime bien les trucs visuels dans les rapports)
 		
-		\section{Limites}		---GEOFFREY--
+		\section{Limites}%		---GEOFFREY--
 		
 		Fugl Meyer
 		- c'est l'état l'art (gold standard)
@@ -302,7 +303,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		  -- est il possible de les "voir" directement?
 		- les mouvement distaux (pas de capture des doits individuelles)
 		
-		\section{Ouverture}		---GEOFFREY--
+		\section{Ouverture}	%	---GEOFFREY--
 		
 		- alternatifs: ARAT = test fonctionnelle et non déficience (le medecin il le vendait TRO')
 		- projet de stage avec NaturalPad: faire de extraction de squelette moins nul
