@@ -74,35 +74,37 @@
 \part{Rapport de projet}
 \newpage
 	\chapter{Introduction}
-Les accidents vasculaires cérébraux peuvent être la cause d'hémiplégie chez les personnes qui en sont victimes. La paralysie peut affecter une ou plusieurs parties du corps, jusqu'à être totale si la face, le tronc et les membres supérieurs et inférieurs sont paralysés. \\
+Les accidents vasculaires cérébraux (AVC) peuvent être la cause d'hémiplégie chez les personnes qui en sont victimes. La paralysie peut affecter une ou plusieurs parties du corps, jusqu'à être totale si la face, le tronc et les membres supérieurs et inférieurs sont paralysés. \\
 La récupération des fonctions motrices, de la parole ou de la compréhension dépendent pour beaucoup de l'âge du patient et de son atteinte au niveau du cerveau.
 		\section{Problématique}
-Il existe de nombreux tests et échelles pour évaluer les capacités sensorimotrices de patients hémiplégiques [\ref {ref_analyse_litterature}]. Cependant, les médecins se retrouvent souvent confrontés au problème de la précision des mesures lors des test. Si la question ne se pose pas pour les tests dits "fonctionnels" (ex : le patient arrive t-il à se servir un verre d'eau?), des mesures d'angles et de positions se révèlent souvent nécessaires pour valider ou non la réussite d'un test par le patient. Or il existe peu d'outils pour réaliser ces mesures, et ceux-ci ne font pas l'unanimité. Pour la mesure d'angle entre les membres du patient (pli de l'épaule, du coude, etc.), le goniomètre se révèle être l'outil le plus utilisé, mais probablement par défaut (cf \ref{}). On lui reprochera pourtant d'être: 
+Il existe de nombreux tests et échelles pour évaluer les capacités sensorimotrices de patients hémiplégiques [\ref {ref_analyse_litterature}]. Cependant, les médecins se retrouvent souvent confrontés au problème de la précision des mesures lors des test. Si la question ne se pose pas pour les tests dits "fonctionnels" (ex : le patient arrive t-il à se servir un verre d'eau?), des mesures d'angles et de positions se révèlent souvent nécessaires pour valider ou non la réussite d'un test par le patient.
+\\Or, il existe peu d'outils pour réaliser ces mesures, et ceux-ci ne font pas l'unanimité. Pour la mesure d'angle entre les membres du patient (pli de l'épaule, du coude, etc.), le goniomètre se révèle être l'outil le plus utilisé, mais probablement par défaut (cf \ref{lapeyronie}). On lui reprochera en effet d'être: 
 \begin{itemize}
-	\item {intrusif} Il doit être en contact direct avec le patient, pouvant fausser la mesure ou aider/gêner le patient.
-	\item {imprécis} L'épaisseur de peau et de graisse ne permet pas d'évaluer correctement l'angle formé par les os
-	\item {inutilisé} Des médecins pourtant équipés vont préférer juger à l'œil, pour un meilleur ration temps/précision
+	\item {intrusif :} Il doit être en contact direct avec le patient, pouvant fausser la mesure ou aider/gêner le patient.
+	\item {imprécis :} L'épaisseur de peau et de graisse ne permet pas d'évaluer correctement l'angle formé par les os.
+	\item {inutilisé :} Des médecins pourtant équipés vont préférer juger à l'œil, pour un meilleur ratio temps/précision.
 \end{itemize}
 		
-		le test de Fugl-Meyer
-		- "effet plateau" - manque de granularité, possibilité d'avoir tous les points sans être "guéri".
-		- variabilité des mesures selon le médecin (même les deux qu'on a vu...)		
+		\subsubsection{Le test de Fugl-Meyer}
+Cette imprécision des mesures devient dès lors gênante lorsque c'est un test non pas fonctionnel, mais de déficience qui est considéré comme le "Gold Standard" dans le domaine : le test de Fugl Meyer [\ref{fugl_meyer}]. En effet, celui-ci consiste à évaluer les mouvements du patient lors de la réalisation de gestes très précis, incluant des mouvements "éliminatoires", qu'il faut donc être capable de mesurer.	
+	
+	L'idée s'est alors posée d'utiliser un autre moyen de mesure, moins intrusif, pour la réalisation de tests de Fugl Meyer, largement utilisé dans le milieu de la réhabilitation, et de réfléchir aux possibilités d'enrichissement de celui-ci.
 \newpage
 		\section{Présentation du projet}
 		
 			\subsection{Étude de terrain}
 		Le projet est avant tout une étude de faisabilité. Nous essayerons de voir
-		à quelle point nous pouvions procéder, avec un capteur de profondeur (en
+		à quel point nous pouvions procéder, avec un capteur de profondeur (en
 		l'occurrence la Microsoft Kinect) et des bibliothèques et outils couramment 
 		disponibles, à un test complet ou partiel de Fugl-Meyer.
 		
 		Nous étudierons donc d'une part les technologies disponibles pour la Kinect,
-		et d'autre ce qu'est le teste de Fugl-Meyer et quelles sont les 
+		et d'autre ce qu'est le test de Fugl-Meyer et quelles sont les 
 		problématiques associées.
 		
 		\subsection{Prototype}
 		Nous élaborerons ensuite une preuve de concept, c'est à dire un 
-		prototype proposant au patient en cours de réhabilitation un test partielle 
+		prototype proposant au patient en cours de réhabilitation un test partiel 
 		de Fugl-Meyer~:
 		\begin{itemize}
 		\item automatique,
@@ -172,9 +174,10 @@ bibliothèques de haut-niveau, qui interprétent ces données.
 
 
 		
-		\section{Fugl Meyer} 		---GEOFFREY---
+		\section{Fugl Meyer} \label{lapeyronie}		---GEOFFREY---
 		
 		PARLER DES DUDES QU'ON A RENCONTRE A PERLARONIE
+		du goniomètre qui est tout pourri
 		
 		
 		c'est un test qui teste des choses.
@@ -284,7 +287,9 @@ bibliothèques de haut-niveau, qui interprétent ces données.
 		\section{Limites}		---GEOFFREY--
 		
 		Fugl Meyer
-		- c'est l'état l'art (golden stardard)
+		- c'est l'état l'art (gold standard)
+		- "effet plateau" - manque de granularité, possibilité d'avoir tous les points sans être "guéri".
+		- variabilité des mesures selon le médecin (même les deux qu'on a vu...)	
 		
 		Zigfu c'est de la merde!!!!
 		- ils profitent d'un projet open source
