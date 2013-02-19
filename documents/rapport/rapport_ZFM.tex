@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass[french,12pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
@@ -70,39 +70,35 @@
 \item Isabelle Laffont
 \item Benoît Langes
 \end{itemize}
-	\part{Rapport de projet}
-	\newpage
+
+\part{Rapport de projet}
+\newpage
 	\chapter{Introduction}
-		\section{Problématique} --GEOFFFREY--
-		
-		
-		+ parler de l'AVC, de pourquoi on fait ces testes au premier lieu
-		
-		
-		
-		
-		SUBSECTION THIS SHIT
-		gonomètre (ici ou dans état de l'art????????????????)
-		- intrusive
-		- imprécis
-		- la plupart de skinés préfèrent faire à l'oeil
+Les accidents vasculaires cérébraux peuvent être la cause d'hémiplégie chez les personnes qui en sont victimes. La paralysie peut affecter une ou plusieurs parties du corps, jusqu'à être totale si la face, le tronc et les membres supérieurs et inférieurs sont paralysés. \\
+La récupération des fonctions motrices, de la parole ou de la compréhension dépendent pour beaucoup de l'âge du patient et de son atteinte au niveau du cerveau.
+		\section{Problématique}
+Il existe de nombreux tests et échelles pour évaluer les capacités sensorimotrices de patients hémiplégiques [\ref {ref_analyse_litterature}]. Cependant, les médecins se retrouvent souvent confrontés au problème de la précision des mesures lors des test. Si la question ne se pose pas pour les tests dits "fonctionnels" (ex : le patient arrive t-il à se servir un verre d'eau?), des mesures d'angles et de positions se révèlent souvent nécessaires pour valider ou non la réussite d'un test par le patient. Or il existe peu d'outils pour réaliser ces mesures, et ceux-ci ne font pas l'unanimité. Pour la mesure d'angle entre les membres du patient (pli de l'épaule, du coude, etc.), le goniomètre se révèle être l'outil le plus utilisé, mais probablement par défaut (cf \ref{}). On lui reprochera pourtant d'être: 
+\begin{itemize}
+	\item {intrusif} Il doit être en contact direct avec le patient, pouvant fausser la mesure ou aider/gêner le patient.
+	\item {imprécis} L'épaisseur de peau et de graisse ne permet pas d'évaluer correctement l'angle formé par les os
+	\item {inutilisé} Des médecins pourtant équipés vont préférer juger à l'œil, pour un meilleur ration temps/précision
+\end{itemize}
 		
 		le test de Fugl-Meyer
-		- "effet plateau" - manque de granularité, possibilité d'avoir tous les points sans être "guérri".
-		- variabilité des mesures selon le medecin (même les deux qu'on a vu...)
-		
-	\newpage
+		- "effet plateau" - manque de granularité, possibilité d'avoir tous les points sans être "guéri".
+		- variabilité des mesures selon le médecin (même les deux qu'on a vu...)		
+\newpage
 		\section{Présentation du projet}
 		
-		\subsection{Etude de terrain}
-		Le projet est avant tout une étude de faisibilité. Nous essayerons de voir
+			\subsection{Étude de terrain}
+		Le projet est avant tout une étude de faisabilité. Nous essayerons de voir
 		à quelle point nous pouvions procéder, avec un capteur de profondeur (en
-		l'occurence la Microsoft Kinect) et des bibliothèques et outils couramment 
-		disponibles, à un teste complète ou partielle de Fugl-Meyer.
+		l'occurrence la Microsoft Kinect) et des bibliothèques et outils couramment 
+		disponibles, à un test complet ou partiel de Fugl-Meyer.
 		
 		Nous étudierons donc d'une part les technologies disponibles pour la Kinect,
 		et d'autre ce qu'est le teste de Fugl-Meyer et quelles sont les 
-		problèmatiques associées.
+		problématiques associées.
 		
 		\subsection{Prototype}
 		Nous élaborerons ensuite une preuve de concept, c'est à dire un 
@@ -122,7 +118,7 @@
 		patient.
 	
 		\subsubsection{Aspect ludique~: "gamification"}
-		La "gamification" est le procéssus qui consiste à ajouter de éléments 
+		La "gamification" est le processus qui consiste à ajouter de éléments 
 		souvent associés au domaine du jeu (d'où le nom), comme des barres de
 		progression ou des défis à relever, à une activité non-ludique. L'idée est 
 		de favoriser l'implication et la motivation des participants. 
@@ -143,11 +139,38 @@
     
     % "Rules of Play" on "meaningful play"
 
-		
 	\chapter{Background}
-		\section{Kinect} 		---WILLIAM---
-		
-		c'est un camera RGB + IR. C'est Miscrosoft qu'il l'ait fait - lol!
+		\section{Kinect}
+
+			\subsection{En bref}
+La Kinect, connue à l'origine sous le nom "Project Natal" est une
+periphérique informatique sortie par Microsoft, comportant une caméra
+couleur, un microphone et des senseurs de profondeur à base de rayons
+infra-rouges.
+
+			\subsection{Une technologie couramment utilisé}
+Sorti en Novembre 2010, le système était prévu à l'origine pour la console
+de jeu de Microsoft, la "Xbox360". Comme la plupart des consoles et
+périphériques de jeu elle
+est donc vendu à perte, l'idée étant de récuppérér l'argent perdu en vendant
+des jeux. Ceci fait de l'appareil le moins cher et le plus couramment
+disponible de son genre.
+
+			\subsection{Les bibliothèques officiels et tiers}
+Il est peu surprenant que, dès sa sortie, des pilottes Libres et gratuites
+ont étés crées à fin de permettre le detournement du périphérique par des
+chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
+premier SDK pour Windows initialement peu complet. Des mises à jours et une
+deuxième version, sortie en Octobre 2012, comblent ces lacqunes.
+
+			\subsection{Bruits et signaux}
+Il est important de noter que la recognition vocale et l'extraction de la
+squelette ne sont pas faits par l'appareil lui-même~: ce sont des
+bibliothèques sur le "client" qui s'en chargent. Il faut donc bien
+différencier les pilottes, qui permettent d'accéder aux données brutes, des
+bibliothèques de haut-niveau, qui interprétent ces données.
+
+
 		
 		\section{Fugl Meyer} 		---GEOFFREY---
 		
@@ -282,6 +305,15 @@
 		- possibilités de concoursenzes avec Zigfu vu qu'il a juste repris 
 		- la gamification est plus pertinenet / adapté aux exercices de rehabiliation 
 		
+		\section{Références}
+			\paragraph{Ressources web}
+				\begin{itemize}
+					\item 
+				\end{itemize}
+			\paragraph{Articles}
+				\begin {itemize}
+					\item : Evaluation of the disabilities of hemiplegic patients [M.-C. Gellez-Leman et al.] \label{ref_analyse_litterature}
+				\end{itemize}
 \part{Annexes}
 
 \end{document}
