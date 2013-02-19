@@ -105,36 +105,24 @@ Cette imprécision des mesures devient dès lors gênante lorsque c'est un test 
 		\subsection{Prototype}
 		Nous élaborerons ensuite une preuve de concept, c'est à dire un 
 		prototype proposant au patient en cours de réhabilitation un test partiel 
-		de Fugl-Meyer~:
-		\begin{itemize}
-		\item automatique,
-		\item objectif, 
-		\item ludique,
-		\item granulaire.
-		\end{itemize}
-		
+		de Fugl-Meyer. Les points importants à considérer pour un tel prototype 
+		sont~:
 		\subsubsection{Automatisation et objectivité}
 		Le système doit pouvoir procéder à une évaluation, de manière non-intrusive 
 		et sans intervention externe, de ce qui se trouve devant lui. Il doit donc 
 		proposer une série de notes objectives qui correspondent aux performances du 
 		patient.
-	
 		\subsubsection{Aspect ludique~: "gamification"}
 		La "gamification" est le processus qui consiste à ajouter des éléments 
 		souvent associés au domaine du jeu (d'où le nom), comme des barres de
 		progression ou des défis à relever, à une activité non-ludique. L'idée est 
 		de favoriser l'implication et la motivation des participants. 
-		
 		Notons qu'il ne s'agit pas nécessairement de faire de l'activité en soi un 
 		jeu.
-		
-		% Christopher Franklin "Errant Signal" on Gamification
-		
     \subsubsection{Retour d'information continue et granulaire}
     La "granularité" d'un retour est le nombre d'options possibles. 
     Chaque exercice du Fugl-Meyer, par exemple, est noté sur trois points. Nous 
     aimerions proposer une alternative plus nuancée.
-    
     L'argument pour le retour d'information rejoint celui de la "gamification"~:
     la notion de "sens" dans un jeu, au moins d'après Salen et Zimmerman, est 
     directement lié à la richesse de ce retour.
@@ -144,13 +132,17 @@ Cette imprécision des mesures devient dès lors gênante lorsque c'est un test 
 	\chapter{Background}
 		\section{Kinect}
 
-			\subsection{En bref}
-La Kinect, connue à l'origine sous le nom "Project Natal" est un
+			\subsection{Description}
+La Kinect, connue à l'origine sous le nom "Project Natal" est une
 périphérique informatique créé par Microsoft, comportant une caméra
-couleur, un microphone et des senseurs de profondeur à base de rayons
-infra-rouges.
+couleur, un microphone et un système senseur de profondeur composé d'un 
+projecteur infra-rouge et d'un capteur. 
 
-			\subsection{Une technologie couramment utilisé}
+L'appareil est donc capable de générer une image 3D d'une scène par 
+temps de vol. Cette image a une résolution de 640x480 et une profondeur de 11 
+bits, est mis à jour 30 fois par seconde.
+
+			\subsection{Historique}
 Sorti en Novembre 2010, le système était prévu à l'origine pour la console
 de jeu de Microsoft, la "Xbox360". Comme la plupart des consoles et
 périphériques de jeu elle
@@ -158,19 +150,11 @@ est donc vendu à perte, l'idée étant de récupérer l'argent perdu en vendant
 des jeux. Ceci en fait l'appareil de son genre le moins cher et le plus couramment
 disponible.
 
-			\subsection{Les bibliothèques officielles et tiers}
-Il est peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
+Il est donc peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
 ont été créés afin de permettre le détournement du périphérique par des
 chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
 premier SDK pour Windows initialement peu complet. Des mises à jours et une
 deuxième version, sortie en Octobre 2012, comblent ces lacunes.
-
-			\subsection{Bruits et signaux}
-Il est important de noter que la reconnaissance vocale et l'extraction de squelette ne sont pas faits par l'appareil lui-même~: ce sont des
-bibliothèques sur le "client" qui s'en chargent. Il faut donc bien
-différencier les pilotes, qui permettent d'accéder aux données brutes, des
-bibliothèques de haut-niveau, qui interprètent ces données.
-
 
 		
 		\section{Aspect médical} \label{lapeyronie}		%---GEOFFREY---
@@ -200,6 +184,12 @@ Rapidement, ce test consiste à vérifier si un patient est capable d'effectuer 
 
 	
 		\section{Biblio Kinect}
+		
+		          \subsection{Bruits et signaux}
+Il est important de noter que la reconnaissance vocale et l'extraction de squelette ne sont pas faits par l'appareil lui-même~: ce sont des
+bibliothèques sur le "client" qui s'en chargent. Il faut donc bien
+différencier les pilotes, qui permettent d'accéder aux données brutes, des
+bibliothèques de haut-niveau, qui interprètent ces données.
 		
 		Drivers:
 		MS drivers
@@ -241,6 +231,9 @@ Rapidement, ce test consiste à vérifier si un patient est capable d'effectuer 
 		\section{Solutions}
 		
 		\subsection{Outils et technologies} 		%---WILLIAM--
+		
+
+		
 		- pourquoi la Kinect (?)
 		-- c'est pas cher (trouver des exemples de trucs)
 		-- c'est non intrusive (pas besoin de porter des trucs)
