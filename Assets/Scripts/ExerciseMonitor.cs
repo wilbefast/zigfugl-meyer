@@ -10,9 +10,8 @@ public class ExerciseMonitor : MonoBehaviour
 	public enum State
 	{
 		NO_USER,
-		STARTING_EXERCISE, 		// waiting for user to assume starting position
-		PERFORMING_EXERCISE,
-		FAILED_EXERCISE 			// user must return to starting position
+		RESTARTING_EXERCISE, 		// waiting for user to assume starting position
+		PERFORMING_EXERCISE
 	};
 	
 	//! --------------------------------------------------------------------------
@@ -23,7 +22,7 @@ public class ExerciseMonitor : MonoBehaviour
 	public FailGrapher primary_graph;
 	
 	// local variables
-	protected State state = State.PERFORMING_EXERCISE;//State.NO_USER;
+	protected State state = State.NO_USER;
 	
 	//! --------------------------------------------------------------------------
 	//! METHODS
@@ -32,7 +31,10 @@ public class ExerciseMonitor : MonoBehaviour
 	public void foundUser()
 	{
 		if(state == State.NO_USER)
-			state = State.STARTING_EXERCISE;
+		{
+			state = State.RESTARTING_EXERCISE;
+			primary_graph.setFail(true);
+		}
 	}
 	
 	public void lostUser()
@@ -44,14 +46,14 @@ public class ExerciseMonitor : MonoBehaviour
 	{
 		if(state != State.NO_USER)
 		{
-			state = State.FAILED_EXERCISE;
+			state = State.RESTARTING_EXERCISE;
 			primary_graph.setFail(true);
 		}
 	}
 	
 	public void assumedStartPosition()
 	{
-		if(state == State.STARTING_EXERCISE || state == State.FAILED_EXERCISE)
+		if(state == State.RESTARTING_EXERCISE)
 		{
 			state = State.PERFORMING_EXERCISE;
 			primary_graph.setFail(false);
