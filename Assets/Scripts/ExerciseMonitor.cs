@@ -23,6 +23,22 @@ public class ExerciseMonitor : MonoBehaviour
 	
 	// local variables
 	protected State state = State.NO_USER;
+	private GameObject state_indicator;
+	
+	//! --------------------------------------------------------------------------
+	//! CALLBACKS
+	//! --------------------------------------------------------------------------
+	
+	// Use this for initialization
+	void Start ()
+	{
+		state_indicator = new GameObject("state_indicator");
+		GUIText caption_gui = (GUIText)state_indicator.AddComponent("GUIText");
+		caption_gui.text = "Hello World";
+		caption_gui.anchor = TextAnchor.UpperCenter;
+		caption_gui.fontSize = 36;
+		caption_gui.transform.position = new Vector3(0.5f, 0.0f, 0.0f);
+	}
 	
 	//! --------------------------------------------------------------------------
 	//! METHODS

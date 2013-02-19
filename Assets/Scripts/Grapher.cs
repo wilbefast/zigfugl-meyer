@@ -47,17 +47,10 @@ public class Grapher : MonoBehaviour
 		point.Set(gui_area.center.x, gui_area.yMin, 0.0f);
 		caption.guiText.transform.position = point;
 		
-		// indicators follows camera --
-		// -- current amount
+		// current amount displayed (text) at height of current amount on graph
 		float h = valueToPoint(history[history_length - 1]);
 		point.Set(gui_area.xMax + 0.01f, gui_area.yMin + h*gui_area.height, 0.0f);
 		amount_indicator.guiText.transform.position = point;
-		// -- min
-		point.Set(gui_area.xMin - 0.01f, gui_area.yMin, 0.0f);
-		min_indicator.guiText.transform.position = point;
-		// -- max
-		point.Set(gui_area.xMin - 0.01f, gui_area.yMax, 0.0f);
-		max_indicator.guiText.transform.position = point;
 		
 		// curve follows camera
 		for(int i = 0; i < history_length; i++)
@@ -99,6 +92,7 @@ public class Grapher : MonoBehaviour
 		GUIText caption_gui = (GUIText)caption.AddComponent("GUIText");
 		caption_gui.text = caption_text;
 		caption_gui.anchor = TextAnchor.UpperCenter;
+		caption_gui.fontSize = 28;
 	}
 	
 	private void create_indicators()
@@ -107,18 +101,25 @@ public class Grapher : MonoBehaviour
 		amount_indicator = new GameObject("amount_indicator");
 		GUIText gtext = (GUIText)amount_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleLeft;
+		gtext.fontSize = 20;
 		
 		// min amount (left-hand side)
 		min_indicator = new GameObject("min_indicator");
 		gtext = (GUIText)min_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
 		gtext.text = min_value.ToString();
+		gtext.fontSize = 16;
+		point.Set(gui_area.xMin - 0.01f, gui_area.yMin, 0.0f);
+		gtext.transform.position = point;
 		
 		// max amount (right-hand side)
 		max_indicator = new GameObject("max_indicator");
 		gtext = (GUIText)max_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
 		gtext.text = max_value.ToString();
+		gtext.fontSize = 16;
+		point.Set(gui_area.xMin - 0.01f, gui_area.yMax, 0.0f);
+		gtext.transform.position = point;
 	}
 	
 	private void create_border()
