@@ -73,25 +73,173 @@
 	\part{Rapport de projet}
 	\newpage
 	\chapter{Introduction}
-		\section{Problématique}
-blabla
-	\newpage
-		\section{Présentation du projet}
-blabla bis
-
-	\chapter{Background}
-		\section{Kinect}
-		\section{Fugl Meyer}
+		\section{Problématique} --GEOFFFREY--
 		
-	\chapter{État de l'art}
-		\section{Biblio Kinect}
-		\section{Implé Fugl Meyer}
+		SUBSECTION THIS SHIT
+		gonomètre (ici ou dans état de l'art????????????????)
+		- intrusive
+		- imprécis
+		- la plupart de skinés préfèrent faire à l'oeil
+		
+		le test de Fugl-Meyer
+		- "effet plateau" - manque de granularité, possibilité d'avoir tous les points sans être "guérri".
+		- variabilité des mesures selon le medecin (même les deux qu'on a vu...)
+		
+	\newpage
+		\section{Présentation du projet} 		---WILLIAM---
 
+		Faire un test avec la Kinect - lol!
+		
+		étude de terrain + faisibilité -- INSISTER SUR CELA!!!!
+		- kinect / zigfu
+		- unity
+		- fugl meyer
+		
+		développement d'un prototype:
+		plus de précision
+		plus de granularité
+		meilleur suivie du patient (son progrès, etc)
+		éventuelle gamification (expliquer après pourquoi on a laissé tomber)
+		
+		
+	\chapter{Background}
+		\section{Kinect} 		---WILLIAM---
+		
+		c'est un camera RGB + IR. C'est Miscrosoft qu'il l'ait fait - lol!
+		
+		\section{Fugl Meyer} 		---GEOFFREY---
+		
+		PARLER DES DUDES QU'ON A RENCONTRE A PERLARONIE
+		
+		
+		c'est un test qui teste des choses.
+		
+	\chapter{État de l'art} 		---WILLIAM---
+	
+
+	
+		\section{Biblio Kinect}
+		
+		Drivers:
+		MS drivers
+		libfreenect
+		
+		Bibliothèques:
+		OpenNI
+		SDK Microsoft
+		NITE de Primesense (racheté par MS ? )
+		OpenCV
+		FAAST
+		Zigfu
+		... etc
+		
+		
+		\section{Interface naturelles appliqués aux mesures de mouvement 
+		(ce titre, c'est de la merde - je vais le changer, mais plus tard...}
+
+		NI + REHAB
+		Voracy Fish (MOJOS)
+		les truc qu'avec fait le LIRMM (MOJOS)
+ 		Natural Pad bien sur! Hammer & Planks.
+		-- exemples de Wii rehabilitation ?
+		
+		NI + MESURE DE PERFORMANCE
+		Nike Kinect Training
+		Wii Sport / Fit
+		etcetera etcetera
+		
+		
 	\chapter{Propositions}
+	
+	
+	
+		--> WHERE PUT DIS?????? Faire un ***SERIOUS*** jeu
+		
+		
+		
 		\section{Solutions}
-		\section{Mise en oeuvre}
-			\subsection{Outils et technologies}
-		\section{Limites et propositions}
+		
+		\subsection{Outils et technologies} 		---WILLIAM--
+		- pourquoi la Kinect (?)
+		-- c'est pas cher (trouver des exemples de trucs)
+		-- c'est non intrusive (pas besoin de porter des trucs)
+		-- marche sur les PC (pas besoin de HW dédié -- ça revient un peu dans le 'pas cher')
+		
+		- pourquoi Unity (?)
+		-- pour la gamification
+		-- outil de prototypage rapide
+		
+		- pourquoi Zigfu (?)
+		-- intégration facile avec Unity
+		-- pas beaucoup de choix (basé sur le projet de l'OpenNI pas mis à jour depuis 2 ans maintenant...)
+		--- <- include: délire sur pourquoi ce projet a été abandonnée (EVENTUELLMEENT)
+		
+		
+		\subsection{Cahier de charges / user stories} 		---GEOFFREY--
+		
+		MAINTENANT QU'ON A FINI NOTRE ETUDE DE TERRAIN ON PROPOSE L'APPLICATION PARFAITE ^____^
+		
+		ou pas - m'enfin bref.
+		
+		- faire les 4 exerices dont on a parlé
+		-- pourquoi ces 4 là? Pourquoi pas les autres?
+		--- problème pour les jambes (distances, bizarreté)
+		--- problème pour mesurer la rotation (extrapolés)
+		--- problème pour mesurer les doigts 
+		
+		- fournir un 'score' plus précis que celui que propose la FM
+		-- l'angle exacte auquel on est arrivé
+		-- savoir combien on a progrésé
+		
+		- tester si le patient fait un mouvement 'illegal'
+		-- le prevenir
+		-- recommencer le teste
+		
+		
+		- gamification
+		-- environnement agréeable
+		-- ??? pourquoi ça s'applique mal
+		--- mieux les truc répétifs (le FM on le fait genre une fois par semaine!)
+		--- cela étant, les notions de feedback, d'intéractions 
+			'meaningful play = integrated + discernable' (Rules of Play) les actions ont un 
+			impact et on sait lequel. 
+		
+		\section{Mise en oeuvre} 		---WILLIAM + GEOFFREY--
+
+		Grapher
+		- FailGrapher (montre la croix en plus de la progression)
+		
+		Multicamera
+		
+		ExerciseMonitor
+		- FlexionMontior et compagnie
+		
+		Machine à états (on aime bien les trucs visuels dans les rapports)
+		
+		\section{Limites}		---GEOFFREY--
+		
+		Fugl Meyer
+		- c'est l'état l'art (golden stardard)
+		
+		Zigfu c'est de la merde!!!!
+		- ils profitent d'un projet open source
+		- ils apportent rien
+		- pas de docs
+		- code mal écrit
+		- la moitié des samples marchent pas pour WILLIAM :D
+		
+		La Kinect en générale ??????
+		- les rotations (pas récupérés par la SDK de Microsoft => déduits)
+		  -- est il possible de les "voir" directement?
+		- les mouvement distaux (pas de capture des doits individuelles)
+		
+		\section{Ouverture}		---GEOFFREY--
+		
+		- alternatifs: ARAT = test fonctionnelle et non déficience (le medecin il le vendait TRO')
+		- projet de stage avec NaturalPad: faire de extraction de squelette moins nul
+		- possibilités de concoursenzes avec Zigfu vu qu'il a juste repris 
+		- la gamification est plus pertinenet / adapté aux exercices de rehabiliation 
+		
 \part{Annexes}
 
 \end{document}
