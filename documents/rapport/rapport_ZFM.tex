@@ -285,24 +285,17 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 	Les bibliothèques dites "middleware interaction naturelle" servent ici en 
 	générale à faire une 
 	extraction de squelette et une reconnaissance de gestes. Elles permettent donc 
-	au développeur de s'abstraire des données brutes. 
-	
-	Le groupe OpenNI défini des normes auxquelles doivent obéir cette couche, de 
-	manière à faciliter la communication à travers la pile de technologie. Parmi
-	les bibliothèques peu-connues qui conformement à ses standards~:
-  \begin{itemize}
-  \item\emph{TopTep Skeletonize~:} permet de suivre le mouvement des doigts,
-  \item\emph{GlobalSensing Technologies API~:} permet l'étiquetage et la 
-  reconnaissance des postures.
-  %http://www.openni.org/software/?cat_slug=file-cat1
-  \end{itemize}
+	au développeur de s'abstraire des données brutes. Le groupe OpenNI défini 
+	des normes auxquelles doivent obéir cette couche, de 
+	manière à faciliter la communication à travers la pile de technologie.
   
   \subsubsection{Kinect for Windows (Middleware)}  
   Bien que les SDK de Microsoft et de la OpenNI se disent tout et deux des 
   "Simple Development Kit",
   celui de Microsoft, "Kinect for Windows", contient à la fois les pilotes, 
   l'API de bas niveau et une chouche d'analyse des données qu'OpenNI appéleratit 
-  middleware. 
+  middleware. Il n'est donc pas fait pour interfacer avec les couches de la 
+  OpenNI et donc ne suit par leur normes.
   
   Kinect for Windows a quelques avantages par rapport à NITE~: il propose un
   placement prédictive des articulations et genère deux points en plus, 
@@ -318,7 +311,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   \subsubsection{OpenCV}
   OpenCV (Open Computer Vision) est une vaste bibliothèque de toutes sortes de 
   fonctions aillant un rapport avec la détection de formes à partir d'images
-  statiques ou dynamiques. 
+  statiques ou dynamiques. Il exite depuis 1999, donc bien avant la Kinect.
   
   Étant donnée qu'il s'agit d'une bibliothèque généraliste il a peu de 
   fonctionnalités qui ciblent précisément les données 3D, contrairement aux 
@@ -332,9 +325,16 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   Crée en May 2011, Zigfu est une petite entreprise formée de 4 personnes dont 
   Amir Hirsch, le fondateur, et 2 ex-employés de PrimeSense. Il fournit, 
   par dessus de l'extraction de squelette et de la reconnaissance
-  de gestes, un API permettant de créer des boutons, curseurs et d'autre 
-  éléments GUI, contrôlés par le mouvement.
+  de gestes, un API permettant de créer des boutons, listes, curseurs et autres
+  éléments GUI, tous contrôlés par le mouvement.
   
+  Zigfu intègre également la cinématique inverse et un système de 
+  prédiction et
+  d'interpolation à fin d'avoir une squelette répondant à des constraintes 
+  physiques à 60Hz. La plupart des jeux moderne tournent à cette vitesse, et 
+  rapellons nous que la caméra ne fournit que des données 30Hz
+  
+  %http://www.headlondon.com/our-thoughts/technology/posts/microsoft-kinect-and-the-web-browser-enter-zigfu
   %https://www.youtube.com/watch?v=uSo0jXYm5wQ
   %https://github.com/OpenNI/UnityWrapper
   %http://github.com/tinkerer/UnityWrapper
