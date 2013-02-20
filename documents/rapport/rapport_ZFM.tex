@@ -127,57 +127,17 @@ Cette imprécision des mesures devient dès lors gênante lorsque c'est un test 
     la notion de "sens" dans un jeu, au moins d'après Salen et Zimmerman, est 
     directement lié à la richesse de ce retour.
 
-	\chapter{Background}
-	
-	
-		\section{Kinect}
-
-			\subsection{Description}
-La Kinect, connue à l'origine sous le nom "Project Natal" est une
-périphérique informatique créé par Microsoft, comportant une caméra
-couleur, un étalage de 4 microphones, des moteurs pour s'orienter avec 
-accéléromètres 
-et un système senseur de profondeur composé d'un 
-projecteur infra-rouge et d'un capteur. 
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.8\linewidth]{images/kinect_diagram}
-  \caption{Diagramme montrant les sous-systèmes de l'appareil Kinect.}
-  \end{figure}
-L'appareil n'utilise pas, comme on pourrait croire, le "Temps de Vol" pour
-calculer la profondeur d'une scène. C'est en fait la déformation de chaqu'un de 
-sa matrice de rayons infra-rouge,
-lorsqu'ils frappent une surface, qui est mesuré. Cette technique dite de 
-"Lumière Structuré"
-lui permet de générer une image 3D d'une scène à une résolution de 640x480 avec 
-une profondeur de 11 bits, qui sera mise à jour 30 fois par seconde.
-
-			\subsection{Historique}
-Sorti en Novembre 2010, le système était prévu à l'origine pour la console
-de jeu de Microsoft, la "Xbox360". Comme la plupart des consoles et
-périphériques de jeu elle
-est donc vendu à perte, l'idée étant de récupérer l'argent perdu en vendant
-des jeux. Ceci en fait l'appareil de son genre le moins cher et le plus couramment
-disponible.
-
-Il est donc peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
-ont été créés afin de permettre le détournement du périphérique par des
-chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
-premier SDK pour Windows initialement peu complet. Des mises à jours et une
-deuxième version, sortie en Octobre 2012, comblent ces lacunes.
-
-		
-		\section{Aspect médical} \label{lapeyronie}		%---GEOFFREY---
+	\chapter{Aspect médical}\label{lapeyronie}		%---GEOFFREY---
 		% je commente, car je ris à chaque fois que je lis cette ligne :
 %		PARLER DES DUDES QU'ON A RENCONTRE A PERLARONIE
 Ce projet, d'un choix assumé par les étudiants et la société NaturalPad qui en est l'inspiratrice, comporte une composante recherche forte. C'est dans cette optique et comme expliqué en \ref{etude_terrain} que nous avons commencé notre projet par un travail d'investigation et de recherche d'informations. Dans ce but, nous avons rencontré des praticiens de l'hôpital Lapeyronie à Montpellier : Julien Métrot, doctorant du Laboratoire Movement To Health et Karima Bakhti, kinésithérapeute au CHU de Montpellier. Lors de cette entrevue, ils ont partagé avec nous leurs connaissances sur le test de Fugl Meyer et bien plus encore, et nous ont offert la possibilité d'assister à la réalisation d'un tel test sur une patiente atteinte d'hémiplégie.
-	\subsection{Fugl Meyer}\label{fugl_meyer}
+	\section{Fugl Meyer}\label{fugl_meyer}
 Le test de Fugl Meyer constitue un ensemble d'exercices à effectuer par le patient, et dont chaque mouvement est évalué selon un ou plusieurs critères, fournissant un score généralement compris entre 0 [échec], 1 [intermédiaire] et 2 [réussite]. Ces exercices peuvent concerner successivement les membres inférieurs et supérieurs, eux même divisés en sous catégories. Pour les membres supérieurs, on notera la présence d'un score \textit{proximal} et d'un score \textit{distal}. Ce test a pour vocation d'être réalisé régulièrement tout au long de la période de réhabilitation du patient, afin de mesurer ses progrès.
-	\subsection{Réalisation du test}
-				\subsubsection{Contexte}
+	\section{Réalisation du test}
+				\subsection{Contexte}
 Nous avons assisté à la passation d'un test de FM sur une jeune patiente atteinte d'une hémiplégie suite à un AVC ; ses membres supérieurs droits étaient affectés. Comme nous l'ont précisé J. Métrot et K. Bahkti, seules les parties du test concernant les membres supérieurs ont donc bien sur été réalisées. Pour les détails des mesures et exercices effectués lors de ce test, se référer à l'annexe \ref{evaluation_FM}.
 
-				\subsubsection{À noter}
+				\subsection{À noter}
 Les patients concernés par la rééducation des membres supérieurs, comme la patiente qui a accepté de passer 
 le FM en notre présence, sont globalement plus nombreux. Cela concorde avec les contraintes du capteur Kinect, 
 qui possède un petit angle de vue. Il est alors nécessaire d'avoir beaucoup d'espace (de recul) dès lors que 
@@ -190,7 +150,7 @@ bras" (prono-supination de l'avant bras) avec le bras tendu, le praticien peut a
 Notons aussi qu'en l'occurrence, les praticiens n'ont pas eu besoin d'utiliser de goniomètre ou autre instrument de 
 mesure pour évaluer la qualité des gestes de la patiente.
 		
-	\subsection{L'avis des professionnels}
+  \section{L'avis des professionnels}
 	Le test de Fugl Meyer est le plus répandu et accepté : il constitue le "gold standard" dans le milieu.
 	Nos interlocuteurs regretteront toutefois une certaine subjectivité et interprétation des résultats.
 	Nous en avons d'ailleurs eu une démonstration lors de ce test : il arrivait que K. Bahkti et J. Métrot 
@@ -209,7 +169,7 @@ Rapidement, ce test consiste à vérifier si un patient est capable d'effectuer 
 un objet, se servir un verre d'eau, etc), et de chronométrer le temps que cela lui a pris. C'est donc un test 
 de fonctionnalité.
 	
-	\subsubsection{Impressions et propositions}
+	\subsection{Impressions et propositions}
 Après notre entretien et cette passation du test de FM, et à partir de nos tests préliminaires, nous en avons 
 conclu que l'utilisation du kinect semblerait plus adaptée pour faire une évaluation des performances “proximales”.
 En effet, la taille des membres et l'amplitude des gestes requis pour l'évaluation proximale offrent de bien 
@@ -225,11 +185,11 @@ pour cette partie de l’évaluation.
 		
 	\chapter{État de l'art}
 	
-  \section{Bibliothèques Kinect}
-  \include{kinect_libraries}
+  \input{natural_interaction_rehabilitation}
+	
+  \input{kinect_libraries}
   
-  \section{"Interaction naturelle" et rehabilitation}
-  \include{natural_interaction_rehabilitation}
+
 	
 % ------------------------------------------------------------------------------  
 % ------------------------------------------------------------------------------  
@@ -239,7 +199,7 @@ pour cette partie de l’évaluation.
 	
 		\section{Solutions}
     \subsection{Outils et technologies} 
-    \include{tools_and_technologies}
+    \input{tools_and_technologies}
     
 		\subsection{Cahier des charges}
 Ce projet de TER se trouvait à la liaison entre projet de recherche et projet d'application. Si une grande part a été accordée à 
@@ -504,7 +464,7 @@ ludique et s'inscrivant complètement dans la démarche de réhabilitation senso
 
    \newpage
     \section{Références}
-    \include{references}
+    \input{references}
     
 %\part{Annexes}
 	%\chapter{Fiche d'évaluation du score de FM pour les membres supérieurs} \label{evaluation_FM}

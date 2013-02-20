@@ -1,3 +1,41 @@
+\section{La Microsoft Kinect}
+
+\subsection{Description}
+La Kinect, connue à l'origine sous le nom "Project Natal" est une
+périphérique informatique créé par Microsoft, comportant une caméra
+couleur, un étalage de 4 microphones, des moteurs pour s'orienter avec 
+accéléromètres 
+et un système senseur de profondeur composé d'un 
+projecteur infra-rouge et d'un capteur. 
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.8\linewidth]{images/kinect_diagram}
+  \caption{Diagramme montrant les sous-systèmes de l'appareil Kinect.}
+  \end{figure}
+L'appareil n'utilise pas, comme on pourrait croire, le "Temps de Vol" pour
+calculer la profondeur d'une scène. C'est en fait la déformation de chaqu'un de 
+sa matrice de rayons infra-rouge,
+lorsqu'ils frappent une surface, qui est mesuré. Cette technique dite de 
+"Lumière Structuré"
+lui permet de générer une image 3D d'une scène à une résolution de 640x480 avec 
+une profondeur de 11 bits, qui sera mise à jour 30 fois par seconde.
+
+\subsection{Historique}
+Sorti en Novembre 2010, le système était prévu à l'origine pour la console
+de jeu de Microsoft, la "Xbox360". Comme la plupart des consoles et
+périphériques de jeu elle
+est donc vendu à perte, l'idée étant de récupérer l'argent perdu en vendant
+des jeux. Ceci en fait l'appareil de son genre le moins cher et le plus couramment
+disponible.
+
+Il est donc peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
+ont été créés afin de permettre le détournement du périphérique par des
+chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
+premier SDK pour Windows initialement peu complet. Des mises à jours et une
+deuxième version, sortie en Octobre 2012, comblent ces lacunes.
+
+\subsection{Pilotes et bindings bas-niveau}
+
 Il est important de noter que la reconnaissance vocale et l'extraction de 
 squelette ne sont pas faits par l'appareil, ou "serveur", lui-même~: ce sont des
 bibliothèques sur la console ou l'ordinateur, le "client", qui s'en chargent. 
@@ -6,7 +44,6 @@ différencier les pilotes de bibliothèques de bas niveau, qui permettent
 d'accéder aux données brutes, des
 bibliothèques de haut-niveau, qui interprètent ces données.
 
-\subsection{Pilotes et bindings bas-niveau}
 Le jour de la sortie de la Kinect, le 4 Novembre 2010, Adafruit Industries 
 offre une prime de \$2000 (augmentée ensuite jusqu'à \$3000) pour le premier qui
 sortira des pilotes permettant l'utilisant de la Kinect sur ordinateur.
