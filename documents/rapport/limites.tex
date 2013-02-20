@@ -1,0 +1,54 @@
+\section{Limites} \label{limites}%    ---GEOFFREY--
+\subsection{Test de Fugl Meyer}
+Comme indiqué précédemment, ce test constitue le standard en la matière et on ne peut donc pas passer à coté en premier lieu.
+Cependant, les exercices et le test en lui-même ont pour vocation de rapidement évaluer les capacités ou déficiences
+du patient. La plupart des exercices du test ne dure ainsi que quelques secondes. Cela, couplé au fait que tous les 
+médecins ne font pas faire chaque partie du test, ni surtout dans le même ordre, implique pour notre application une interface permettant de choisir quelle partie du test exécuter. Le problème que l’on peut voir, c'est qu'en pratique, on passerait 
+plus de temps dans cette interface que dans les "jeux" à proprement parler.
+
+\paragraph{}
+D'après notre observation de la réalisation d'un test avec une jeune patiente, celle-ci focalise 
+beaucoup son regard sur les membres concernés par l'exercice. Il nous a été confirmé que c'était un fait fréquent
+chez les patients, notamment en début de réhabilitation. Pour cette raison, il n'est pas possible de leur
+demander de regarder un écran tant qu'ils exécutent un mouvements leur demandant un effort particulier.
+On retrouve aussi un test qui demande au patient de fermer les yeux.
+
+\paragraph{}
+Par ailleurs, les tests distaux (mains et poignets) nécessitent une précision que ne permet pas la kinect.
+Pour les mains, les test sont évalués de manière tactile (tests de résistance, de préhension) pour la plupart, 
+avec peu de différence visuelle entre une évaluation 0 et 2. L’utilisation de la Kinect semble alors 
+peu pertinente pour cette partie de l’évaluation..
+
+\paragraph{}
+On rappellera le problème de "l'effet plateau", du à un manque de granularité de l'évaluation, et la possibilité
+d'obtention d'un score maximal sans pour autant avoir atteint une guérison complète. Rappelons aussi la variabilité
+des évaluations par les praticiens, et le problème que cela implique de trouver une manière "neutre" d'interprêter
+les mouvements du patient.
+Enfin, les gestes demandés par FM sont très précis et non modifiables. Cela peut limiter les possibilités de “gamification”.
+    
+      \subsection{Zigfu}
+Unity se trouve être un très bon outil de prototypage, permettant des résultats probants rapidement. 
+Pour notre projet, il était nécessaire d'utiliser la surcouche de Zigfu pour faire le lien 
+entre Unity et le SDK d'OpenNI. Celle-ci s'est cependant révélée être très peu documentée, 
+obscure à comprendre -pas de tutoriel officiel, les autres étant rares et pas à jour ; 
+code non ouvert- et finalement même mal écrite. Leur apport sur le projet d'OpenNI reste 
+mince mais ils profitent d'un marché encore vide de concurrence pour bénéficier d'une 
+visibilité intéressante. Pour ne pas noircir complètement le tableau, l'outil se 
+révèle facilement appropriable et les samples proposés assez explicites quant aux
+possibilités offertes. On notera toutefois un problème de compatibilité puisque 
+certains de ces samples ne marchaient pas sur certaines machines.
+    
+    \subsection{Capteur Kinect}
+A l'heure actuelle, ni le SDK de Microsoft ni celui d'OpenNI se sont capables de mesurer directement les valeurs de rotations des 
+différents membres du corps. Ces dernières sont calculées et déduites à partir des valeurs de positions. Si cela n'est pas gênant en soi, cela devient problématique lorsque, comme dans notre cas, nous cherchons à mesurer finement ces valeurs dans un but thérapeutique. Une erreur d'approximation fausserait ainsi les résultats, leur retirant tout crédit.
+De plus, la plupart des test distaux requiert une mesure de membres pas encore reconnus par le système : doigts, orteils.
+De même, les tests nécessitant une mesure tactile (résistance, préhension) ne sont pas adaptés à une utilisation par un système visuel comme le capteur Kinect. Il en résulte un test du Fugl Meyer tronqué et finalement plus long à réaliser.
+
+\paragraph{Remarque :\\}
+Un autre élément à prendre en compte, est bien sur la santé du patient. Les tests, quels qu'ils soient, ne cherchent qu'à mesurer
+les capacités actuelles du patient, et en aucun cas à l'inciter à se dépasser. Nous avons pu constater lors de la passation
+du test de FM à l'hôpital Lapeyronie, que les médecins répétaient bien à la patiente de ne pas forcer ou de ne pas faire un geste
+si cela lui faisait mal.\\
+Ainsi pour notre application ou toute autre, il s'agit de ne pas imaginer un feedback trop incitateur ni d'exhorter le patient à 
+accomplir son exercice. Si un patient n'arrive pas à réaliser un mouvement complet, le feedback ne doit pas l'encourager à forcer plus qu’il ne peut raisonnablement le faire.
+    
