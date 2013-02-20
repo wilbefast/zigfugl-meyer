@@ -325,7 +325,7 @@ des exercices font assoir le patient, sur une chaise ou chevet, éléments qui p
 \paragraph{}
 Notons enfin que les exercices impliquant les doigts et gestes étriqués ne conviennent pas non plus.
 
-		\section{Mise en œuvre} 	%	---WILLIAM + GEOFFREY--
+		\section{Mise en œuvre}
 
 		\subsubsection{Grapher}
 Il était important dès le début du projet de visualiser de manière claire les 
@@ -339,6 +339,13 @@ a donc fallu passer en contortionist à travers un ensemble d'objects LineRender
 \includegraphics[width=\linewidth]{images/zfm_graph}
 \caption{Graphs de Zigful-Meyer.}
 \end{figure}
+
+Le résultat est une classe permettant de faire de manière simple et flexible des
+graphes au sein de l'Unity. Initialement qu'un outil pour faciliter le 
+débuggage, nous avons finalement décidé de les garder dans le projet à fin de
+fournir un retour d'information riche et continue au patient. Sont donc présentés 
+à l'écran à la fois la progression (par exemple, l'élévation du bras) et les 
+contraintes à ne pas briser.
 		
 		\subsubsection{Multi Camera}
 Afin d'augmenter la lisibilité des graphes, nous avons réfléchi à un moyen de les afficher de manière séparée du reste de
@@ -375,20 +382,43 @@ Un point important de tout jeu, est l'aspect de ou des avatars qu'est amené à 
 \end{figure}
     
 
-		\subsubsection{ExerciseMonitor}
+\subsubsection{ExerciseMonitor}
+
+Tous les exercices présentés suivent un schéma commun~: le patient commence dans
+une position donnée et doit faire, au mieu qu'il peut, un movement. Ce movement
+est souvent contrainte par un nombre de critères~: le ne doit pas, par exemple,
+plier son coude en lêvant son bras. Nous avons pu noter que les spécialistes 
+mettent directement un 0
+(disqualification) pour l'exercice si la contrainte est brisé!
+
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.9\linewidth]{images/exercise_monitor}
 \caption{Machine à états de la ExerciseMonitor.}
+\label{fig:exercise_monitor}
 \end{figure}
 
+Notre système n'éjectera pas le patient de l'exercice avec un 0 dès qu'il brise 
+une contrainte, mais sa progression sera bloqué. Il aura besoin de revenir à la
+position initiale pour recommencer l'exercice, mais pour le faire autant de fois
+qu'il veut. Pour gérer ce boucle d'échec et de rélance, une machine à états
+hierarchique est utilisé (voir la figure \ref{fig:exercise_monitor}.
 		
 		
-		
-%		\section{Résultats}\label{resultats} %TODO  Important, en mon humble avis
-		
-		\section{Limites} \label{limites}%		---GEOFFREY--
-			\subsection{Test de Fugl Meyer}
+\section{Résultats}\label{resultats}
+Nous n'avions pas eu le temps encore de tester sur un vrai patient, bien que 
+celui que nous avions vu affirme être vendu sur l'idée d'utiliser la Kinect pour
+la réhabilitation.
+
+Ce qui est particulièrement intéressante pour nous c'est que, bien que nous avons
+abandonné l'idée de faire un jeu du teste, le retour d'information et la boucle
+d'échec et relance fait de l'utilisation de l'application une expérience 
+étrangement divertisante, au moins d'après notre opinion certes subjectif. 
+Un lien se crée entre information et divertissement 
+par le bias d'une sensation de progression et de compétition avec soi-même.
+
+\section{Limites} \label{limites}%		---GEOFFREY--
+\subsection{Test de Fugl Meyer}
 Comme indiqué précédemment, ce test constitue le standard en la matière et on ne peut donc pas passer à coté en premier lieu.
 Cependant, les exercices et le test en lui-même ont pour vocation de rapidement évaluer les capacités ou déficiences
 du patient. La plupart des exercices du test ne dure ainsi que quelques secondes. Cela, couplé au fait que tous les 
