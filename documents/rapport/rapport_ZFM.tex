@@ -84,11 +84,10 @@ Il existe de nombreux tests et échelles pour évaluer les capacités sensorimot
 	\item {imprécis :} L'épaisseur de peau et de graisse ne permet pas d'évaluer correctement l'angle formé par les os.
 	\item {inutilisé :} Des médecins pourtant équipés vont préférer juger à l'œil, pour un meilleur ratio temps/précision.
 \end{itemize}
-		'une
 		\subsubsection{Le test de Fugl-Meyer}
 Cette imprécision des mesures devient dès lors gênante lorsque c'est un test non pas fonctionnel, mais de déficience qui est considéré comme le "Gold Standard" dans le domaine : le score de Fugl Meyer [\ref{fugl_meyer}]. En effet, celui-ci consiste à évaluer les mouvements du patient lors de la réalisation de gestes très précis, incluant des mouvements "éliminatoires", qu'il faut donc être capable de mesurer.	
 	
-	L'idée s'est alors posée d'utiliser un autre moyen de mesure, moins intrusif, pour la réalisation de tests de Fugl Meyer, largement utilisé dans le milieu de la réhabilitation, et de réfléchir aux possibilités d'enrichissement de celui-ci.
+	L'idée s'est alors posée d'utiliser un autre moyen de mesure, moins intrusif, pour la réalisation de test de Fugl Meyer, largement utilisé dans le milieu de la réhabilitation, et de réfléchir aux possibilités d'enrichissement de celui-ci.
 \newpage
 		\section{Présentation du projet}
 		
@@ -167,7 +166,7 @@ deuxième version, sortie en Octobre 2012, comblent ces lacunes.
 		% je commente, car je ris à chaque fois que je lis cette ligne :
 %		PARLER DES DUDES QU'ON A RENCONTRE A PERLARONIE
 Ce projet, d'un choix assumé par les étudiants et la société NaturalPad qui en est l'inspiratrice, comporte une composante recherche forte. C'est dans cette optique et comme expliqué en \ref{etude_terrain} que nous avons commencé notre projet par un travail d'investigation et de recherche d'informations. Dans ce but, nous avons rencontré des praticiens de l'hôpital Lapeyronie à Montpellier : Julien Métrot, doctorant du Laboratoire Movement To Health et Karima Bakhti, kinésithérapeute au CHU de Montpellier. Lors de cette entrevue, ils ont partagé avec nous leurs connaissances sur le test de Fugl Meyer et bien plus encore, et nous ont offert la possibilité d'assister à la réalisation d'un tel test sur une patiente atteinte d'hémiplégie.
-	\subsection{Fugl Meyer}
+	\subsection{Fugl Meyer}\label{fugl_meyer}
 Le test de Fugl Meyer constitue un ensemble d'exercices à effectuer par le patient, et dont chaque mouvement est évalué selon un ou plusieurs critères, fournissant un score généralement compris entre 0 [échec], 1 [intermédiaire] et 2 [réussite]. Ces exercices peuvent concerner successivement les membres inférieurs et supérieurs, eux même divisés en sous catégories. Pour les membres supérieurs, on notera la présence d'un score \textit{proximal} et d'un score \textit{distal}. Ce test a pour vocation d'être réalisé régulièrement tout au long de la période de réhabilitation du patient, afin de mesurer ses progrès.
 	\subsection{Réalisation du test}
 				\subsubsection{Contexte}
@@ -178,7 +177,7 @@ Les patients concernés par la rééducation des membres supérieurs, comme la p
 le FM en notre présence, sont globalement plus nombreux. Cela concorde avec les contraintes du capteur Kinect, 
 qui possède un petit angle de vue. Il est alors nécessaire d'avoir beaucoup d'espace (de recul) dès lors que 
 l'on souhaite capter l'intégralité d'une personne de manière précise. \\
-Lors des tests, le médecin ou personnel médical chargé s'occupant du patient, peut être amené à 'aider' celui-ci.
+Lors des tests, le médecin ou personnel médical s'occupant du patient, peut être amené à 'aider' celui-ci.
 Cela peut se traduire, outre les éventuels encouragements oraux, en maintenant ou en bloquant un membre du patient
 non directement concerné par l'exercice du test. Par exemple, lorsque l'on demande au patient de "tourner son avant 
 bras" (prono-supination de l'avant bras) avec le bras tendu, le praticien peut aider le patient à maintenant son bras
@@ -452,7 +451,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 Comme indiqué précédement, ce test constitue le standard en la matière et on ne peut donc pas passer à coté en premier lieu.
 Cependant, les exerices et le test en lui-même ont pour vocation de rapidement évaluer les capacités ou déficience
 du patient. La plupart des exercices du test ne dure ainsi que quelques secondes. Cela, couplé au fait que tous les 
-médecins ne font pas faire chaque partie du test, ni surtout dans le même ordre, implique une interface permettant de 
+médecins ne font pas faire chaque partie du test, ni surtout dans le même ordre, implique pour notre application une interface permettant de 
 choisir quelle partie du test exécuter. Le problème que l’on peut voir, c'est qu'au final on passerait 
 bien plus de temps dans cette interface que dans les "jeux" à proprement parler.
 
