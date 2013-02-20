@@ -185,6 +185,10 @@ Cela amène au regret que le test standard soit un test jugeant la \textbf{défi
 Rapidement, ce test consiste à vérifier si un patient est capable d'effectuer un geste du quotidien (déplacere un objet, se servir un verre d'eau, etc), et de chronométrer le temps que cela lui a pris. C'est donc un test de fonctionnalité.
 %	du goniomètre qui est tout pourri
 		
+% ------------------------------------------------------------------------------  
+% ------------------------------------------------------------------------------  
+% ------------------------------------------------------------------------------  
+		
 	\chapter{État de l'art}
 	
 	
@@ -206,7 +210,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   \subsubsection{Libfreenect}
   Le prix est remporté 6 jours plus tard le 10 Novembre par un programmeur Linux
   du connu sous le nom "Hector". C'est la première version de Libfreenect autour
-  duquel le groupe Open Kinect se forme. Libfreenect a pour comme avantage son
+  duquel le groupe OpenKinect se forme. Libfreenect a pour comme avantage son
   très grand nombre de bindings~: C/C++, Java, Python, Actionscript, Javascript,
   LISP, C\#, pour ne nommer qu'un sous-ensemble. 
   Il est toujours maintenu (dernier commit Décembre 2012).vu
@@ -224,7 +228,6 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   le défi déjà remporté, s'arrête par la suite. Notons pourtant qu'il faudra 
   attendre 2 ans pour avoir accès aux données des accéléromètres à travers la 
   SDK officiel\ldots
-  
   \subsubsection{Pilotes Microsoft}  
   Les pilotes officielles de Microsoft viennent avec leur SDK, "Kinect for 
   Windows". Inutile de dire
@@ -235,41 +238,58 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 	OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
 	des grands acteur économiques du domaine. S'y figure notamment PrimeSense, la 
 	compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
-	est un analogue de celui de Microsoft où il est question de Kinect, mais 
+	est plus ou moins analogique de celui de Microsoft où il est question de
+	Kinect, mais 
 	offre en plus possibilité d'échanger la Kinect avec un autre appareil sans
-	changer de code.
+	changer de code. C'est un point à noter quand on considère que PrimeSense vend
+  sa propre de caméra (qui utilise la même technologie), et que d'autre vont 
+  surement suivre.
 	
 	La SDK OpenNI fonctionne aussi sur les plus anciennes versions de Windows mais
 	aussi sous Linux (y compris Android) et Mac OSX.
 	
+% ------------------------------------------------------------------------------  
+	
 	\subsection{Middleware}
-  
-		
-		Bibliothèques:
-		OpenNI
-		SDK Microsoft
-		NITE de Primesense (racheté par MS ? )
-		OpenCV
-		FAAST
-		Zigfu
-		... etc
-		
-		
-		\section{Interface naturelles appliqués aux mesures de mouvement 
-		(ce titre, c'est de la merde - je vais le changer, mais plus tard...}
+	
+	\subsubsection{NITE de PrimeSense}
+	\subsubsection{Middleware Microsoft}  
+  % http://labs.vectorform.com/2011/06/windows-kinect-sdk-vs-openni-2/
+  \subsubsection{OpenCV}
+  OpenCV (Open Computer Vision) est une vaste bibliothèque de toutes sortes de 
+  fonctions aillant un rapport avec la détection de formes à partir d'images
+  statiques ou dynamiques. Elle est donc bien moins ciblé que les bibliothèques
+  dites d'"interaction naturelle", qui se focalisent sur l'extraction de 
+  squelette à partir de données 3D.
+  \subsubsection{Zigfu}
+  \subsubsection{FAAST}
 
-		NI + REHAB
-		Voracy Fish (MOJOS)
-		les truc qu'avec fait le LIRMM (MOJOS)
- 		Natural Pad bien sur! Hammer \& Planks.
-		-- exemples de Wii rehabilitation ?
+% ------------------------------------------------------------------------------  
+% ------------------------------------------------------------------------------  
+  
+  \section{"Interaction naturelle" pour l'évaluation}
 		
-		NI + MESURE DE PERFORMANCE
-		Nike Kinect Training
-		Wii Sport / Fit
-		etcetera etcetera
-		
-		
+  \subsection{Applications purement ludiques}
+  
+  \subsubsection{Wii Fit}
+  \subsubsection{Nike+ Kinect Training}
+  
+% ------------------------------------------------------------------------------  
+  
+  \subsection{Applications thérapeutiques}
+
+  \subsubsection{Moteur de Jeux Orientés Santé (MOJOS)}
+  Voracy Fish
+  % http://www.mojos.fr/home/
+  
+  \subsubsection{Hammer \& Planks}
+  
+  \subsubsection{Wii rehabiliation ??? }
+	
+% ------------------------------------------------------------------------------  
+% ------------------------------------------------------------------------------  
+% ------------------------------------------------------------------------------  
+	
 	\chapter{Propositions}
 	
 	
