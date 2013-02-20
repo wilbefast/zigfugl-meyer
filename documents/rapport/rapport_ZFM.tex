@@ -129,6 +129,8 @@ Cette imprécision des mesures devient dès lors gênante lorsque c'est un test 
     % "Rules of Play" on "meaningful play"
 
 	\chapter{Background}
+	
+	
 		\section{Kinect}
 
 			\subsection{Description}
@@ -138,7 +140,11 @@ couleur, un étalage de 4 microphones, des moteurs pour s'orienter avec
 accéléromètres 
 et un système senseur de profondeur composé d'un 
 projecteur infra-rouge et d'un capteur. 
-
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.8\linewidth]{images/kinect_diagram}
+  \caption{Diagramme montrant les sous-systèmes de l'appareil Kinect.}
+  \end{figure}
 L'appareil n'utilise pas, comme on pourrait croire, le "Temps de Vol" pour
 calculer la profondeur d'une scène. C'est en fait la déformation de chaqu'un de 
 sa matrice de rayons infra-rouge,
@@ -238,15 +244,23 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   %https://www.adafruit.com/blog/2010/11/04/the-open-kinect-project-the-ok-prize-
   %get-1000-bounty-for-kinect-for-xbox-360-open-source-drivers/
   \subsubsection{Libfreenect}
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{images/hector}
+  \caption{Hector, gagnant de la prime mis sur l'ouverture de la Kinect.}
+  \end{figure}
   Le prix est remporté 6 jours plus tard le 10 Novembre par un programmeur Linux
   du connu sous le nom "Hector". C'est la première version de Libfreenect autour
   duquel le groupe OpenKinect se forme. Libfreenect a pour comme avantage son
   très grand nombre de bindings~: C/C++, Java, Python, Actionscript, Javascript,
   LISP, C\#, pour ne nommer qu'un sous-ensemble. 
-  Il est toujours maintenu (dernier commit Décembre 2012).vu
-  que leur API est le standard pour ce genre d'appareil 
-  %https://www.adafruit.com/blog/2010/11/10/we-have-a-winner-open-kinect-
-  %drivers-released-winner-will-use-3k-for-more-hacking-plus-an-additional-2k-goes-to-the-eff/
+  Il est toujours maintenu (dernier commit Décembre 2012).
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\linewidth]{images/openkinect_logo}
+  \caption{Logo de la OpenKinect.}
+  \end{figure}
+  %https://www.adafruit.com/blog/2010/11/10/we-have-a-winner-open-kinect-drivers-released-winner-will-use-3k-for-more-hacking-plus-an-additional-2k-goes-to-the-eff/
   \subsubsection{CL NUI}
   9 jours après la sortie de Libfreenect la compagnie Coding Laboratories 
   (CL) et le groupe logiciel-libre
@@ -272,7 +286,11 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   Kinect, mais fonctionne aussi sur les plus anciennes 
   versions de Windows mais
   aussi sous Linux (y compris Android) et Mac OSX.
-  
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.4\linewidth]{images/openni_logo}
+  \caption{Logo de la OpenNI.}
+  \end{figure}
   La OpenNI permet également de s'abstraire du matérielle utilisé. Il suffit que
   les pilotes utilisés soient conformes à ses standards~: pour passer, par 
   exemple, de la Kinect à une caméra PrimeSense nous devons simplement remplacer 
@@ -307,11 +325,21 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   multiplateforme développé par PrimeSense. Vu que c'est PrimeSense qui a 
   lancé OpenNI, NITE est devenu la tête d'affiche de ses
   middleware standardisé. Elle se repose donc sur la SDK de la OpenNI. 
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.3\linewidth]{images/nite_logo}
+  \caption{Logo du framework NITE.}
+  \end{figure}
+  
   \subsubsection{OpenCV}
   OpenCV (Open Computer Vision) est une vaste bibliothèque de toutes sortes de 
   fonctions aillant un rapport avec la détection de formes à partir d'images
   statiques ou dynamiques. Il existe depuis 1999, donc bien avant la Kinect.
-  
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.4\linewidth]{images/opencv_logo}
+  \caption{Logo de la OpenCV.}
+  \end{figure}
   Étant donnée qu'il s'agit d'une bibliothèque généraliste il a peu de 
   fonctionnalités qui ciblent précisément les données 3D, contrairement aux 
   bibliothèques dites "d'interaction naturelle".
@@ -326,7 +354,11 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   par dessus de l'extraction de squelette et de la reconnaissance
   de gestes, un API permettant de créer des boutons, listes, curseurs et autres
   éléments GUI, tous contrôlés par le mouvement.
-  
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.3\linewidth]{images/zigfu_logo}
+  \caption{Logo de Zigfu.}
+  \end{figure}
   Zigfu intègre également la cinématique inverse et un système de 
   prédiction et
   d'interpolation à fin d'avoir une squelette répondant à des contraintes 
