@@ -273,13 +273,13 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   le défi déjà remporté, s'arrête par la suite. Notons pourtant qu'il faudra 
   attendre 2 ans pour avoir accès aux données des accéléromètres à travers la 
   SDK officiel\ldots
-  \subsubsection{Kinect for Windows (Pilotes)}  
+  \subsubsection{Kinect for Windows}  
   Les pilotes officielles de Microsoft viennent avec leur SDK, "Kinect for 
   Windows". Inutile de dire
   qu'ils ne fonctionnent que sous Windows. Ce qui est un peu plus surprenant 
   c'est qu'il n'y a de soutient que pour Window 7 et 8, donc pas pour Windows XP 
   ou Vista.
-  \subsubsection{SDK OpenNI (Pilotes)}
+  \subsubsection{SDK OpenNI}
   OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
   des grands acteur économiques du domaine. S'y figure notamment PrimeSense, la 
   compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
@@ -317,15 +317,17 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   extraction de squelette et une reconnaissance de gestes. Elles permettent donc 
   au développeur de s'abstraire des données brutes. Le groupe OpenNI défini 
   des normes auxquelles doivent obéir cette couche, de 
-  manière à faciliter la communication à travers la pile de technologie.
+  manière à faciliter la communication à travers la pile de technologie (voir 
+  figure~\ref{fig:openni_technology_stack}).
   \begin{figure}[h!]
   \centering
   \includegraphics[width=0.7\linewidth]{images/openni_technology_stack}
   \caption{Pile de technologie d'après la OpenNI.}
+  \label{fig:openni_technology_stack}
   \end{figure}
   
   
-  \subsubsection{Kinect for Windows (Middleware)}  
+  \subsubsection{Kinect for Windows}  
   Bien que les SDK de Microsoft et de la OpenNI se disent tout et deux des 
   "Simple Development Kit",
   celui de Microsoft, "Kinect for Windows", contient à la fois les pilotes, 
@@ -404,6 +406,19 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   encore plus abstraite~: l'utilisateur travail avec des événement générés à
   partir de postures et des gestes, au lieu d'analyser manuellement la 
   squelette.
+  
+% ------------------------------------------------------------------------------  
+  
+  \subsection{Résumé}
+  Le schèma \ref{fig:technology_overview} résume les interactions entre les divers 
+  technologies que nous ayons vus.
+  
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.9\linewidth]{images/technology_overview}
+  \caption{Pile de technologie de la Kinect.}
+  \label{fig:technology_overview}
+  \end{figure}
   
 % ------------------------------------------------------------------------------  
 % ------------------------------------------------------------------------------  
