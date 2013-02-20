@@ -328,7 +328,17 @@ Notons enfin que les exercices impliquant les doigts et gestes étriqués ne con
 		\section{Mise en œuvre} 	%	---WILLIAM + GEOFFREY--
 
 		\subsubsection{Grapher}
-		- FailGrapher (montre la croix en plus de la progression)
+Il était important dès le début du projet de visualiser de manière claire les 
+informations liées aux translation et rotations des articulations les uns par 
+rapport aux autres. Unity s'avère être une contrainte pour ceci~: il est difficile
+de faire une rendu de primitifs géométriques (lines, triangles) directement. Il
+a donc fallu passer en contortionist à travers un ensemble d'objects LineRenderer.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{images/zfm_graph}
+\caption{Graphs de Zigful-Meyer.}
+\end{figure}
 		
 		\subsubsection{Multi Camera}
 Afin d'augmenter la lisibilité des graphes, nous avons réfléchi à un moyen de les afficher de manière séparée du reste de
@@ -357,7 +367,9 @@ Un point important de tout jeu, est l'aspect de ou des avatars qu'est amené à 
 		\subsubsection{ExerciseMonitor}
 		- FlexionMontior et compagnie
 		
-		\subsubsection{Machine à états }(on aime bien les trucs visuels dans les rapports)
+		\subsubsection{Machine à états }
+		
+		
 		
 %		\section{Résultats}\label{resultats} %TODO  Important, en mon humble avis
 		
@@ -390,7 +402,16 @@ les mouvements du patient.
 Enfin, les gestes demandés par FM sont très précis et non modifiables. Cela peut limiter les possibilités de “gamification”.
 		
 			\subsection{Zigfu}
-Unity se trouve être un très bon outil de prototypage, permettant des résultats probants rapidement. Pour notre projet, il était nécessaire d'utiliser la surcouche de Zigfu pour faire le lien entre Unity et le SDK d'OpenNI. Celle-ci s'est cependant révélée être très peu documentée, obscure à comprendre -pas de tutoriel officiel, les autres étant rares et pas à jour ; code non ouvert- et finalement même mal écrite. Leur apport sur le projet d'OpenNI reste mince mais ils profitent d'un marché encore vide de concurrence pour bénéficier d'une visibilité intéressante. Pour ne pas noircir complètement le tableau, l'outil se révèle assez appropriable et les samples proposés assez explicites quant aux possibilités offertes. On notera toutefois un problème de compatibilité puisque certains de ces samples ne marchaient pas sur certaines machines.
+Unity se trouve être un très bon outil de prototypage, permettant des résultats probants rapidement. 
+Pour notre projet, il était nécessaire d'utiliser la surcouche de Zigfu pour faire le lien 
+entre Unity et le SDK d'OpenNI. Celle-ci s'est cependant révélée être très peu documentée, 
+obscure à comprendre -pas de tutoriel officiel, les autres étant rares et pas à jour ; 
+code non ouvert- et finalement même mal écrite. Leur apport sur le projet d'OpenNI reste 
+mince mais ils profitent d'un marché encore vide de concurrence pour bénéficier d'une 
+visibilité intéressante. Pour ne pas noircir complètement le tableau, l'outil se 
+révèle facilement appropriable et les samples proposés assez explicites quant aux
+possibilités offertes. On notera toutefois un problème de compatibilité puisque 
+certains de ces samples ne marchaient pas sur certaines machines.
 		
 		\subsection{Capteur Kinect}
 A l'heure actuelle, ni le SDK de Microsoft ni celui d'OpenNI se sont capables de mesurer directement les valeurs de rotations des 
@@ -428,7 +449,7 @@ plus de possibilités.
 Une des remarques mise en avant était le risque de passer plus de temps à naviguer entre les différentes scènes de jeu/test à cause de la courte durée des exercices, et de leur ordre indéfini. Une solution pourrait être de proposer un système de 
 commandes vocales qui permettraient de s'affranchir d'une GUI intermédiaire, et de changer aisément de scène.
 
-\paragraph{Projets de stage} %TODO william je te laisse voir ça?
+\paragraph{Projets de stage} %TODO william je te laisse voir ça? -- c'est bon pour moi
 Ce projet de TER peut s'inscrire comme la première démarche d'un projet à plus long terme pour les deux étudiants. Toujours
 en coopération avec la société NaturalPad, qui se situe dans le secteur informatique de Serious Games à but 
 thérapeutique, les deux étudiants vont en effet prolonger la démarche en réalisant chacun un stage chez NaturalPad. Brièvement,
