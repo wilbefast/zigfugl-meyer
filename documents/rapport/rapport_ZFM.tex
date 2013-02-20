@@ -254,7 +254,7 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   Natural User-Interaction (NUI) sortent CL-NUI. Nous sommes alors 2 semaines 
   après la sortie de l'appareil. CL-NUI propose des bindings 
   WPF\footnote{Windows Presentation Foundation}/C\# C et C++ et permet d'accéder 
-  à tout sauf le microphone. Le dévelopment continue jusqu'en fin Décembre 2010 
+  à tout sauf le microphone. Le développement continue jusqu'en fin Décembre 2010 
   mais,
   le défi déjà remporté, s'arrête par la suite. Notons pourtant qu'il faudra 
   attendre 2 ans pour avoir accès aux données des accéléromètres à travers la 
@@ -266,52 +266,52 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   c'est qu'il n'y a de soutient que pour Window 7 et 8, donc pas pour Windows XP 
   ou Vista.
   \subsubsection{SDK OpenNI (Pilotes)}
-	OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
-	des grands acteur économiques du domaine. S'y figure notamment PrimeSense, la 
-	compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
-	est plus ou moins analogique à celui de Microsoft où il est question de
-	Kinect, mais fonctionne aussi sur les plus anciennes 
-	versions de Windows mais
+  OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
+  des grands acteur économiques du domaine. S'y figure notamment PrimeSense, la 
+  compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
+  est plus ou moins analogique à celui de Microsoft où il est question de
+  Kinect, mais fonctionne aussi sur les plus anciennes 
+  versions de Windows mais
   aussi sous Linux (y compris Android) et Mac OSX.
-	
-	La OpenNI permet également de s'abstraire du matérielle utilisé. Il suffit que
+  
+  La OpenNI permet également de s'abstraire du matérielle utilisé. Il suffit que
   les pilotes utilisés soient conformes à ses standards~: pour passer, par 
   exemple, de la Kinect à une caméra PrimeSense nous devons simplement remplacer 
   les pilotes "SensorKinect" avec "PrimeSensor".
-	
+  
 % ------------------------------------------------------------------------------  
-	
-	\subsection{Middleware}
-	Les bibliothèques dites "middleware interaction naturelle" servent ici en 
-	générale à faire une 
-	extraction de squelette et une reconnaissance de gestes. Elles permettent donc 
-	au développeur de s'abstraire des données brutes. Le groupe OpenNI défini 
-	des normes auxquelles doivent obéir cette couche, de 
-	manière à faciliter la communication à travers la pile de technologie.
+  
+  \subsection{Middleware}
+  Les bibliothèques dites "middleware interaction naturelle" servent ici en 
+  générale à faire une 
+  extraction de squelette et une reconnaissance de gestes. Elles permettent donc 
+  au développeur de s'abstraire des données brutes. Le groupe OpenNI défini 
+  des normes auxquelles doivent obéir cette couche, de 
+  manière à faciliter la communication à travers la pile de technologie.
   
   \subsubsection{Kinect for Windows (Middleware)}  
   Bien que les SDK de Microsoft et de la OpenNI se disent tout et deux des 
   "Simple Development Kit",
   celui de Microsoft, "Kinect for Windows", contient à la fois les pilotes, 
-  l'API de bas niveau et une chouche d'analyse des données qu'OpenNI appéleratit 
+  l'API de bas niveau et une couche d'analyse des données qu'OpenNI appellerait 
   middleware. Il n'est donc pas fait pour interfacer avec les couches de la 
   OpenNI et donc ne suit par leur normes.
   
   Kinect for Windows a quelques avantages par rapport à NITE~: il propose un
   placement prédictive des articulations et genère deux points en plus, 
   le poignet et le bout des doigts. Cela étant sa prédiction consomme beaucoup 
-  plus de resources et peut ammener à de faux positives.
+  plus de ressources et peut amener à de faux positives.
   % http://labs.vectorform.com/2011/06/windows-kinect-sdk-vs-openni-2/
   
-	\subsubsection{NITE de PrimeSense}
-	NITE (Natural Interface Technology for End-User) est un framework Libre et 
-	multi-platforme développé par PrimeSense. Vu que c'est PrimeSense qui a 
-	lancé OpenNI, NITE est devenu la tête d'affiche de ses
-	middleware standardisé. Elle se repose donc sur la SDK de la OpenNI. 
+  \subsubsection{NITE de PrimeSense}
+  NITE (Natural Interface Technology for End-User) est un framework Libre et 
+  multiplateforme développé par PrimeSense. Vu que c'est PrimeSense qui a 
+  lancé OpenNI, NITE est devenu la tête d'affiche de ses
+  middleware standardisé. Elle se repose donc sur la SDK de la OpenNI. 
   \subsubsection{OpenCV}
   OpenCV (Open Computer Vision) est une vaste bibliothèque de toutes sortes de 
   fonctions aillant un rapport avec la détection de formes à partir d'images
-  statiques ou dynamiques. Il exite depuis 1999, donc bien avant la Kinect.
+  statiques ou dynamiques. Il existe depuis 1999, donc bien avant la Kinect.
   
   Étant donnée qu'il s'agit d'une bibliothèque généraliste il a peu de 
   fonctionnalités qui ciblent précisément les données 3D, contrairement aux 
@@ -330,9 +330,9 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   
   Zigfu intègre également la cinématique inverse et un système de 
   prédiction et
-  d'interpolation à fin d'avoir une squelette répondant à des constraintes 
+  d'interpolation à fin d'avoir une squelette répondant à des contraintes 
   physiques à 60Hz. La plupart des jeux moderne tournent à cette vitesse, et 
-  rapellons nous que la caméra ne fournit que des données 30Hz
+  rappelons nous que la caméra ne fournit que des données 30Hz
   
   %http://www.headlondon.com/our-thoughts/technology/posts/microsoft-kinect-and-the-web-browser-enter-zigfu
   %https://www.youtube.com/watch?v=uSo0jXYm5wQ
