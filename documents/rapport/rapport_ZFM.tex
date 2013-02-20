@@ -185,7 +185,8 @@ Cela amène au regret que le test standard soit un test jugeant la \textbf{défi
 Rapidement, ce test consiste à vérifier si un patient est capable d'effectuer un geste du quotidien (déplacere un objet, se servir un verre d'eau, etc), et de chronométrer le temps que cela lui a pris. C'est donc un test de fonctionnalité.
 %	du goniomètre qui est tout pourri
 		
-	\chapter{État de l'art} 		---WILLIAM---
+	\chapter{État de l'art}
+	
 	
   \section{Bibliothèques Kinect}
 		
@@ -196,24 +197,23 @@ Il faut donc bien
 différencier les pilotes, qui permettent d'accéder aux données brutes, des
 bibliothèques de haut-niveau, qui interprètent ces données.
 
-  \section{Pilotes Kinect}
+  \subsection{Pilotes et bindings}
   Le jour de la sortie de la Kinect, le 4 Novembre 2010, Adafruit Industries 
   offre un prix de \$2000 (augmenté ensuite jusqu'à \$3000) pour le premier qui
   sortira des pilotes permettant l'utilisant de la Kinect sur ordinateur.
   %https://www.adafruit.com/blog/2010/11/04/the-open-kinect-project-the-ok-prize-
   %get-1000-bounty-for-kinect-for-xbox-360-open-source-drivers/
-  
-  \subsection{Libfreenect}
+  \subsubsection{Libfreenect}
   Le prix est remporté 6 jours plus tard le 10 Novembre par un programmeur Linux
   du connu sous le nom "Hector". C'est la première version de Libfreenect autour
   duquel le groupe Open Kinect se forme. Libfreenect a pour comme avantage son
   très grand nombre de bindings~: C/C++, Java, Python, Actionscript, Javascript,
-  LISP, C#, pour ne nommer qu'un sous-ensemble. 
-  Il est toujours maintenu (dernier commit Décembre 2012).
+  LISP, C\#, pour ne nommer qu'un sous-ensemble. 
+  Il est toujours maintenu (dernier commit Décembre 2012).vu
+  que leur API est le standard pour ce genre d'appareil 
   %https://www.adafruit.com/blog/2010/11/10/we-have-a-winner-open-kinect-
   %drivers-released-winner-will-use-3k-for-more-hacking-plus-an-additional-2k-goes-to-the-eff/
-  
-  \subsection{CL NUI}
+  \subsubsection{CL NUI}
   9 jours après la sortie de Libfreenect la compagnie Coding Laboratories 
   (CL) et le groupe logiciel-libre
   Natural User-Interaction (NUI) sortent CL-NUI. Nous sommes alors 2 semaines 
@@ -224,13 +224,26 @@ bibliothèques de haut-niveau, qui interprètent ces données.
   le défi déjà remporté, s'arrête par la suite. Notons pourtant qu'il faudra 
   attendre 2 ans pour avoir accès aux données des accéléromètres à travers la 
   SDK officiel\ldots
- 
   
-  \subsection{Pilotes Microsoft}
-  
-  \subsection{Pilotes OpenNI}
+  \subsubsection{Pilotes Microsoft}  
+  Les pilotes officielles de Microsoft viennent avec leur SDK, "Kinect for 
+  Windows". Inutile de dire
+  qu'ils ne fonctionnent que sous Windows. Ce qui est un peu plus surprenant 
+  c'est qu'il n'y a de soutient que pour Window 7 et 8, donc pas pour Windows XP 
+  ou Vista.
+  \subsubsection{Pilotes OpenNI}
 	OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
-	des grands acteur économiques du domaine, notamment PrimeSense 
+	des grands acteur économiques du domaine. S'y figure notamment PrimeSense, la 
+	compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
+	est un analogue de celui de Microsoft où il est question de Kinect, mais 
+	offre en plus possibilité d'échanger la Kinect avec un autre appareil sans
+	changer de code.
+	
+	La SDK OpenNI fonctionne aussi sur les plus anciennes versions de Windows mais
+	aussi sous Linux (y compris Android) et Mac OSX.
+	
+	\subsection{Middleware}
+  
 		
 		Bibliothèques:
 		OpenNI
