@@ -77,7 +77,7 @@
 Les accidents vasculaires cérébraux (AVC) peuvent être la cause d'hémiplégie chez les personnes qui en sont victimes. La paralysie peut affecter une ou plusieurs parties du corps, jusqu'à être totale si la face, le tronc et les membres supérieurs et inférieurs sont paralysés. \\
 La récupération des fonctions motrices, de la parole ou de la compréhension dépendent pour beaucoup de l'âge du patient et de son atteinte au niveau du cerveau.
 		\section{Problématique}
-Il existe de nombreux tests et échelles pour évaluer les capacités sensorimotrices de patients hémiplégiques [\ref {ref_analyse_litterature}]. Cependant, les médecins se retrouvent souvent confrontés au problème de la précision des mesures lors des test. Si la question ne se pose pas pour les tests dits "fonctionnels" (ex : le patient arrive t-il à se servir un verre d'eau?), des mesures d'angles et de positions se révèlent souvent nécessaires pour valider ou non la réussite d'un test par le patient.
+Il existe de nombreux tests et échelles pour évaluer les capacités sensorimotrices de patients hémiplégiques \footnote{voir l'Analyse de la littérature \textit{Evaluation of the disabilities of hemiplegic patients [M.-C. Gellez-Leman et al.]}}. Cependant, les médecins se retrouvent souvent confrontés au problème de la précision des mesures lors des test. Si la question ne se pose pas pour les tests dits "fonctionnels" (ex : le patient arrive t-il à se servir un verre d'eau?), des mesures d'angles et de positions se révèlent souvent nécessaires pour valider ou non la réussite d'un test par le patient.
 \\Or, il existe peu d'outils pour réaliser ces mesures, et ceux-ci ne font pas l'unanimité. Pour la mesure d'angle entre les membres du patient (pli de l'épaule, du coude, etc.), le goniomètre se révèle être l'outil le plus utilisé, mais probablement par défaut (cf \ref{lapeyronie}). On lui reprochera en effet d'être: 
 \begin{itemize}
 	\item {intrusif :} Il doit être en contact direct avec le patient, pouvant fausser la mesure ou aider/gêner le patient.
@@ -212,11 +212,11 @@ de fonctionnalité.
 	
 	\subsubsection{Impressions et propositions}
 Après notre entretien et cette passation du test de FM, et à partir de nos tests préliminaires, nous en avons 
-conclu que l'utilisation du kinect semblerait plus adpatée pour faire une évaluation des performances “proximales”.
+conclu que l'utilisation du kinect semblerait plus adaptée pour faire une évaluation des performances “proximales”.
 En effet, la taille des membres et l'amplitude des gestes requis pour l'évaluation proximale offrent de bien 
 meilleures possibilités d'analyse des mouvements. Certains gestes du poignet semblerait aussi bien adaptés.
 \paragraph{}En revanche, les autres mouvements distaux semblent trop difficile à percevoir et interpréter par le capteur.
-L’idée serait de proposer une évaluation de grain plus fine, allant au délà d’une évaluation trinaire entre 
+L’idée serait de proposer une évaluation de grain plus fine, allant au delà d’une évaluation ternaire entre 
 “a réussi à lever le bras à l’horizontal”, “a levé son bras partiellement” et “n’a pas réussi à lever son bras”. 
 Il serait utile de pouvoir donner l’angle exact, par exemple.   
 
@@ -478,14 +478,15 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		
 		Machine à états (on aime bien les trucs visuels dans les rapports)
 		
-		\section{Limites}%		---GEOFFREY--
+		\section{Résultats}\label{resultats} %TODO  Important, en mon humble avis
+		
+		\section{Limites} \label{limites}%		---GEOFFREY--
 			\subsection{Test de Fugl Meyer}
-Comme indiqué précédement, ce test constitue le standard en la matière et on ne peut donc pas passer à coté en premier lieu.
-Cependant, les exerices et le test en lui-même ont pour vocation de rapidement évaluer les capacités ou déficience
+Comme indiqué précédemment, ce test constitue le standard en la matière et on ne peut donc pas passer à coté en premier lieu.
+Cependant, les exercices et le test en lui-même ont pour vocation de rapidement évaluer les capacités ou déficiences
 du patient. La plupart des exercices du test ne dure ainsi que quelques secondes. Cela, couplé au fait que tous les 
-médecins ne font pas faire chaque partie du test, ni surtout dans le même ordre, implique pour notre application une interface permettant de 
-choisir quelle partie du test exécuter. Le problème que l’on peut voir, c'est qu'au final on passerait 
-bien plus de temps dans cette interface que dans les "jeux" à proprement parler.
+médecins ne font pas faire chaque partie du test, ni surtout dans le même ordre, implique pour notre application une interface permettant de choisir quelle partie du test exécuter. Le problème que l’on peut voir, c'est qu'en pratique, on passerait 
+plus de temps dans cette interface que dans les "jeux" à proprement parler.
 
 \paragraph{}
 D'après notre observation de la réalisation d'un test avec une jeune patiente, celle-ci focalise 
@@ -496,7 +497,7 @@ On retrouve aussi un test qui demande au patient de fermer les yeux.
 
 \paragraph{}
 Par ailleurs, les tests distaux (mains et poignets) nécessitent une précision que ne permet pas la kinect.
-Pour les mains, les test sont évalués de manière “tactile” (tests de résistance, de préhension) pour la plupart, 
+Pour les mains, les test sont évalués de manière tactile (tests de résistance, de préhension) pour la plupart, 
 avec peu de différence visuelle entre une évaluation 0 et 2. L’utilisation de la Kinect semble alors 
 peu pertinente pour cette partie de l’évaluation..
 
@@ -507,35 +508,46 @@ des évaluations par les praticiens, et le problème que cela implique de trouve
 les mouvements du patient.
 Enfin, les gestes demandés par FM sont très précis et non modifiables. Cela peut limiter les possibilités de “gamification”.
 		
-			\subsection{Zigfu}	
-		Zigfu c'est de la merde!!!!
-		- ils profitent d'un projet open source
-		- ils apportent rien
-		- pas de docs
-		- code mal écrit
-		- la moitié des samples marchent pas pour WILLIAM :D
+			\subsection{Zigfu}
+Unity se trouve être un très bon outil de prototypage, permettant des résultats probants rapidement. Pour notre projet, il était nécessaire d'utiliser la surcouche de Zigfu pour faire le lien entre Unity et le SDK d'OpenNI. Celle-ci s'est cependant révélée être très peu documentée, obscure à comprendre -pas de tutoriel officiel, les autres étant rares et pas à jour ; code non ouvert- et finalement même mal écrite. Leur apport sur le projet d'OpenNI reste mince mais ils profitent d'un marché encore vide de concurrence pour bénéficier d'une visibilité intéressante. Pour ne pas noircir complètement le tableau, l'outil se révèle assez appropriable et les samples proposés assez explicites quant aux possibilités offertes. On notera toutefois un problème de compatibilité puisque certains de ces samples ne marchaient pas sur certaines machines.
 		
 		\subsection{Capteur Kinect}
-		La Kinect en générale ??????  et un apport du Kinect pas évident.
-		- les rotations (pas récupérés par la SDK de Microsoft => déduits)
-		  -- est il possible de les "voir" directement?  
-Notons aussi que certains exo du test du Fugl Meyer ne peuvent pas être fait/interprêtés par la kinect, il en résulte
-un test du Fugl Meyer tronqué et plus long à réaliser.
-		- les mouvement distaux (pas de capture des doits individuelles)
+A l'heure actuelle, ni le SDK de Microsoft ni celui d'OpenNI se sont capables de mesurer directement les valeurs de rotations des 
+différents membres du corps. Ces dernières sont calculées et déduites à partir des valeurs de positions. Si cela n'est pas gênant en soi, cela devient problématique lorsque, comme dans notre cas, nous cherchons à mesurer finement ces valeurs dans un but thérapeutique. Une erreur d'approximation fausserait ainsi les résultats, leur retirant tout crédit.
+De plus, la plupart des test distaux requiert une mesure de membres pas encore reconnus par le système : doigts, orteils.
+De même, les tests nécessitant une mesure tactile (résistance, préhension) ne sont pas adaptés à une utilisation par un système visuel comme le capteur Kinect. Il en résulte un test du Fugl Meyer tronqué et finalement plus long à réaliser.
 
 \paragraph{Remarque :\\}
-Chose à prendre en compte : ne pas imaginer un feedback "trop incitateur". Cad : si un patient n'arrive pas à 
-réaliser un mouvement complet, le feedback ne doit pas l'inciter à forcer + qu’il peut raisonnablement le faire.
+Un autre élément à prendre en compte, est bien sur la santé du patient. Les tests, quels qu'ils soient, ne cherchent qu'à mesurer
+les capacités actuelles du patient, et en aucun cas à l'inciter à se dépasser. Nous avons pu constater lors de la passation
+du test de FM à l'hôpital Lapeyronie, que les médecins répétaient bien à la patiente de ne pas forcer ou de ne pas faire un geste
+si cela lui faisait mal.\\
+Ainsi pour notre application ou toute autre, il s'agit de ne pas imaginer un feedback trop incitateur ni d'exhorter le patient à 
+accomplir son exercice. Si un patient n'arrive pas à réaliser un mouvement complet, le feedback ne doit pas l'encourager à forcer plus qu’il ne peut raisonnablement le faire.
 		
 		\section{Ouverture}	%	---GEOFFREY--
-		
-		- alternatifs: ARAT = test fonctionnel et non de déficience (le médecin il le vendait TROP)
-Cela amène à une reflexion, qui serait de plutôt orienter un éventuel développement futur (hors cadre TER) vers
-des exercices de rééducation ou autres types de test plutôt que vers les 'exercices' du test de Fugl Meyer.
-		- projet de stage avec NaturalPad: faire de extraction de squelette moins nul
-		- possibilités de concurence avec Zigfu vu qu'il a juste repris 
-		- la gamification est plus pertinente / adapté aux exercices de rehabiliation 
-		-(Idée : interface orale?)
+Nous avons vu dans la partie Résultats (\ref{resultats}) qu'il était effectivement possible de proposer un prototype offrant un aperçu des possibilités de l'utilisation d'un capteur comme le Kinect dans la réalisation de tests sensorimoteurs. Cependant, à la vue du certain nombre de contraintes que nous avons pu soulever en \ref{limites}, nous sommes arrivés à la conclusion qu'en l'état, le test de Fugl Meyer n'était pas le plus adapté. 
+
+\paragraph{}
+Cela amène à une réflexion, qui serait d'orienter un éventuel développement futur plutôt vers des exercices de rééducation ou d'autres types de tests que vers les exercices du test de Fugl Meyer. Comme nous avons pu le dire, il existe bien d'autres tests 
+dans le domaine de la réhabilitation\,\footnote{voir l'Analyse de la littérature \textit{Evaluation of the disabilities of hemiplegic patients [M.-C. Gellez-Leman et al.]}}. Nous citerons notamment un test que nous a vanté J. Métrot lors de notre passage à 
+Lapeyronie, ARAT.
+\paragraph{Action Research Arm Test” (ARAT) \\}
+ARAT est un test fonctionnel et non de déficience, se concentrant sur ce sur quoi le patient est capable de réaliser, et
+qui a un véritable intérêt dans ses gestes quotidien. On chronomètre le temps mis pour ramasser des objets de diverses tailles,
+pour mettre la main à la bouche (intérêt pour se nourrir) ou encore le temps mis pour transvaser de l'eau d'un verre à un autre.
+\\ On notera que ce genre de test est beaucoup plus facilement intégrable dans une application de contrôle. Il suffit en effet de 
+lancer un chrono et de valider si oui oui non le patient arrive à atteindre la consigne, sans considération pour des informations
+comme ses tremblements ou des gestes parasites, compensations etc. Par ailleurs, les tests fonctionnels se prêtent beaucoup
+plus à une éventuelle "gamification". Une interface graphique proposant au joueur/patient de réaliser des actions pré-établies (avec éventuellement des objets préalablement désignés) correspondant aux mouvements moteurs du test, semble offrir bien
+plus de possibilités.
+
+\paragraph{Interface Orale}
+Une des remarques mise en avant était le risque de passer plus de temps à naviguer entre les différentes scènes de jeu/test à cause de la courte durée des exercices, et de leur ordre indéfini. Une solution pourrait être de proposer un système de 
+commandes vocales qui permettraient de s'affranchir d'une GUI intermédiaire, et de changer aisément de scène.
+\paragraph{Projet de stage} %TODO william je te laisse voir ça?
+		- projet de stage avec NaturalPad: faire de extraction de squelette moins nul		
+		- possibilités de concurrence avec Zigfu vu qu'il a juste repris 
 		
 		\section{Références}
 			\paragraph{Ressources web}
