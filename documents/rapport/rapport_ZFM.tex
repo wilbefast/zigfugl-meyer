@@ -391,12 +391,35 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		Machine à états (on aime bien les trucs visuels dans les rapports)
 		
 		\section{Limites}%		---GEOFFREY--
+			\subsection{Test de Fugl Meyer}
+Comme indiqué précédement, ce test constitue le standard en la matière et on ne peut donc pas passer à coté en premier lieu.
+Cependant, les exerices et le test en lui-même ont pour vocation de rapidement évaluer les capacités ou déficience
+du patient. La plupart des exercices du test ne dure ainsi que quelques secondes. Cela, couplé au fait que tous les 
+médecins ne font pas faire chaque partie du test, ni surtout dans le même ordre, implique une interface permettant de 
+choisir quelle partie du test exécuter. Le problème que l’on peut voir, c'est qu'au final on passerait 
+bien plus de temps dans cette interface que dans les "jeux" à proprement parler.
+
+\paragraph{}
+D'après notre observation de la réalisation d'un test avec une jeune patiente, celle-ci focalise 
+beaucoup son regard sur les membres concernés par l'exercice. Il nous a été confirmé que c'était un fait fréquent
+chez les patients, notamment en début de réhabilitation. Pour cette raison, il n'est pas possible de leur
+demander de regarder un écran tant qu'ils exécutent un mouvements leur demandant un effort particulier.
+On retrouve aussi un test qui demande au patient de fermer les yeux.
+
+\paragraph{}
+Par ailleurs, les tests distaux (mains et poignets) nécessitent une précision que ne permet pas la kinect.
+Pour les mains, les test sont évalués de manière “tactile” (tests de résistance, de préhension) pour la plupart, 
+avec peu de différence visuelle entre une évaluation 0 et 2. L’utilisation de la Kinect semble alors 
+peu pertinente pour cette partie de l’évaluation..
+
+\paragraph{}
+On rappellera le problème de "l'effet plateau", du à un manque de granularité de l'évaluation, et la possibilité
+d'obtention d'un score maximal sans pour autant avoir atteint une guérison complète. Rappelons aussi la variabilité
+des évaluations par les praticiens, et le problème que cela implique de trouver une manière "neutre" d'interprêter
+les mouvements du patient.
+Enfin, les gestes demandés par FM sont très précis et non modifiables. Cela peut limiter les possibilités de “gamification”.
 		
-		Fugl Meyer
-		- c'est l'état l'art (gold standard)
-		- "effet plateau" - manque de granularité, possibilité d'avoir tous les points sans être "guéri".
-		- variabilité des mesures selon le médecin (même les deux qu'on a vu...)	
-		
+			\subsection{Zigfu}	
 		Zigfu c'est de la merde!!!!
 		- ils profitent d'un projet open source
 		- ils apportent rien
@@ -404,17 +427,27 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 		- code mal écrit
 		- la moitié des samples marchent pas pour WILLIAM :D
 		
-		La Kinect en générale ??????
+		\subsection{Capteur Kinect}
+		La Kinect en générale ??????  et un apport du Kinect pas évident.
 		- les rotations (pas récupérés par la SDK de Microsoft => déduits)
-		  -- est il possible de les "voir" directement?
+		  -- est il possible de les "voir" directement?  
+Notons aussi que certains exo du test du Fugl Meyer ne peuvent pas être fait/interprêtés par la kinect, il en résulte
+un test du Fugl Meyer tronqué et plus long à réaliser.
 		- les mouvement distaux (pas de capture des doits individuelles)
+
+\paragraph{Remarque :\\}
+Chose à prendre en compte : ne pas imaginer un feedback "trop incitateur". Cad : si un patient n'arrive pas à 
+réaliser un mouvement complet, le feedback ne doit pas l'inciter à forcer + qu’il peut raisonnablement le faire.
 		
 		\section{Ouverture}	%	---GEOFFREY--
 		
 		- alternatifs: ARAT = test fonctionnel et non de déficience (le médecin il le vendait TROP)
+Cela amène à une reflexion, qui serait de plutôt orienter un éventuel développement futur (hors cadre TER) vers
+des exercices de rééducation ou autres types de test plutôt que vers les 'exercices' du test de Fugl Meyer.
 		- projet de stage avec NaturalPad: faire de extraction de squelette moins nul
 		- possibilités de concurence avec Zigfu vu qu'il a juste repris 
 		- la gamification est plus pertinente / adapté aux exercices de rehabiliation 
+		-(Idée : interface orale?)
 		
 		\section{Références}
 			\paragraph{Ressources web}
