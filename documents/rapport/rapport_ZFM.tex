@@ -326,17 +326,33 @@ des exercices font assoir le patient, sur une chaise ou chevet, éléments qui p
 \paragraph{}
 Notons enfin que les exercices impliquant les doigts et gestes étriqués ne conviennent pas non plus.
 
-		\section{Mise en oeuvre} 	%	---WILLIAM + GEOFFREY--
+		\section{Mise en œuvre} 	%	---WILLIAM + GEOFFREY--
 
-		Grapher
+		\subsubsection{Grapher}
 		- FailGrapher (montre la croix en plus de la progression)
 		
-		Multicamera
+		\subsubsection{Multi Camera}
+Afin d'augmenter la lisibilité des graphes, nous avons réfléchi à un moyen de les afficher de manière séparée du reste de
+l'environnement 3D. Notre première idée était tout simplement de créer ces graphiques dans une GUI 2D, en premier
+plan de l'application. Malheureusement, il n'est pas possible avec Unity de dessiner des courbes en 2D, et les différentes
+options du GUILayer ou UnitGUI ne nous permettaient pas d'arriver à un résultat équivalent.\\
+Il est en revanche possible de multiplier les caméras, et de choisir si celle-ci doivent utiliser ou non la projection 3D. Nous 
+avons vu là la possibilité de "construire" notre GUI de toute pièce, et de le projeter simultanément avec la scène grâce à
+l'utilisation d'une caméra supplémentaire. La "ruse" est alors de créer la  \textit{GUIscène} dans un endroit inutilisée de la 
+scène, de centrer en face une caméra immobile, et de dessiner en 3D les courbes que nous désirons.
+\begin{figure}
+\begin{center}
+	\includegraphics[scale=0.5]{images/multicamera.png} \caption{Multi camera pour affichage des graphes}
+	\end{center}
+\end{figure}
+ On notera un petit problème d'affichage des légendes, dû à l'utilisation de GUIText, texte ayant la particularité d'être partagé par toutes les 
+caméras disposant d'un GUILayer. Il suffirait de rendre aussi ces textes en 3D pour palier au problème.
+
 		
-		ExerciseMonitor
+		\subsubsection{ExerciseMonitor}
 		- FlexionMontior et compagnie
 		
-		Machine à états (on aime bien les trucs visuels dans les rapports)
+		\subsubsection{Machine à états }(on aime bien les trucs visuels dans les rapports)
 		
 %		\section{Résultats}\label{resultats} %TODO  Important, en mon humble avis
 		
