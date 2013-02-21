@@ -9,8 +9,8 @@ de la Playstation de Sony (2003), la console Wii de Nintendo (2006) est
 l'amorce claire de l'enthousiasme présent vis-à-vis de telles interfaces, et cet enthousiasme va bien
 au delà des jeux. 
 Si nous avons aujourd'hui la Kinect de Microsoft ou encore la
-PS Eye de Sony, c'est grâce à son controleur (voir figure~\ref{fig:wii}), 
-capable de reconnaître des mouvement à 
+PS Eye de Sony, c'est grâce au controleur "Wiimote" (voir figure~\ref{fig:wii}), 
+capable de reconnaître des mouvements à 
 travers l'espace grâce à un système d'accéléromètres. 
 
 \begin{figure}[h!]
@@ -22,9 +22,9 @@ travers l'espace grâce à un système d'accéléromètres.
 
 Avec le jeu Wii Fit, Nintendo ajoute la Wii Balance Board (voir figure 
 \ref{fig:balance_board}). C'est un accessoire capable de mesurer le 
-poids mis sur chaque pied et donc la position du centre de masse. Quant au jeu,
-il propose un suivie de la mise en forme du joueur à travers des graphiques, 
-points et barres de progression\ref{fig:wii_fit}~: de la "gamification", 
+poids mis sur chaque pied et donc la position du centre de gravité. Quant au jeu,
+il propose un suivi de la remise en forme du joueur à travers des graphiques, 
+points et barres de progressions~\ref{fig:wii_fit}~: de la "gamification", 
 tout simplement.
 
 \begin{figure}[h!]
@@ -46,10 +46,10 @@ tout simplement.
 La Wii est, cela dit, très limitée par son matériel. Un contrôleur peut mesurer
 le mouvement d'une main, mais pas sa position absolue. En plus, pour que deux 
 mains soient
-mesurées ils est nécessaire d'avoir un câble de 1 mètre environ entre les deux
+mesurées il est nécessaire d'avoir un câble de 1 mètre environ entre les deux
 contrôleurs~: selon la taille de l'individu cette solution peut ne pas être
-idéale. Quant à la Balance Board, elle est effectivement \textit{aveugle} en 3D du fait 
-qu'il n'y a pas de distribution du poids en deux dimensions.
+idéale. Quant à la Balance Board elle ne perçoit qu'une distribution du poids dans 
+le plan, pas la position du corps dans l'espace.
 
 \begin{figure}[h!]
 \centering
@@ -74,13 +74,13 @@ l'amélioration (ou pas) de joueur au cours du temps.
 Les jeux Wii demandent souvent un mouvement du membre supérieur pour y 
 jouer. De ce fait, de nombreuses 
 cliniques aux États Unis se sont mis à les détourner à des buts 
-thérapeutiques\ref{atwiki_wiihab}. Il s'agit bien ici de "détourner"~: rares sont les cas où des
+thérapeutiques\cite{atwiki_wiihab}. Il s'agit bien ici de "détourner"~: rares sont les cas où des
 applications spécifiques sont développées pour ce système par un tiers. Ceci
 est probablement du au manque d'outils de développement officiels. Il existe
 cependant un très grand nombre d'outils et de bibliothèques non-officiels
 \cite{homebrew_wii}, et
 c'est d'ailleurs le succès de ces efforts qui a motivé Adafruit à offrir sa prime
-pour l'ouverture de la Kinect.
+pour l'ouverture de la Kinect~\cite{adafruit_bounty}.
 
 \subsubsection{MOJOS}
 Lancé en 2010 avec un cycle de développment de 3 ans, 
@@ -91,13 +91,13 @@ La Moteur~de~Jeu~Orienté~Santé (MOJOS) est une collaboration entre~:
 \item \textbf{médecins} de l'UM1, du CHU et du centre 
 de recherche Efficience et Déficience Motrice (EDM),
 \item \textbf{l'IDATE}, \emph{think tank} pour l'innovation numérique.
-\end{itemize}\cite{mojos}
+\end{itemize}
 
 \paragraph{}
 Son objectif était de développer un moteur de jeu permettant 
 l'élaboration facile d'applications à but thérapeutiques, avec une étude 
 expérimentale
-par la suite, pour vérifier la pertinence de ces applications. En est sorti 
+par la suite, pour vérifier la pertinence de ces applications~\cite{mojos}. En est sorti 
 notamment le jeu Voracy Fish de GENIOUS (voir figure~\ref{fig:voracy_fish})
 qui propose un exercice du membre supérieur~: le patient contrôle un poisson 
 vorace grâce à une Kinect.
@@ -109,7 +109,7 @@ vorace grâce à une Kinect.
 \label{fig:voracy_fish}
 \end{figure}
 
-MOJOS se différencie d'un moteur jeu "normal" dans la mesure où 'il propose
+MOJOS se différencie d'un moteur jeu "normal" dans la mesure où il propose
 un rééquilibrage dynamique de la difficulté afin de garder le patient dans
 ce que Mihály Csíkszentmihályi nomme "Le Flux"\cite{flow}. Il y a en plus un suivi possible 
 des performances du patient par son médecin.
