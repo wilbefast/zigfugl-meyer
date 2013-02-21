@@ -1,51 +1,70 @@
 \documentclass{beamer}
-\usetheme{default}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{ifpdf}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+
+\usetheme{Warsaw}
 
 % ------------------------------------------------------------------------------
 % TITLE
 % ------------------------------------------------------------------------------
 
 \title{Zigful-Meyer}
-\subtitle{Un teste partielle de Fugl-Meyer fait par Kinect}
-\author{William Dyce, Geoffrey Melia}
-\institute[UMBC]{
-  Department of Mathematics and Statistics \\
-  University of Maryland Baltimore County \\
-  Baltimore, MD 21250, USA
+\subtitle{Un teste partiel de Fugl-Meyer fait par Kinect}
+\author{William Dyce \and Geoffrey Melia}
+\institute
+{
+  UM2
 }
-\date{October 27, 2003}
+\date{Fevrier 22, 2013}
 
 
 % ------------------------------------------------------------------------------
-% DOCUMENTS
+% TITLE
 % ------------------------------------------------------------------------------
 
 \begin{document}
 
-\begin{frame}{A sample slide}
-
+\begin{frame}[plain]
+  \titlepage
 \end{frame}
 
 % ------------------------------------------------------------------------------
 % PART I - MEDICAL BACKGROUND
 % ------------------------------------------------------------------------------
 
+\input{medical}
+
 % ------------------------------------------------------------------------------
 % PART II - KINECT BACKGROUND
 % ------------------------------------------------------------------------------
+
+\input{kinect}
 
 % ------------------------------------------------------------------------------
 % PART III - MISE EN OEUVRE
 % ------------------------------------------------------------------------------
 
+\input{mise_en_oeuvre}
+
 % ------------------------------------------------------------------------------
 % PART IV - DEMONSTRATION
 % ------------------------------------------------------------------------------
 
+\input{demo}
+
 % ------------------------------------------------------------------------------
 % REFERENCES
 % ------------------------------------------------------------------------------
-\input{../rapport/references}
+
+\input{references_presentation}
 
 
 \end{document}
