@@ -32,7 +32,7 @@ Il est donc peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
 ont été créés afin de permettre le détournement du périphérique par des
 chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
 premier SDK pour Windows initialement peu complet. Des mises à jours et une
-deuxième version, sortie en Octobre 2012, comblent ces lacunes.
+deuxième version, sortie en Octobre 2012, comblent ces lacunes\cite{wiki_kinect}.
 
 \subsection{Pilotes et bindings bas-niveau}
 
@@ -46,9 +46,8 @@ bibliothèques de haut-niveau, qui interprètent ces données.
 
 Le jour de la sortie de la Kinect, le 4 Novembre 2010, Adafruit Industries 
 offre une prime de \$2000 (augmentée ensuite jusqu'à \$3000) pour le premier qui
-sortira des pilotes permettant l'utilisant de la Kinect sur ordinateur.
-%https://www.adafruit.com/blog/2010/11/04/the-open-kinect-project-the-ok-prize-
-%get-1000-bounty-for-kinect-for-xbox-360-open-source-drivers/
+sortira des pilotes permettant l'utilisation de la Kinect sur ordinateur\cite{adafruit_bounty}.
+
 \subsubsection{Libfreenect}
 \begin{figure}[h!]
 \centering
@@ -56,7 +55,7 @@ sortira des pilotes permettant l'utilisant de la Kinect sur ordinateur.
 \caption{Première sortie de la Libfreenect par son créateur, Hector.}
 \end{figure}
 Le prix est remporté 6 jours plus tard le 10 Novembre par un programmeur Linux
-connu sous le nom "Hector". C'est la première version de Libfreenect autour
+connu sous le nom "Hector"\cite{adafruit_winner}. C'est la première version de Libfreenect autour
 duquel le groupe OpenKinect se forme. Libfreenect a pour avantage son
 très grand nombre de bindings~: C/C++, Java, Python, Actionscript, Javascript,
 LISP, C\#, pour ne nommer qu'un sous-ensemble. 
@@ -66,11 +65,11 @@ Il est toujours maintenu (dernier commit Décembre 2012).
 \includegraphics[width=0.5\linewidth]{images/openkinect_logo}
 \caption{Logo de la OpenKinect.}
 \end{figure}
-%https://www.adafruit.com/blog/2010/11/10/we-have-a-winner-open-kinect-drivers-released-winner-will-use-3k-for-more-hacking-plus-an-additional-2k-goes-to-the-eff/
+
 \subsubsection{CL NUI}
 9 jours après la sortie de Libfreenect la compagnie Coding Laboratories 
 (CL) et le groupe logiciel-libre
-Natural User-Interaction (NUI) sortent CL-NUI. Nous sommes alors 2 semaines 
+Natural User-Interaction (NUI) sortent CL-NUI\cite{clnui}. Nous sommes alors 2 semaines 
 après la sortie de l'appareil. CL-NUI propose des bindings 
 WPF\footnote{Windows Presentation Foundation}/C\# C et C++ et permet d'accéder 
 à tout sauf le microphone. Le développement continue jusqu'en fin Décembre 2010 
@@ -143,8 +142,7 @@ OpenNI et donc ne suit par leur normes.
 Kinect for Windows a quelques avantages par rapport à NITE~: il propose un
 placement prédictif des articulations et génère deux points en plus :
 le poignet et le bout des doigts. Cela étant sa prédiction consomme beaucoup 
-plus de ressources et peut amener à de faux positifs.
-% http://labs.vectorform.com/2011/06/windows-kinect-sdk-vs-openni-2/
+plus de ressources et peut amener à de faux positifs\cite{microsoft_vs_openni}.
 
 \subsubsection{NITE de PrimeSense}
 NITE (Natural Interface Technology for End-User) est un framework Libre et 
@@ -188,17 +186,14 @@ de gestes, un API permettant de créer des boutons, listes, curseurs et autres
 Zigfu intègre également la cinématique inverse et un système de 
 prédiction et
 d'interpolation à fin d'avoir une squelette répondant à des contraintes 
-physiques à 60Hz. La plupart des jeux moderne tournent à cette vitesse, et 
+physiques à 60Hz\cite{zigfu_video}. La plupart des jeux moderne tournent à cette 
+vitesse, et 
 rappelons nous que la caméra ne fournit que des données 30Hz.
 
 Zigfu fonctionne avec Kinect for Windows ou OpenNI avec NITE. Il est 
 avant-tout orienté Web, avec des
-bindings HTML 5 et Unity, et une version Flash en cours de développement.
-
-%http://www.headlondon.com/our-thoughts/technology/posts/microsoft-kinect-and-the-web-browser-enter-zigfu
-%https://www.youtube.com/watch?v=uSo0jXYm5wQ
-%https://github.com/OpenNI/UnityWrapper
-%http://github.com/tinkerer/UnityWrapper
+bindings HTML 5 et Unity, et une version Flash en cours de développement
+\cite{zigfu_review}.
 
 \subsubsection{FAAST}
 La Flexible~Action~and~Articulated~Skeleton~Toolkit (FAAST) est une 

@@ -37,35 +37,42 @@ tout simplement.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.5\linewidth]{images/balance_board}
-\caption{La Wii Balance board de Nintendo.}
+\caption{La Wii Balance Board de Nintendo.}
 \label{fig:balance_board}
 \end{figure}
 
 
 \subsubsection{Nike+ Kinect Training}
 
+La Wii est, cela dit, très limité par son matériel. Un controleur peut mesurer
+le mouvement d'une main, mais pas sa position absolue. En plus, pour que deux 
+mains soient
+mesurés ils est nécessaire d'avoir un cable de 1 mètre environ entre les deux
+controleurs~: selon la taille de l'individu cette solution peut ne pas être
+idéal. Quant à la Balance Board, il est effectivement aveugle pour tous ceci qui
+n'est pas distribution de poids en deux dimensions.
+
+Entre littéralement en jeu la Kinect, périphérique de Microsoft permettant une
+extraction non-intrusive de la squelette de l'individu
+
+
 
 % ------------------------------------------------------------------------------  
 
-\subsection{Applications thérapeutiques}
+\subsection{Quelques applications thérapeutiques}
 
 \subsubsection{"Wiihabilitation"}
 
 Les jeux Wii demandent souvent un mouvement du membre supérieur pour y 
 jouer. De ce fait, de nombreuses 
 cliniques aux États Unis se sont mis à les détourner à des buts 
-thérapeutiques. Il s'agit bien ici de "détourner"~: rares sont les cas où des
+thérapeutiques\ref{atwiki_wiihab}. Il s'agit bien ici de "détourner"~: rares sont les cas où des
 applications spécifiques sont développées pour ce système par un tiers. Ceci
 est probablement du au manque d'outils de développement officiels. Il existe
-cependant un très grand nombre d'outils et de bibliothèques non-officiels, et
+cependant un très grand nombre d'outils et de bibliothèques non-officiels
+\cite{homebrew_wii}, et
 c'est d'ailleurs le succès de ces efforts qui a motivé Adafruit à offrir sa prime
 pour l'ouverture de la Kinect.
-% http://wiibrew.org/wiki/List_of_development_tools
-
-
-
-%http://atwiki.assistivetech.net/index.php/Wii_rehab_applications_%28wiihab%29
-%http://usatoday30.usatoday.com/tech/science/2008-02-08-wii-rehabilitation_N.htm
 
 \subsubsection{MOJOS}
 Lancé en 2010 avec un cycle de développment de 3 ans, 
@@ -76,7 +83,7 @@ La Moteur~de~Jeu~Orienté~Santé (MOJOS) est une collaboration entre~:
 \item \textbf{médecins} de l'UM1, du CHU et du centre 
 de recherche Efficience et Déficience Motrice (EDM),
 \item \textbf{l'IDATE}, \emph{think tank} pour l'innovation numérique.
-\end{itemize}
+\end{itemize}\cite{mojos}
 
 \paragraph{}
 Son objectif était de développer un moteur de jeu permettant 
@@ -96,11 +103,8 @@ vorace grâce à une Kinect.
 
 MOJOS se différencie d'un moteur jeu "normal" dans la mesure où 'il propose
 un rééquilibrage dynamique de la difficulté afin de garder le patient dans
-ce que Mihály Csíkszentmihályi nomme "Le Flux". Il y a en plus un suivie possible 
+ce que Mihály Csíkszentmihályi nomme "Le Flux"\cite{flow}. Il y a en plus un suivie possible 
 des performances du patient par son médecin.
-% https://en.wikipedia.org/wiki/Flow_%28psychology%29
-
-% http://www.mojos.fr/home/
 
 \subsubsection{Hammer \& Planks}
 Hammer \& Planks, jeu en développement par NaturalPad, se veut à la fois 
