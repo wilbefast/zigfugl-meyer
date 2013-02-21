@@ -5,6 +5,11 @@
 *.sln
 *.userprefs
 
+# Binaries
+**.dll
+**.exe
+
+# Unity
 Library/**
 Temp/**
 ProjectSettings/**
