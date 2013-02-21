@@ -13,10 +13,9 @@ projecteur infra-rouge et d'un capteur.
   \caption{Diagramme montrant les sous-systèmes de l'appareil Kinect.}
   \end{figure}
 L'appareil n'utilise pas, comme on pourrait croire, le "Temps de Vol" pour
-calculer la profondeur d'une scène. C'est en fait la déformation de chaqu'un de 
-sa matrice de rayons infra-rouge,
-lorsqu'ils frappent une surface, qui est mesuré. Cette technique dite de 
-"Lumière Structuré"
+calculer la profondeur d'une scène. C'est en fait la déformation de chacune des 
+ondes infra-rouge envoyée, lorsqu'elles frappent une surface, qui est mesuré. Cette technique dite de 
+"Lumière Structurée"
 lui permet de générer une image 3D d'une scène à une résolution de 640x480 avec 
 une profondeur de 11 bits, qui sera mise à jour 30 fois par seconde.
 
@@ -24,12 +23,12 @@ une profondeur de 11 bits, qui sera mise à jour 30 fois par seconde.
 Sorti en Novembre 2010, le système était prévu à l'origine pour la console
 de jeu de Microsoft, la "Xbox360". Comme la plupart des consoles et
 périphériques de jeu elle
-est donc vendu à perte, l'idée étant de récupérer l'argent perdu en vendant
+est vendue à perte, l'idée étant de récupérer l'argent perdu en vendant
 des jeux. Ceci en fait l'appareil de son genre le moins cher et le plus couramment
 disponible.
 
 Il est donc peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
-ont été créés afin de permettre le détournement du périphérique par des
+aient été créés afin de permettre le détournement du périphérique par des
 chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
 premier SDK pour Windows initialement peu complet. Des mises à jours et une
 deuxième version, sortie en Octobre 2012, comblent ces lacunes\cite{wiki_kinect}.
@@ -40,7 +39,7 @@ Il est important de noter que la reconnaissance vocale et l'extraction de
 squelette ne sont pas faits par l'appareil, ou "serveur", lui-même~: ce sont des
 bibliothèques sur la console ou l'ordinateur, le "client", qui s'en chargent. 
 Il faut donc bien
-différencier les pilotes de bibliothèques de bas niveau, qui permettent 
+différencier les pilotes des bibliothèques de bas niveau, qui permettent 
 d'accéder aux données brutes, des
 bibliothèques de haut-niveau, qui interprètent ces données.
 
@@ -80,12 +79,12 @@ SDK officiel\ldots
 \subsubsection{Kinect for Windows}  
 Les pilotes officiels de Microsoft viennent avec leur SDK, "Kinect for 
 Windows". Inutile de dire
-qu'ils ne fonctionnent que sous Windows. Ce qui est un peu plus surprenant 
+qu'ils ne fonctionnent que sous Windows. Ce qui est un peu plus surprenant, 
 c'est qu'il n'y a de soutient que pour Window 7 et 8, donc pas pour Windows XP 
 ou Vista.
 \subsubsection{SDK OpenNI}
 OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
-des grands acteur économiques du domaine. S'y figure notamment PrimeSense, la 
+des grands acteurs économiques du domaine. S'y figure notamment PrimeSense, la 
 compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
 est plus ou moins analogique à celui de Microsoft où il est question de
 Kinect, mais fonctionne aussi sur les plus anciennes 
@@ -120,8 +119,8 @@ Les bibliothèques dites "middleware interaction naturelle" servent ici en
 générale à faire une 
 extraction de squelette et une reconnaissance de gestes. Elles permettent donc 
 au développeur de s'abstraire des données brutes. Le groupe OpenNI définit 
-des normes auxquelles doivent obéir cette couche, de 
-manière à faciliter la communication à travers la pile de technologie (voir 
+des normes auxquelles doit obéir cette couche, de 
+manière à faciliter la communication à travers la pile de technologies (voir 
 figure~\ref{fig:openni_technology_stack}).
 \begin{figure}[h!]
 \centering
@@ -137,11 +136,11 @@ Bien que les SDK de Microsoft et de la OpenNI signifient tout deux
 celui de Microsoft, "Kinect for Windows", contient à la fois les pilotes, 
 l'API de bas niveau et une couche d'analyse des données qu'OpenNI appellerait 
 middleware. Il n'est donc pas fait pour interfacer avec les couches de la 
-OpenNI et donc ne suit par leur normes.
+OpenNI et ne suit par leurs normes.
 
 Kinect for Windows a quelques avantages par rapport à NITE~: il propose un
 placement prédictif des articulations et génère deux points en plus :
-le poignet et le bout des doigts. Cela étant sa prédiction consomme beaucoup 
+le poignet et le bout des doigts. Cela étant, sa prédiction consomme beaucoup 
 plus de ressources et peut amener à de faux positifs\cite{microsoft_vs_openni}.
 
 \subsubsection{NITE de PrimeSense}
@@ -158,13 +157,13 @@ middleware standardisés. Elle se repose donc sur la SDK de la OpenNI.
 \subsubsection{OpenCV}
 OpenCV (Open Computer Vision) est une vaste bibliothèque de toutes sortes de 
 fonctions aillant un rapport avec la détection de formes à partir d'images
-statiques ou dynamiques. Il existe depuis 1999, donc bien avant la Kinect.
+statiques ou dynamiques. Elle existe depuis 1999, donc bien avant la Kinect.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.4\linewidth]{images/opencv_logo}
 \caption{Logo de la OpenCV.}
 \end{figure}
-Étant donnée qu'il s'agit d'une bibliothèque généraliste il a peu de 
+Étant donnée qu'il s'agit d'une bibliothèque généraliste, elle a peu de 
 fonctionnalités qui ciblent précisément les données 3D, contrairement aux 
 bibliothèques dites "d'interaction naturelle".
 
@@ -176,7 +175,7 @@ bibliothèques dites "d'interaction naturelle".
 Crée en Mai 2011, Zigfu est une petite entreprise formée de 4 personnes dont 
 Amir Hirsch, le fondateur, et 2 ex-employés de PrimeSense. Il fournit, 
 par dessus de l'extraction de squelette et de la reconnaissance
-de gestes, un API permettant de créer des boutons, listes, curseurs et autres
+de gestes, une API permettant de créer des boutons, listes, curseurs et autres
 éléments GUI, tous contrôlés par le mouvement.
 \begin{figure}[h!]
 \centering
@@ -185,10 +184,10 @@ de gestes, un API permettant de créer des boutons, listes, curseurs et autres
 \end{figure}
 Zigfu intègre également la cinématique inverse et un système de 
 prédiction et
-d'interpolation à fin d'avoir une squelette répondant à des contraintes 
-physiques à 60Hz\cite{zigfu_video}. La plupart des jeux moderne tournent à cette 
-vitesse, et 
-rappelons nous que la caméra ne fournit que des données 30Hz.
+d'interpolation afin d'avoir un squelette répondant à des contraintes 
+physiques à 60Hz\cite{zigfu_video}. La plupart des jeux modernes tourne à cette 
+vitesse et, 
+rappelons que la caméra ne fournit que des données 30Hz.
 
 Zigfu fonctionne avec Kinect for Windows ou OpenNI avec NITE. Il est 
 avant-tout orienté Web, avec des
@@ -198,19 +197,19 @@ bindings HTML 5 et Unity, et une version Flash en cours de développement
 \subsubsection{FAAST}
 La Flexible~Action~and~Articulated~Skeleton~Toolkit (FAAST) est une 
 bibliothèque qui se repose soit sur Kinect for Windows, soit OpenNI et NITE, 
-comme Zigfu. Il n'est pour l'instant compatible qu'avec Windows.
+comme Zigfu. Elle n'est pour l'instant compatible qu'avec Windows.
 
 Développé par la Interactive~Media~Division (MxR) de 
 l'Institute~of~Creative~Technologies (ICT) de 
-l'University~of~Southern~California (USC). Il permet de monter à un niveau 
+l'University~of~Southern~California (USC). Elle permet de monter à un niveau 
 encore plus abstrait~: l'utilisateur travaille avec des événement générés à
-partir de postures et des gestes, au lieu d'analyser manuellement la 
+partir de postures et des gestes, au lieu d'analyser manuellement le 
 squelette.
 
 % ------------------------------------------------------------------------------  
 
 \subsection{Résumé}
-Le schéma \ref{fig:technology_overview} résume les interactions entre les divers 
+Le schéma \ref{fig:technology_overview} résume les interactions entre les diverses 
 technologies que nous ayons vues.
 
 \begin{figure}[h!]
