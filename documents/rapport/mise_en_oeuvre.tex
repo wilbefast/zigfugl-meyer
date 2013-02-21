@@ -2,10 +2,10 @@
 
 \subsection{Grapher}
 Il était important dès le début du projet de visualiser de manière claire les 
-informations liées aux translation et rotations des articulations les uns par 
+informations liées aux translation et rotations des articulations les unes par 
 rapport aux autres. Unity s'avère être une contrainte pour ceci~: il est difficile
-de faire une rendu de primitifs géométriques (lines, triangles) directement. Il
-a donc fallu passer en contortionist à travers un ensemble d'objects LineRenderer.
+de faire une rendu de primitives géométriques (lignes, triangles) directement. Il
+a donc fallu passer en contorsionniste à travers un ensemble d'objets LineRenderer.
 
 \begin{figure}[h!]
 \centering
@@ -14,9 +14,9 @@ a donc fallu passer en contortionist à travers un ensemble d'objects LineRender
 \end{figure}
 
 Le résultat est une classe permettant de faire de manière simple et flexible des
-graphes au sein de l'Unity. Initialement qu'un outil pour faciliter le 
-débuggage, nous avons finalement décidé de les garder dans le projet à fin de
-fournir un retour d'information riche et continue au patient. Sont donc présentés 
+graphes au sein de Unity. Initialement qu'un outil pour faciliter le 
+débuggage, nous avons finalement décidé de les garder dans le projet afin de
+fournir un retour d'information riche et continue au patient. Sont donc présentées 
 à l'écran à la fois la progression (par exemple, l'élévation du bras) et les 
 contraintes à ne pas briser.
     
@@ -48,12 +48,12 @@ Un point important de tout jeu, est l'aspect de ou des avatars qu'est amené à 
     
 \subsection{Menu}
 
-Pour le menu nous avons décidés de ne pas utiliser le contrôle par la Kinect.
-D'aboard si le patient a besoin de faire le test il n'a peut être pas la
+Pour le menu nous avons décidé de ne pas utiliser le contrôle par la Kinect.
+D'abord si le patient a besoin de faire le test il n'a peut être pas la
 mobilité nécessaire pour faire les manipulations, qui tendent à être assez 
-facile à échouer. Nous avons eus une difficulté non-trivial à utiliser les menus
-proposés dans les samples de Zigfu alors que n'avons pas de problèmes motrices.
-Il ne faudrait surtout pas que le patient soit frustré même avant le début de
+facile à échouer. Nous avons eu une difficulté non-triviale à utiliser les menus
+proposés dans les samples de Zigfu alors que n'avons pas de problèmes moteurs.
+Il ne faudrait surtout pas que le patient soit frustré avant même le début de
 l'exercice.
     
 \begin{figure}[h!]
@@ -62,8 +62,8 @@ l'exercice.
 \caption{Machine à états de la Menu.}
 \end{figure}
 
-Le cas d'utilisation imaginé comporte en plus un medecin, qui sera justement là
-pour lancer les exercices et donner des conseils précises alors que le système 
+Le cas d'utilisation imaginé comporte en plus un médecin, qui sera justement là
+pour lancer les exercices et donner des conseils précis alors que le système 
 se contente de mesurer la progression de manière précis.
 
 \begin{figure}[h!]
@@ -76,11 +76,11 @@ se contente de mesurer la progression de manière précis.
 \subsection{ExerciseMonitor}
 
 Tous les exercices présentés suivent un schéma commun~: le patient commence dans
-une position donnée et doit faire, au mieu qu'il peut, un movement. Ce movement
-est souvent contrainte par un nombre de critères~: le ne doit pas, par exemple,
-plier son coude en lêvant son bras. Nous avons pu noter que les spécialistes 
+une position donnée et doit faire, au mieux qu'il peut, un mouvement. Ce mouvement
+est souvent contraint par un nombre de critères~: il ne doit pas, par exemple,
+plier son coude en levant son bras. Nous avons pu noter que les spécialistes 
 mettent directement un 0
-(disqualification) pour l'exercice si la contrainte est brisé!
+(disqualification) pour l'exercice si la contrainte est brisée!
 
 \begin{figure}[h!]
 \centering
@@ -90,8 +90,8 @@ mettent directement un 0
 \end{figure}
 
 Notre système n'éjectera pas le patient de l'exercice avec un 0 dès qu'il brise 
-une contrainte, mais sa progression sera bloqué. Il aura besoin de revenir à la
-position initiale pour recommencer l'exercice, mais pour le faire autant de fois
-qu'il veut. Pour gérer ce boucle d'échec et de rélance, une machine à états
-hierarchique est utilisé (voir la figure \ref{fig:exercise_monitor}.
+une contrainte, mais sa progression sera bloquée. Il aura besoin de revenir à la
+position initiale pour recommencer l'exercice, mais pourra le refaire autant de fois
+qu'il veut. Pour gérer cette boucle d'échec et de relance, une machine à états
+hiérarchique est utilisée (voir la figure \ref{fig:exercise_monitor}.
     
