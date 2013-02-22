@@ -31,9 +31,10 @@ public class FailGrapher : Grapher
 	{
 		// illegal move (only when needed)
 		fail_indicator = new GameObject("fail_indicator");
+		fail_indicator.layer = gameObject.layer;
 		point.Set(gui_area.center.x, gui_area.center.y, 0.0f);
 		fail_indicator.transform.position = point;
-		fail_indicator.transform.localScale = new Vector3(0.2f, 0.2f, 1.0f); 
+		fail_indicator.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f); 
 		fail_indicator.SetActive(false);
 		GUITexture tex = (GUITexture)fail_indicator.AddComponent("GUITexture");
 		tex.texture = (Texture)Resources.Load("cross");

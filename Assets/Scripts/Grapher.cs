@@ -69,6 +69,7 @@ public class Grapher : MonoBehaviour
 	protected void init()
 	{
 		layer_number = ((layer == null) ? 0 : (int)(Mathf.Log(layer.value, 2)));
+		gameObject.layer = layer_number;
 		
 		// if no camera is specified use the main camera instead
 		if(camContext == null)
