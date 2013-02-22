@@ -68,7 +68,8 @@ public class Grapher : MonoBehaviour
 	//! FIXME -- I don't understand C#... it won't let me override Start :-/
 	protected void init()
 	{
-		layer_number = ((layer == null) ? 0 : (int)(Mathf.Log(layer.value, 2)) - 1);
+		layer_number = ((layer == null) ? 0 : (int)(Mathf.Log(layer.value, 2)));
+		gameObject.layer = layer_number;
 		
 		// if no camera is specified use the main camera instead
 		if(camContext == null)
@@ -111,8 +112,8 @@ public class Grapher : MonoBehaviour
 		gtext.fontSize = 20;
 		
 		// min amount (left-hand side)
-		min_indicator.layer = layer_number;
 		min_indicator = new GameObject("min_indicator");
+		min_indicator.layer = layer_number;
 		gtext = (GUIText)min_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
 		gtext.text = min_value.ToString();
@@ -121,8 +122,8 @@ public class Grapher : MonoBehaviour
 		gtext.transform.position = point;
 		
 		// max amount (right-hand side)
-		max_indicator.layer = layer_number;
 		max_indicator = new GameObject("max_indicator");
+		max_indicator.layer = layer_number;
 		gtext = (GUIText)max_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
 		gtext.text = max_value.ToString();
