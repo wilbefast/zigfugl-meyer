@@ -89,9 +89,11 @@ public class FlexionMonitor : ExerciseMonitor
 	
 	private void monitor_backwards()
 	{
-		// how much is the arm been turn towards the front ?
-		float backwards = Vector3.Angle(skeleton.Torso.forward, upperarm);
-		Debug.Log(backwards.ToString ());
+		// how much is the arm been turn towards the back ?
+		Vector3 l = skeleton.Torso.right, r = skeleton.Torso.right; l *= -1;
+		
+		float backwards = 90 - Mathf.Min(Vector3.Angle(l, upperarm), Vector3.Angle(r, upperarm));
+
 		if(backwards > max_back_turn)
 		{
 			graph_backwards.setFail(true);
