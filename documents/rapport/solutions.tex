@@ -1,0 +1,87 @@
+\section{Solutions}
+    
+\input{tools_and_technologies}
+    
+\subsection{Cahier des charges}
+Ce projet de TER se trouvait à la liaison entre projet de recherche et projet d'application. Si une grande part a été accordée à 
+l'étude de terrain, à l'acquisition des connaissances nécessaires et à une étude de faisabilité au moyen des technologies actuelles, un des objectifs principaux était aussi de proposer un prototype pour illustrer nos conclusions.
+    
+\subsubsection{Objectifs}
+La première idée à bien retenir, est que nous voulions pouvoir apporter, ou montrer qu'il est possible d'apporter, une vraie plus 
+value à la réalisation d'un test des capacités sensorimotrices avec une application utilisant un capteur comme le Kinect.
+\paragraph{}
+Naïvement, ces apports peuvent être multiples : gain de temps, gain de personnel, accroit de l'intérêt par le patient, appréciation
+plus fine des résultats, panel de mesures plus important, visualisation de progression, détection de mouvements qui
+échapperaient aux praticiens, etc.
+
+\paragraph{}
+L'objectif fut donc de créer une application fournissant un environnement graphique complémentaire pour le patient et le médecin.
+Se voulant ensuite dérivable en un concept de jeu, il est important de noter les deux cibles distinctes de l'application. L'idée 
+n'était pas de seulement fournir une interface au médecin lui proposant des informations supplémentaires, mais aussi de
+permettre au patient de sortir du cadre strictement médical et mécanique que constitue la réalisation de son test.
+
+\paragraph{}
+Pour le médecin, on va vouloir lui communiquer des informations comme la valeur de position ou d'angle des membres du
+patient concernés par l'exercice en cours. Cela afin de lui permettre d'évaluer plus aisément la réalisation du test. 
+
+\paragraph{}
+Pour le patient, on va souhaiter lui fournir une interface plus conviviale que les murs de l'hôpital ou du centre de soin et lui
+proposer un système de feedback, lui permettant de juger lui-même de ses mouvements. Si cela peut sembler anodin, on
+peut rappeler un sentiment désagréable qui peut exister dans le milieu médical, lorsqu'un patient ne comprend pas exactement
+toutes les informations le concernant ou leur conséquences, ni parfois même ne les connait pas. Ainsi, l'idée est ici de lui
+assurer un retour d'informations immédiat, et il saura par exemple si il a échoué ou non à l'exercice.\\
+On va aussi vouloir essayer de "gamifier" les exercices, en tentant d'apporter un environnement agréable, des objectifs
+apparemment différents de ceux annoncés, un système de récompenses (comme un score) ou encore apporter du sens
+à ses mouvements. Cela permet de sortir de la monotonie des test médicaux.
+
+\paragraph{}
+De manière plus commune, on va retrouver des éléments qui pourront être appréciés autant par le personnel médical que par 
+le patient. \\
+La première est la mise en place de graphes, qui vont afficher en temps réel l'évolution de différents paramètres en relation
+avec l'exercice. Par exemple, on pourra afficher la courbe de rotation du coude, le niveau d'élévation de la main ou encore la
+distance entre l'épaule et le poignet. Ce système de feedback peut apporter des informations décisives au médecin ou
+illustrer au patient là où se situent ses difficultés.\\
+On souhaitera aussi par exemple rappeler les valeurs attendues pour la réalisation du test, ou encore signaler la présence
+d'un mouvement éliminatoire pour la réussite de l'exercice.
+
+\paragraph{}
+Le suivi des progrès semble aussi être un point crucial dans le domaine de la réhabilitation. Ainsi, la mise en place d'un score
+plus fin que celui proposé par FM, ainsi qu'un système de suivi des capacités moteurs du patient nous semble tout à fait
+adapté.
+
+  % --- cela étant, les notions de feedback, d'intéractions 
+    % 'meaningful play = integrated + discernable' (Rules of Play) les actions ont un impact et on sait lequel. 
+    
+    
+\subsubsection{Choix d'implémentation}
+Si nous espérions tout d'abord pouvoir réaliser une application permettant de contrôler la totalité d'un test de Fugl Meyer, il nous
+est très vite apparu au fil de nos discussions et acquisition de connaissances, que cela ne serait pas possible. En effet, le test de FM
+se révèle riche de plusieurs dizaines de mini-tests, et la plupart n'est en l'état actuel des technologies, pas mesurable efficacement (cf Limites \ref{limites}). Nous avons donc en premier lieu sélectionné les exercices (entendre, sous parties du test)
+qui nous paraissaient les plus judicieux. Ceux-ci correspondent aux mouvements de :
+\begin{itemize}
+\item antepulsion de l'épaule : bras en avant 0\degre à 90\degre
+\item flexion de l'épaule : bras en avant de 90\degre à 180\degre
+\item abduction de l'épaule : bras sur le coté de 0\degre à 90\degre
+\item dorsiflexion des poignets (2 positions : coude plié et bras tendu) : 0\degre à 15\degre verticalement
+\end{itemize}
+
+\paragraph{}
+Ces exercices ont été choisis car seule la vision est nécessaire pour évaluer leur réussite ou non (pas besoin de contact direct).
+De plus, la forte valeur des angles mesurés permet une marge de manœuvre appréciable, notamment au niveau de l'imprécision
+éventuelle des mesures par le capteur. Ce sont des mouvements amples (sauf peut-être la dorsiflexion du poignet) et un bon
+angle de vue permet au capteur de ne pas "perdre" les membres et ainsi fausser les résultats. Les angles mesurés ne
+correspondent pas à la valeur réelle de l'angle de l'/des os du membre concerné, mais à l'angle créé par les segments représentés par les os des membres reliés. Par ex, on ne regardera pas si l'os de l'épaule (en réalité, il y en a 4) est à 90\degre, ce qui ne veut rien dire, mais la valeur de l'angle entre le bras et le tronc du patient.
+
+\paragraph{}
+Cette réflexion sur les angles est d'autant plus importante que le capteur Kinect ne peut actuellement pas mesurer directement
+la valeur de rotation des différents membres, mais que l'on extrapole ces valeurs à partir des valeurs de positions des membres
+reliés. Cela nous a donc fait exclure des exercices comme la prono-supination de l'avant bras : bras tendu, on présente successivement la paume puis le dos de la main en tournant son avant bras.
+
+\paragraph{}
+Nous avons aussi exclu de notre prototype les exercices mettant en jeu les membres inférieurs. La première raison est que nous n'avons pas assisté à une démonstration de telle exercices et aurions donc été moins à même de tenter d'en reproduire. La 
+seconde raison est elle aussi d'ordre technique, puisque il est nécessaire de s'éloigner fortement du capteur Kinect pour que 
+celui ci puisse détecter les jambes d'une personne. Cela implique d'avoir un grand espace de travail. Par ailleurs, nombre 
+des exercices font assoir le patient, sur une chaise ou chevet, éléments qui perturbent la détection de la personne.
+
+\paragraph{}
+Notons enfin que les exercices impliquant les doigts et gestes étriqués ne conviennent pas non plus.

@@ -1,0 +1,132 @@
+\section{"Interaction naturelle" et réhabilitation}
+
+\subsection{Applications orientés "fitness"}
+
+\subsubsection{Wii Fit}
+
+Si certains jeu proposaient déjà une interaction naturelle, avec l'EyeToy 
+de la Playstation de Sony (2003), la console Wii de Nintendo (2006) est 
+l'amorce claire de l'enthousiasme présent vis-à-vis de telles interfaces, et cet enthousiasme va bien
+au delà des jeux. 
+Si nous avons aujourd'hui la Kinect de Microsoft ou encore la
+PS Eye de Sony, c'est grâce au controleur "Wiimote" (voir figure~\ref{fig:wii}), 
+capable de reconnaître des mouvements à 
+travers l'espace grâce à un système d'accéléromètres. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{../images/wii_diagram}
+\caption{Le controleur de la console Wii de Nintendo.}
+\label{fig:wii}
+\end{figure}
+
+Avec le jeu Wii Fit, Nintendo ajoute la Wii Balance Board (voir figure 
+\ref{fig:balance_board}). C'est un accessoire capable de mesurer le 
+poids mis sur chaque pied et donc la position du centre de gravité. Quant au jeu,
+il propose un suivi de la remise en forme du joueur à travers des graphiques, 
+points et barres de progressions~\ref{fig:wii_fit}~: de la "gamification", 
+tout simplement.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{../images/wii_fit}
+\caption{Courbes de progression au cours du temps dans le jeu Wii Fit.}
+\label{fig:wii_fit}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{../images/balance_board}
+\caption{La Wii Balance Board de Nintendo.}
+\label{fig:balance_board}
+\end{figure}
+
+\subsubsection{Nike+ Kinect Training}
+
+La Wii est, cela dit, très limitée par son matériel. Un contrôleur peut mesurer
+le mouvement d'une main, mais pas sa position absolue. En plus, pour que deux 
+mains soient
+mesurées il est nécessaire d'avoir un câble de 1 mètre environ entre les deux
+contrôleurs~: selon la taille de l'individu cette solution peut ne pas être
+idéale. Quant à la Balance Board elle ne perçoit qu'une distribution du poids dans 
+le plan, pas la position du corps dans l'espace.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{../images/nike_kinect}
+\caption{Capture d'écran du "Nike+ Kinect Training".}
+\end{figure}
+
+Entre littéralement en jeu la Kinect, périphérique de Microsoft permettant une
+extraction non-intrusive du squelette de l'individu. Avec cette technologie
+il est possible de mesurer la flexibilité d'un individu et aussi de lui faire répéter
+un exercice en vérifiant qu'il a bien été fait. 
+Comme pour la Wii Fit, un suivi constant est proposé, avec retour sur
+l'amélioration (ou pas) de joueur au cours du temps.
+
+
+% ------------------------------------------------------------------------------  
+
+\subsection{Quelques applications thérapeutiques}
+
+\subsubsection{"Wiihabilitation"}
+
+Les jeux Wii demandent souvent un mouvement du membre supérieur pour y 
+jouer. De ce fait, de nombreuses 
+cliniques aux États Unis se sont mis à les détourner à des buts 
+thérapeutiques\cite{atwiki_wiihab}. Il s'agit bien ici de "détourner"~: rares sont les cas où des
+applications spécifiques sont développées pour ce système par un tiers. Ceci
+est probablement du au manque d'outils de développement officiels. Il existe
+cependant un très grand nombre d'outils et de bibliothèques non-officiels
+\cite{homebrew_wii}, et
+c'est d'ailleurs le succès de ces efforts qui a motivé Adafruit à offrir sa prime
+pour l'ouverture de la Kinect~\cite{adafruit_bounty}.
+
+\subsubsection{MOJOS}
+Lancé en 2010 avec un cycle de développment de 3 ans, 
+La Moteur~de~Jeu~Orienté~Santé (MOJOS) est une collaboration entre~:
+\begin{itemize}
+\item \textbf{professionnels} de DIDACT Systèmes, NetDivision et GENIOUS,
+\item \textbf{informaticiens} de l'UM2 et du LIRMM,
+\item \textbf{médecins} de l'UM1, du CHU et du centre 
+de recherche Efficience et Déficience Motrice (EDM),
+\item \textbf{l'IDATE}, \emph{think tank} pour l'innovation numérique.
+\end{itemize}
+
+\paragraph{}
+Son objectif était de développer un moteur de jeu permettant 
+l'élaboration facile d'applications à but thérapeutiques, avec une étude 
+expérimentale
+par la suite, pour vérifier la pertinence de ces applications~\cite{mojos}. En est sorti 
+notamment le jeu Voracy Fish de GENIOUS (voir figure~\ref{fig:voracy_fish})
+qui propose un exercice du membre supérieur~: le patient contrôle un poisson 
+vorace grâce à une Kinect.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{../images/voracy_fish}
+\caption{Capture d'écran du jeu "Voracy Fish" de GENIOUS.}
+\label{fig:voracy_fish}
+\end{figure}
+
+MOJOS se différencie d'un moteur jeu "normal" dans la mesure où il propose
+un rééquilibrage dynamique de la difficulté afin de garder le patient dans
+ce que Mihály Csíkszentmihályi nomme "Le Flux"\cite{flow}. Il y a en plus un suivi possible 
+des performances du patient par son médecin.
+
+\subsubsection{Hammer \& Planks}
+Hammer \& Planks (voir figure \ref{fig:hammer_planks}), jeu en développement par NaturalPad, se veut à la fois 
+ludique et thérapeutique. Il est donc possible de contrôler le jeu via différents contrôleurs, dont une manette ou une Kinect.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1.0\linewidth]{../images/hammer_and_planks}
+\caption{Capture d'écran du jeu "Hammer and Planks" de 
+NaturalPad.}
+\label{fig:hammer_planks}
+\end{figure}
+
+Parmi les points intéressants il est offert ici la possibilité de modifier certains
+paramètres du jeu par l'intermédiaire d'un terminal annexe, l'idée étant de
+permettre à un spécialiste de rééquilibrer le jeu selon les besoins de son
+patient.

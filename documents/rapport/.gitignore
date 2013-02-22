@@ -1,0 +1,10 @@
+# Latex
+*.aux
+*.lof
+*.log
+*.pdf
+*.toc
+*.out
+
+# Backup files
+**~

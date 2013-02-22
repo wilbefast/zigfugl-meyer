@@ -1,0 +1,223 @@
+\section{La Microsoft Kinect}
+
+\subsection{Description}
+La Kinect, connue à l'origine sous le nom "Project Natal" est un
+périphérique informatique créé par Microsoft, comportant une caméra
+couleur, un étalage de 4 microphones, des moteurs pour s'orienter avec 
+accéléromètres 
+et un système senseur de profondeur composé d'un 
+projecteur infra-rouge et d'un capteur. 
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.8\linewidth]{../images/kinect_diagram}
+  \caption{Diagramme montrant les sous-systèmes de l'appareil Kinect.}
+  \end{figure}
+L'appareil n'utilise pas, comme on pourrait croire, le "Temps de Vol" pour
+calculer la profondeur d'une scène. C'est en fait la déformation de chacune des 
+ondes infra-rouge envoyées, lorsqu'elles frappent une surface, qui est mesurée. Cette technique dite de 
+"Lumière Structurée"
+lui permet de générer une image 3D d'une scène à une résolution de 640x480 avec 
+une profondeur de 11 bits, qui sera mise à jour 30 fois par seconde.
+
+\subsection{Historique}
+Sorti en Novembre 2010, le système était prévu à l'origine pour la console
+de jeu de Microsoft, la "Xbox360". Comme la plupart des consoles et
+périphériques de jeu elle
+est vendue à perte, l'idée étant de récupérer l'argent perdu en vendant
+des jeux. Ceci en fait l'appareil de son genre le moins cher et le plus couramment
+disponible.
+
+Il est donc peu surprenant que, dès sa sortie, des pilotes Libres et gratuits
+aient été créés afin de permettre le détournement du périphérique par des
+chercheurs et des amateurs. Microsoft a répondu en début de 2011 avec un
+premier SDK pour Windows initialement peu complet. Des mises à jour et une
+deuxième version, sortie en Octobre 2012, comblent ces lacunes\cite{wiki_kinect}.
+
+\subsection{Pilotes et bindings bas-niveau}
+
+Il est important de noter que la reconnaissance vocale et l'extraction de 
+squelette ne sont pas faits par l'appareil, ou "serveur", lui-même~: ce sont des
+bibliothèques sur la console ou l'ordinateur, le "client", qui s'en chargent. 
+Il faut donc bien
+différencier les pilotes des bibliothèques de bas niveau, qui permettent 
+d'accéder aux données brutes, des
+bibliothèques de haut-niveau, qui interprètent ces données.
+
+Le jour de la sortie de la Kinect, le 4 Novembre 2010, Adafruit Industries 
+offre une prime de \$2000 (augmentée ensuite jusqu'à \$3000) pour le premier qui
+sortira des pilotes permettant l'utilisation de la Kinect sur ordinateur\cite{adafruit_bounty}.
+
+\subsubsection{Libfreenect}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{../images/hector}
+\caption{Première sortie de la Libfreenect par son créateur, Hector.}
+\end{figure}
+Le prix est remporté 6 jours plus tard le 10 Novembre par un programmeur Linux
+connu sous le nom "Hector"\cite{adafruit_winner}. C'est la première version de Libfreenect autour
+duquel le groupe OpenKinect se forme. Libfreenect a pour avantage son
+très grand nombre de bindings~: C/C++, Java, Python, Actionscript, Javascript,
+LISP, C\#, pour ne nommer qu'un sous-ensemble. 
+Il est toujours maintenu (dernier commit Décembre 2012).
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{../images/openkinect_logo}
+\caption{Logo de la OpenKinect.}
+\end{figure}
+
+\subsubsection{CL NUI}
+9 jours après la sortie de Libfreenect la compagnie Coding Laboratories 
+(CL) et le groupe de logiciels libres
+Natural User-Interaction (NUI) sortent CL-NU
+I\cite{clnui}. Nous sommes alors 2 semaines 
+après la sortie de l'appareil. CL-NUI propose des bindings 
+WPF\footnote{Windows Presentation Foundation}/C\# C et C++ et permet d'accéder 
+à tout sauf le microphone. Le développement continue jusqu'en fin Décembre 2010 
+mais,
+le défi déjà remporté, s'arrête par la suite. Notons pourtant qu'il faudra 
+attendre 2 ans pour avoir accès aux données des accéléromètres à travers la 
+SDK officiel\ldots
+\subsubsection{Kinect for Windows}  
+Les pilotes officiels de Microsoft viennent avec leur SDK, "Kinect for 
+Windows". Inutile de dire
+qu'ils ne fonctionnent que sous Windows. Ce qui est un peu plus surprenant, 
+c'est qu'il n'y a de support que pour Window 7 et 8, donc pas pour Windows XP 
+ou Vista.
+\subsubsection{SDK OpenNI}
+OpenNI (Open Natural Interaction) est un consortium à but non lucratif composé
+des grands acteurs économiques du domaine. S'y figure notamment PrimeSense, la 
+compagnie qui a développé la Kinect pour Microsoft au premier lieu. Leur SDK
+est plus ou moins analogue à celui de Microsoft où il est question de
+Kinect, mais fonctionne aussi sur les plus anciennes 
+versions de Windows mais
+aussi sous Linux (y compris Android) et Mac OSX.
+\begin{figure}[h!]
+\begin{minipage}{0.49\linewidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../images/openni_logo}
+\end{minipage}
+\begin{minipage}{0.49\linewidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../images/primesense_logo}
+\end{minipage}
+
+\caption{Logos de la OpenNI et de PrimeSense.}
+\end{figure}
+La OpenNI permet également de s'abstraire du matériel utilisé. Il suffit que
+les pilotes utilisés soient conformes à ses standards~: pour passer, par 
+exemple, de la Kinect à une caméra PrimeSense nous devons simplement remplacer 
+les pilotes "SensorKinect" avec "PrimeSensor".
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{../images/primesense_camera}
+\caption{Caméra Carmine 1.09 de PrimeSense.}
+\end{figure}
+
+% ------------------------------------------------------------------------------  
+
+\subsection{Middleware}
+Les bibliothèques dites "middleware interaction naturelle" servent ici en 
+général à faire une 
+extraction de squelette et une reconnaissance de gestes. Elles permettent donc 
+au développeur de s'abstraire des données brutes. Le groupe OpenNI définit 
+des normes auxquelles doit obéir cette couche, de 
+manière à faciliter la communication à travers la pile de technologies (voir 
+figure~\ref{fig:openni_technology_stack}).
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{../images/openni_technology_stack}
+\caption{Pile de technologie d'après la OpenNI.}
+\label{fig:openni_technology_stack}
+\end{figure}
+
+
+\subsubsection{Kinect for Windows}  
+Bien que les SDK de Microsoft et de la OpenNI signifient tout deux 
+"Simple Development Kit",
+celui de Microsoft, "Kinect for Windows", contient à la fois les pilotes, 
+l'API de bas niveau et une couche d'analyse des données qu'OpenNI appellerait 
+middleware. Il n'est donc pas fait pour interfacer avec les couches de la 
+OpenNI et ne suit par leurs normes.
+
+Kinect for Windows a quelques avantages par rapport à NITE~: il propose un
+placement prédictif des articulations et génère deux points en plus :
+le poignet et le bout des doigts. Cela étant, sa prédiction consomme beaucoup 
+plus de ressources et peut amener à de faux positifs\cite{microsoft_vs_openni}.
+
+\subsubsection{NITE de PrimeSense}
+NITE (Natural Interface Technology for End-User) est un framework Libre et 
+multiplateforme développé par PrimeSense. Vu que c'est PrimeSense qui a 
+lancé OpenNI, NITE est devenu la tête d'affiche de ses
+middleware standardisés. Elle se repose donc sur la SDK de la OpenNI. 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\linewidth]{../images/nite_logo}
+\caption{Logo du framework NITE.}
+\end{figure}
+
+\subsubsection{OpenCV}
+OpenCV (Open Computer Vision) est une vaste bibliothèque de toutes sortes de 
+fonctions aillant un rapport avec la détection de formes à partir d'images
+statiques ou dynamiques. Elle existe depuis 1999, donc bien avant la Kinect.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.4\linewidth]{../images/opencv_logo}
+\caption{Logo de la OpenCV.}
+\end{figure}
+Étant donné qu'il s'agit d'une bibliothèque généraliste, elle a peu de 
+fonctionnalités qui ciblent précisément les données 3D, contrairement aux 
+bibliothèques dites "d'interaction naturelle".
+
+% ------------------------------------------------------------------------------  
+
+\subsection{Bibliothèques de haut-niveau}
+
+\subsubsection{Zigfu}
+Créée en Mai 2011, Zigfu est une petite entreprise formée de 4 personnes dont 
+Amir Hirsch, le fondateur, et 2 ex-employés de PrimeSense. Il fournit, 
+par dessus l'extraction de squelette et la reconnaissance
+de gestes, une API permettant de créer des boutons, listes, curseurs et autres
+éléments GUI, tous contrôlés par le mouvement.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\linewidth]{../images/zigfu_logo}
+\caption{Logo de Zigfu.}
+\end{figure}
+Zigfu intègre également la cinématique inverse et un système de 
+prédiction et
+d'interpolation afin d'avoir un squelette répondant à des contraintes 
+physiques à 60Hz\cite{zigfu_video}. La plupart des jeux modernes tourne à cette 
+vitesse et, 
+rappelons que la caméra ne fournit que des données 30Hz. Notons que
+que la priorité ici est le côté esthétique,
+non la précision.
+
+Zigfu fonctionne avec Kinect for Windows ou OpenNI avec NITE. Il est 
+avant-tout orienté Web, avec des
+bindings HTML 5 et Unity, et une version Flash en cours de développement
+\cite{zigfu_review}.
+
+\subsubsection{FAAST}
+La Flexible~Action~and~Articulated~Skeleton~Toolkit (FAAST) est une 
+bibliothèque qui se repose soit sur Kinect for Windows, soit OpenNI et NITE, 
+comme Zigfu. Elle n'est pour l'instant compatible qu'avec Windows.
+
+Développé par la Interactive~Media~Division (MxR) de 
+l'Institute~of~Creative~Technologies (ICT) de 
+l'University~of~Southern~California (USC). Elle permet de monter à un niveau 
+encore plus abstrait~: l'utilisateur travaille avec des événement générés à
+partir de postures et de gestes, au lieu d'analyser manuellement le 
+squelette.
+
+% ------------------------------------------------------------------------------  
+
+\subsection{Résumé}
+Le schéma \ref{fig:technology_overview} résume les interactions entre les diverses 
+technologies que nous ayons vues.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{../images/technology_overview}
+\caption{Pile de technologie de la Kinect.}
+\label{fig:technology_overview}
+\end{figure}

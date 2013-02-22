@@ -1,3 +1,7 @@
+# Latex
+**.orig
+**~
+
 # Project files
 *.csproj
 *.pidb
@@ -5,6 +9,11 @@
 *.sln
 *.userprefs
 
+# Binaries
+**.dll
+**.exe
+
+# Unity
 Library/**
 Temp/**
 ProjectSettings/**
