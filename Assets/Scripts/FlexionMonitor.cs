@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class AbductionMonitor : ExerciseMonitor
+public class FlexionMonitor : ExerciseMonitor
 {
 	//! --------------------------------------------------------------------------
 	//! ATTRIBUTES
 	//! --------------------------------------------------------------------------
 	// Parameters
-	public FailGrapher graph_elbow, graph_forwards;
-	public float max_forward_turn, max_elbow_bend, max_start_elevation;
+	public FailGrapher graph_elbow, graph_backwards;
+	public float max_back_turn, max_elbow_bend, max_start_elevation;
 	
 	// Local variables
 	private Vector3 shoulder, elbow, wrist, upperarm, forearm, spine_up;
@@ -30,7 +30,7 @@ public class AbductionMonitor : ExerciseMonitor
 			cheating = false;
 			// these two can reset 'cheating' to 'true' if applicable
 			monitor_bend();
-			monitor_forward();
+			monitor_backwards();
 			
 			// progress 
 			monitor_elevation(cheating);
@@ -45,12 +45,9 @@ public class AbductionMonitor : ExerciseMonitor
 	private void reset_joint_position()
 	{
 		// reset local variables -- NB: '=' operator performs a deep copy
-		shoulder = skeleton.getTransform(ZigJointId.RightShoulder, 
-																	!hand_choice.right_hand).position;
-		elbow = skeleton.getTransform(ZigJointId.RightElbow, 
-																	!hand_choice.right_hand).position;
-		wrist = skeleton.getTransform(ZigJointId.RightWrist, 
-																	!hand_choice.right_hand).position;
+		shoulder = skeleton.getTransform(ZigJointId.RightShoulder, !right_hand).position;
+		elbow = skeleton.getTransform(ZigJointId.RightElbow, !right_hand).position;
+		wrist = skeleton.getTransform(ZigJointId.RightWrist, !right_hand).position;
 		upperarm = elbow - shoulder;
 		forearm = wrist - elbow;
 	}
@@ -65,7 +62,7 @@ public class AbductionMonitor : ExerciseMonitor
 			// try again !
 			assumedStartPosition();
 			graph_elbow.setFail(false);
-			graph_forwards.setFail(false);
+			graph_backwards.setFail(false);
 		}
 			
 		// plot progress data
@@ -90,20 +87,21 @@ public class AbductionMonitor : ExerciseMonitor
 			graph_elbow.newDataPoint(elbow_bend);
 	}
 	
-	private void monitor_forward()
+	private void monitor_backwards()
 	{
 		// how much is the arm been turn towards the front ?
-		float forwards = 90 - Vector3.Angle(skeleton.Torso.forward, upperarm);
-		if(forwards > max_forward_turn)
+		float backwards = Vector3.Angle(skeleton.Torso.forward, upperarm);
+		Debug.Log(backwards.ToString ());
+		if(backwards > max_back_turn)
 		{
-			graph_forwards.setFail(true);
+			graph_backwards.setFail(true);
 			failedExercise();
 			cheating = true;
 		}
 		else
-			graph_forwards.setFail(false);
+			graph_backwards.setFail(false);
 		// plot constraint data
-		if(graph_forwards != null)
-			graph_forwards.newDataPoint(forwards);
+		if(graph_backwards != null)
+			graph_backwards.newDataPoint(backwards);
 	}
 }
