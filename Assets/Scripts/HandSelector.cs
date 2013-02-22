@@ -11,8 +11,8 @@ public class HandSelector : MonoBehaviour
 	private static Vector2 virtual_screen = new Vector2(1000.0f, 750.0f); 
 	
 	private static Rect centre = new Rect(200, 100, 600, 550),
-								left = new Rect(275, 250, 200, 200),
-								right = new Rect(525, 250, 200, 200);
+								left = new Rect(275, 250, 200, 300),
+								right = new Rect(525, 250, 200, 300);
 	
 	private GUIContent left_button, right_button;
 		
@@ -61,6 +61,12 @@ public class HandSelector : MonoBehaviour
 		{
 			hand_choice.right_hand = false;
 			Application.LoadLevel("menu");
+		}
+		
+		// EXIT
+    if (Event.current.Equals(Event.KeyboardEvent("escape")))
+		{
+      Application.Quit();
 		}
 	}
 }

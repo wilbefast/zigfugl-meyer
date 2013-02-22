@@ -43,6 +43,13 @@ public class ExerciseMonitor : MonoBehaviour
 		caption_gui.transform.position = new Vector3(0.5f, 0.0f, 0.0f);
 	}
 	
+	void OnGUI()
+	{
+		// EXIT
+    if (Event.current.Equals(Event.KeyboardEvent("escape"))) 
+      Application.LoadLevel("menu");
+	}
+	
 	//! --------------------------------------------------------------------------
 	//! METHODS
 	//! --------------------------------------------------------------------------
