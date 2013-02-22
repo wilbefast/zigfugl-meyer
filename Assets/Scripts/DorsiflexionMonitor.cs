@@ -43,8 +43,8 @@ public class DorsiflexionMonitor : ExerciseMonitor
 	private void reset_joint_position()
 	{
 		// reset local variables -- NB: '=' operator performs a deep copy
-		wrist = skeleton.RightWrist.position;
-		fingertip = skeleton.RightFingertip.position;
+		wrist = skeleton.getTransform(ZigJointId.RightWrist, !right_hand).position;
+		fingertip = skeleton.getTransform(ZigJointId.RightHand, !right_hand).position;
 	}
 	
 	
