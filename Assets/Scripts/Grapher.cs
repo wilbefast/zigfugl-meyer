@@ -14,9 +14,12 @@ public class Grapher : MonoBehaviour
 	public Rect gui_area;
 	public UnityEngine.Color colour;
 	public string caption_text;
+	
 	public Camera camContext;
+	public LayerMask layer;
 	
 	// local variables
+	private int layer_number;
 	private float[] history;
   private LineRenderer line, borderLine;
 	private float value_span;
@@ -65,6 +68,8 @@ public class Grapher : MonoBehaviour
 	//! FIXME -- I don't understand C#... it won't let me override Start :-/
 	protected void init()
 	{
+		layer_number = ((layer == null) ? 0 : (int)(Mathf.Log(layer.value, 2)) - 1);
+		
 		// if no camera is specified use the main camera instead
 		if(camContext == null)
 			camContext = Camera.main;
@@ -89,6 +94,7 @@ public class Grapher : MonoBehaviour
 	private void create_caption()
 	{
 		caption = new GameObject("caption");
+		caption.layer = layer_number;
 		GUIText caption_gui = (GUIText)caption.AddComponent("GUIText");
 		caption_gui.text = caption_text;
 		caption_gui.anchor = TextAnchor.UpperCenter;
@@ -99,11 +105,13 @@ public class Grapher : MonoBehaviour
 	{
 		// current amount (right-hand side)
 		amount_indicator = new GameObject("amount_indicator");
+		amount_indicator.layer = layer_number;
 		GUIText gtext = (GUIText)amount_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleLeft;
 		gtext.fontSize = 20;
 		
 		// min amount (left-hand side)
+		min_indicator.layer = layer_number;
 		min_indicator = new GameObject("min_indicator");
 		gtext = (GUIText)min_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
@@ -113,6 +121,7 @@ public class Grapher : MonoBehaviour
 		gtext.transform.position = point;
 		
 		// max amount (right-hand side)
+		max_indicator.layer = layer_number;
 		max_indicator = new GameObject("max_indicator");
 		gtext = (GUIText)max_indicator.AddComponent("GUIText");
 		gtext.anchor = TextAnchor.MiddleRight;
@@ -126,6 +135,7 @@ public class Grapher : MonoBehaviour
 	{
 		// create a border around the plot (X and Y axes)
 		border = new GameObject("border");
+		border.layer = layer_number;
 		borderLine = (LineRenderer)border.AddComponent("LineRenderer"); 
 		
 		// set up the border line
@@ -139,6 +149,7 @@ public class Grapher : MonoBehaviour
 	{
 		// create the plot object for plotting data
 		curve = new GameObject("plot");
+		curve.layer = layer_number;
 		line = (LineRenderer)curve.AddComponent("LineRenderer");	
 		
 		// set up the plot line 
