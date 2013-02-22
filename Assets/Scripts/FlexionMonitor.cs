@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AbductionMonitor : ExerciseMonitor
+public class FlexionMonitor : ExerciseMonitor
 {
 	//! --------------------------------------------------------------------------
 	//! ATTRIBUTES
