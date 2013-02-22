@@ -23,7 +23,7 @@ public class ExerciseMonitor : MonoBehaviour
 	
 	// local variables
 	protected State state = State.NO_USER;
-	protected HandChoice hand_choice;
+	protected bool right_hand;
 	private GameObject state_indicator;
 	
 	
@@ -34,8 +34,11 @@ public class ExerciseMonitor : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		hand_choice = 
-			(HandChoice)(GameObject.Find("Hand").GetComponent("HandChoice"));
+		GameObject hand = GameObject.Find("Hand");
+		if(hand == null)
+			right_hand = true;
+		else
+			right_hand = ((HandChoice)(hand.GetComponent("HandChoice"))).right_hand;
 		
 		state_indicator = new GameObject("state_indicator");
 		GUIText caption_gui = (GUIText)state_indicator.AddComponent("GUIText");

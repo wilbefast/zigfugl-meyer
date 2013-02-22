@@ -45,12 +45,9 @@ public class FlexionMonitor : ExerciseMonitor
 	private void reset_joint_position()
 	{
 		// reset local variables -- NB: '=' operator performs a deep copy
-		shoulder = skeleton.getTransform(ZigJointId.RightShoulder, 
-																	!hand_choice.right_hand).position;
-		elbow = skeleton.getTransform(ZigJointId.RightElbow, 
-																	!hand_choice.right_hand).position;
-		wrist = skeleton.getTransform(ZigJointId.RightWrist, 
-																	!hand_choice.right_hand).position;
+		shoulder = skeleton.getTransform(ZigJointId.RightShoulder, !right_hand).position;
+		elbow = skeleton.getTransform(ZigJointId.RightElbow, !right_hand).position;
+		wrist = skeleton.getTransform(ZigJointId.RightWrist, !right_hand).position;
 		upperarm = elbow - shoulder;
 		forearm = wrist - elbow;
 	}
