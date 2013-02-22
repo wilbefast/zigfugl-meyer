@@ -71,5 +71,9 @@ public class ExerciseSelector : MonoBehaviour
 		// BOTTOM RIGHT BUTTON
 		if(GUI.Button(bottom_right, dorsiflexion2_button))
 			Application.LoadLevel("test_dorsiflexion"); /// FIXME
+		
+		// EXIT
+    if (Event.current.Equals(Event.KeyboardEvent("escape"))) 
+      Application.LoadLevel("choose_hand");
 	}
 }
