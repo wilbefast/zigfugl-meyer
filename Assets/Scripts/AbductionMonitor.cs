@@ -52,6 +52,13 @@ public class AbductionMonitor : ExerciseMonitor
 		forearm = wrist - elbow;
 	}
 	
+	/* custom method added to ZigSkeleton
+	public Transform getTransform(ZigJointId j, bool mirror = false)
+	{
+		return transforms[(int)((mirror) ? mirrorJoint(j) : j)].transform;
+	}
+	*/
+	
 	private void monitor_elevation(bool cheating)
 	{
 		// how high has the arm been raised ?
