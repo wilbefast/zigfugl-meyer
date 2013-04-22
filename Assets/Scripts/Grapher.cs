@@ -68,7 +68,8 @@ public class Grapher : MonoBehaviour
 	//! FIXME -- I don't understand C#... it won't let me override Start :-/
 	protected void init()
 	{
-		layer_number = ((layer == null) ? 0 : (int)(Mathf.Log(layer.value, 2)));
+		/* FIXME */
+		layer_number = 0;// (int)(Mathf.Log(layer.value, 2));
 		gameObject.layer = layer_number;
 		
 		// if no camera is specified use the main camera instead
