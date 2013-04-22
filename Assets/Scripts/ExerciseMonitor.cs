@@ -36,9 +36,13 @@ public class ExerciseMonitor : MonoBehaviour
 	{
 		GameObject hand = GameObject.Find("Hand");
 		if(hand == null)
+		{
 			right_hand = true;
+		}
 		else
+		{;
 			right_hand = ((HandChoice)(hand.GetComponent("HandChoice"))).right_hand;
+		}
 		
 		state_indicator = new GameObject("state_indicator");
 		GUIText caption_gui = (GUIText)state_indicator.AddComponent("GUIText");
@@ -50,6 +54,17 @@ public class ExerciseMonitor : MonoBehaviour
 	
 	void OnGUI()
 	{
+		GameObject hand = GameObject.Find("Hand");
+		if(hand == null)
+		{
+			right_hand = true;
+		}
+		else
+		{;
+			right_hand = ((HandChoice)(hand.GetComponent("HandChoice"))).right_hand;
+		}
+		
+		
 		// EXIT
     if (Event.current.Equals(Event.KeyboardEvent("escape"))) 
       Application.LoadLevel("menu");
