@@ -11,8 +11,8 @@ public class ExerciseSelector : MonoBehaviour
 	private static Vector2 virtual_screen = new Vector2(1000.0f, 750.0f); 
 	
 	private static Rect centre = new Rect(200, 100, 600, 550),
-								top_left = new Rect(275, 150, 200, 200),
-								top_right = new Rect(525, 150, 200, 200),
+								top_left = new Rect(275, 250, 200, 200),
+								top_right = new Rect(525, 250, 200, 200),
 								bottom_left = new Rect(275, 400, 200, 200),
 								bottom_right = new Rect(525, 400, 200, 200);
 	
@@ -65,12 +65,12 @@ public class ExerciseSelector : MonoBehaviour
 			Application.LoadLevel("test_flexion");
 		
 		// BOTTOM LEFT BUTTON
-		if(GUI.Button(bottom_left, dorsiflexion1_button))
+		/*if(GUI.Button(bottom_left, dorsiflexion1_button))
 			Application.LoadLevel("test_dorsiflexion"); /// FIXME
 		
 		// BOTTOM RIGHT BUTTON
 		if(GUI.Button(bottom_right, dorsiflexion2_button))
-			Application.LoadLevel("test_dorsiflexion"); /// FIXME
+			Application.LoadLevel("test_dorsiflexion"); /// FIXME*/
 		
 		// EXIT
     if (Event.current.Equals(Event.KeyboardEvent("escape"))) 

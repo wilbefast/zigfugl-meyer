@@ -59,7 +59,7 @@ public class HandSelector : MonoBehaviour
 		// RIGHT
 		if(GUI.Button(right, right_button))
 		{
-			hand_choice.right_hand = false;
+			hand_choice.right_hand = true;
 			Application.LoadLevel("menu");
 		}
 		
